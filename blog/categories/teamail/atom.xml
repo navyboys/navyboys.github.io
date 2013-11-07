@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[@navyboys]]></title>
-  <link href="http://NavySPACE.net/atom.xml" rel="self"/>
+  <title><![CDATA[Category: teamail | @navyboys]]></title>
+  <link href="http://NavySPACE.net/blog/categories/teamail/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
   <updated>2013-11-07T23:04:52+08:00</updated>
   <id>http://NavySPACE.net/</id>
