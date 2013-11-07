@@ -4,7 +4,7 @@
   <title><![CDATA["楽活"在路上]]></title>
   <link href="http://NavySPACE.net/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2013-11-07T18:35:45+08:00</updated>
+  <updated>2013-11-07T18:48:10+08:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -14,40 +14,13 @@
 
   
   <entry>
-    <title type="html"><![CDATA[写在teamail.biz公测之前]]></title>
+    <title type="html"><![CDATA[before-public-test]]></title>
     <link href="http://NavySPACE.net/blog/2013/11/07/before-public-test/"/>
-    <updated>2013-11-07T17:15:00+08:00</updated>
+    <updated>2013-11-07T18:46:00+08:00</updated>
     <id>http://NavySPACE.net/blog/2013/11/07/before-public-test</id>
-    <content type="html"><![CDATA[<h1 id="h1">这是h1标题</h1>
-<p>## 这是h2标题
-### 这是h3标题
-#### 这是h4标题
-##### 这是h5标题
-###### 这是h6标题</p>
+    <content type="html"><![CDATA[<p>这是一段测试。</p>
 
-<ul>
-  <li>列表层1
-    <ul>
-      <li>列表层2
-        <ul>
-          <li>列表层3</li>
-          <li>列表层3</li>
-          <li>列表层3</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<blockquote>
-  <p>这一段是引用</p>
-</blockquote>
-
-<p><em>斜体</em> <strong>粗体</strong></p>
-
-<p>这是普通的一段话</p>
-
-<p>这是一个Link <a href="https://teamail.biz">我们的产品</a></p>
+<h4 id="section">这是4号标题</h4>
 ]]></content>
   </entry>
   
