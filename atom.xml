@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA["楽活"在路上]]></title>
+  <title><![CDATA[@楽活在路上]]></title>
   <link href="http://NavySPACE.net/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2013-11-07T18:48:10+08:00</updated>
+  <updated>2013-11-07T19:04:25+08:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
