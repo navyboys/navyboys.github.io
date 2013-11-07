@@ -3,17 +3,17 @@
 # ----------------------- #
 
 url: http://NavySPACE.net
-title: '@楽活在路上'
-subtitle: come back
+title: '@navyboys'
+subtitle: '... coming back'
 author: NavySPACE.net
 simple_search: http://google.com/search
-description: teamail LohasWork 楽活工場 乐活工场 创业 Email 
+description: 楽活工場 LohasWork teamail.biz 
 
 # Default date format is "ordinal" (resulting in "July 22nd 2007")
 # You can customize the format as defined in
 # http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
 # Additionally, %o will give you the ordinal representation of the day
-date_format: "%F %a"
+date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
 subscribe_rss: /atom.xml
@@ -97,4 +97,4 @@ disqus_show_comment_count: false
 google_analytics_tracking_id:
 
 # Facebook Like
-facebook_like: true
+facebook_like: false
