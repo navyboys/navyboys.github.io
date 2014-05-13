@@ -8,7 +8,7 @@ keywords: tealeaf programming
 description: 
 ---
 
-I took an online Ruby on Rails bootcamp named [TeaLeaf Academy](www.gotealeaf.com) since last month and restart programming again. When we joined the class, we were introduced to see a video on Youtube named [Program or be Programmed](ttps://www.youtube.com/watch?v=imV3pPIUy1k) and say something we think about it. Here is my viewpoint and self-introduce to myself.
+I took an online Ruby on Rails bootcamp named [TeaLeaf Academy](www.gotealeaf.com) since last month and restart programming again. When we joined the class, we were introduced to see a video on Youtube named [Program or be Programmed](ttps://www.youtube.com/watch?v=imV3pPIUy1k) and say something we think about it. Here is my viewpoint and self-introduce.
 
 By the way, I really enjoy this online course and the way they led.
 
