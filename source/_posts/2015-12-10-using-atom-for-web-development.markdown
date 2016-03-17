@@ -3,7 +3,7 @@ layout: post
 title: Using Atom for Web Development
 date: 2015-12-10 12:00
 comments: true
-categories: tool
+categories: [tool, development]
 keywords: editor atom
 description: 
 ---
