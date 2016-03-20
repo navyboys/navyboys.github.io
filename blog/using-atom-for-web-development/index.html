@@ -247,8 +247,19 @@
       <td>Convert to Lower Case</td>
       <td><code>⌘</code>-<code>k</code>-<code>L</code></td>
     </tr>
+    <tr>
+      <td>Switch Tabs</td>
+      <td><code>⌃</code>-<code>tab</code></td>
+    </tr>
   </tbody>
 </table>
+
+<p>Switching tabs with <code>⌃</code>-<code>tab</code> is not a feature provided by Atom. You can get this Sublime Text-like behavior by adding the following to keymap:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">'body':
+</span><span class="line">  'ctrl-tab': 'pane:show-next-item'</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h4 id="code-navigation--management">Code Navigation &amp; Management</h4>
 

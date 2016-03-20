@@ -4,7 +4,7 @@
   <title><![CDATA[@navyboys]]></title>
   <link href="http://NavySPACE.net/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-03-17T12:38:18-07:00</updated>
+  <updated>2016-03-20T12:51:20-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -12,6 +12,120 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Atom as Markdown Editor]]></title>
+    <link href="http://NavySPACE.net/blog/atom-as-markdown-editor/"/>
+    <updated>2016-01-20T12:34:00-08:00</updated>
+    <id>http://NavySPACE.net/blog/atom-as-markdown-editor</id>
+    <content type="html"><![CDATA[<p><strong>Markdown</strong> is an easy-to-use markup language in a plain text format and it became my favorite writing format several years ago because it makes me stay focused on recording thoughts and ideas efficiently.</p>
+
+<p>Up to now I’ve used dedicated Markdown editors like <strong>MOU</strong> and <strong>Haroopad</strong> as a tool of writing while they all have pros and cons individually. When Atom replaced Sublime Text as my code editor for web development, I tried to use it as a Markdown editor either and the result is amazing. Atom proves itself as a fantastic solution for writing in markdown and it can be customized to whatever you want to match your writing style.</p>
+
+<p>Atom comes with full Markdown support including a robust previewer. It supports GitHub flavored Markdown and includes spell check along with predefined Markdown snippets.</p>
+
+<p>Further more, we can easily extend Atom using the built-in package manager. Atom has a bunch of packages that can be installed to provide additional productivity. Here are some ones I am using:</p>
+
+<h3 id="language-gfm">language-gfm</h3>
+
+<p><strong>language-gfm</strong> is an Atom built-in package which adds syntax highlighting and snippets to GitHub flavored Markdown files in Atom. I use it instead of <strong>language-markdown</strong> because the latter seems not working well with <strong>markdown-preview-plus</strong>.</p>
+
+<h3 id="markdown-preview-plus">Markdown Preview Plus</h3>
+
+<p><strong>Markdown Preview Plus</strong> is a package that provides a real-time preview of markdown documents with <code>ctrl-shift-m</code>. I choose this instead of Atom built-in <strong>Markdown Preview</strong> because it also provide Math (LaTeX) support to the markdown preview with <code>ctrl-shift-x</code>.</p>
+
+<p><img src="https://i.github-camo.com/11195c1f0294de243f68409abd79a91452323cb6/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f47616c616469726974682f6d61726b646f776e2d707265766965772d706c75732f6d61737465722f696d67732f6d70702d66756c6c2d7265732d696e766572742e706e67" alt="markdown-preview-plus" /></p>
+
+<h3 id="markdown-scroll-sync">markdown-scroll-sync</h3>
+
+<p>This package is used to synchronize scrolling between markdown file and its preview.</p>
+
+<p><img src="https://i.github-camo.com/a0f171c5c0f3ca4403ae288ca45ee2035906c184/68747470733a2f2f636c6f75642e67697468756275736572636f6e74656e742e636f6d2f6173736574732f3831313435352f31313331373235392f63356239623063322d386664632d313165352d386638352d6237646565666235323563352e676966" alt="markdown-scroll-sync" /></p>
+
+<h3 id="markdown-writer">Markdown-Writer</h3>
+
+<p><strong>Markdown Writer</strong> adds tons of features to make Atom an even better Markdown editor and works great with static blogging engines such as Octopress as well.</p>
+
+<p><img src="https://i.github-camo.com/216ebba971ab38d17d6eabdaf236d042a55b35b8/687474703a2f2f692e696d6775722e636f6d2f7339656b4d6e732e676966" alt="Markdown-Writer" /></p>
+
+<p>Here are some shortcuts I use often during writing with Markdown-Writer in Atom.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Keystrokes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>code</code></td>
+      <td><code>cmd-'</code></td>
+    </tr>
+    <tr>
+      <td><strong>bold</strong></td>
+      <td><code>cmd-b</code></td>
+    </tr>
+    <tr>
+      <td><em>italic</em></td>
+      <td><code>cmd-i</code></td>
+    </tr>
+    <tr>
+      <td>~~strike through~~</td>
+      <td><code>cmd-h</code></td>
+    </tr>
+    <tr>
+      <td><code>'''code block'''</code></td>
+      <td><code>shift-cmd-"</code></td>
+    </tr>
+    <tr>
+      <td><code>&lt;kbd&gt;key&lt;/kbd&gt;</code></td>
+      <td><code>cmd-k</code></td>
+    </tr>
+    <tr>
+      <td>Unordered List</td>
+      <td><code>shift-cmd-u</code></td>
+    </tr>
+    <tr>
+      <td>Ordered List</td>
+      <td><code>shift-cmd-O</code></td>
+    </tr>
+    <tr>
+      <td>Task List</td>
+      <td><code>markdown-writer:toggle-task</code></td>
+    </tr>
+    <tr>
+      <td>Blockquote</td>
+      <td><code>shift-cmd-&gt;</code></td>
+    </tr>
+    <tr>
+      <td>Insert link</td>
+      <td><code>shift-cmd-k</code></td>
+    </tr>
+    <tr>
+      <td>Insert image</td>
+      <td><code>shift-cmd-i</code></td>
+    </tr>
+    <tr>
+      <td>Insert table</td>
+      <td><code>markdown-writer:insert-table</code></td>
+    </tr>
+    <tr>
+      <td>Toggle headings</td>
+      <td><code>ctrl-alt-1</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="references">References</h3>
+
+<ul>
+  <li><a href="https://www.raywenderlich.com/119949/top-five-markdown-editors">Best Markdown Editors for OS X</a></li>
+  <li><a href="http://tedcurran.net/2015/05/12/make-your-perfect-markdown-editor-with-atom-editor-plugins/">Make Your Perfect Markdown Editor with Atom Editor Plugins</a></li>
+  <li><a href="https://blogs.msdn.microsoft.com/silverlining/2015/05/18/atom-io-for-markdown-editing/">Atom.io for Markdown editing</a></li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Using Atom for Web Development]]></title>
@@ -151,8 +265,19 @@
       <td>Convert to Lower Case</td>
       <td><code>⌘</code>-<code>k</code>-<code>L</code></td>
     </tr>
+    <tr>
+      <td>Switch Tabs</td>
+      <td><code>⌃</code>-<code>tab</code></td>
+    </tr>
   </tbody>
 </table>
+
+<p>Switching tabs with <code>⌃</code>-<code>tab</code> is not a feature provided by Atom. You can get this Sublime Text-like behavior by adding the following to keymap:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class=""><span class="line">'body':
+</span><span class="line">  'ctrl-tab': 'pane:show-next-item'</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 <h4 id="code-navigation--management">Code Navigation &amp; Management</h4>
 

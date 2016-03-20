@@ -4,7 +4,7 @@
   <title><![CDATA[Category: development | @navyboys]]></title>
   <link href="http://NavySPACE.net/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-03-17T12:38:18-07:00</updated>
+  <updated>2016-03-20T12:51:20-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -151,8 +151,19 @@
       <td>Convert to Lower Case</td>
       <td><code>⌘</code>-<code>k</code>-<code>L</code></td>
     </tr>
+    <tr>
+      <td>Switch Tabs</td>
+      <td><code>⌃</code>-<code>tab</code></td>
+    </tr>
   </tbody>
 </table>
+
+<p>Switching tabs with <code>⌃</code>-<code>tab</code> is not a feature provided by Atom. You can get this Sublime Text-like behavior by adding the following to keymap:</p>
+
+<p><code>
+'body':
+  'ctrl-tab': 'pane:show-next-item'
+</code></p>
 
 <h4 id="code-navigation--management">Code Navigation &amp; Management</h4>
 
