@@ -5,7 +5,7 @@ date: 2015-12-10 12:00
 comments: true
 categories: [tool, development]
 keywords: editor atom
-description: 
+description:
 ---
 
 As a programmer, I have tried a variety of different editors as a programmer. Back to the days when I got my first job as a developer in NEC, I used **Hitemaru**, which once was a popular editor among Japanese programmers, to  write PL/SQL programs. That was the first time I met with text editors other than advanced but 'heavy' IDEs. In the following days, I tried **Notepad++**, **Vim** and settled down with **Sublime Text** when I began coding in Ruby a few years ago. But recently, I shifted to **Atom** without missing one single feature of the previous so far. I really love Atom for its zero-compromise combination of hackability and usability. Also, it's free and is in continuous development by the core team from Github.
@@ -38,13 +38,13 @@ This package makes messy code neater and more readable.
 
 #### Emmet
 
-Emmet is an essential tool for web developers which expand abbreviations by ```Tab``` key to allow you to work quickly when writing HTML, CSS, Sass / SCSS and LESS syntaxes.
+Emmet is an essential tool for web developers which expand abbreviations by `Tab` key to allow you to work quickly when writing HTML, CSS, Sass / SCSS and LESS syntaxes.
 
 ![Emmet](http://media02.hongkiat.com/useful-atom-packages/emmet.gif)
 
 #### Merge Conflicts
 
-This package detects the conflict markers left by ```git merge``` and overlays a set of controls for resolving each and navigating among them. It makes handling conflicts much easier.
+This package detects the conflict markers left by `git merge` and overlays a set of controls for resolving each and navigating among them. It makes handling conflicts much easier.
 
 ![Merge Conflicts](https://i.github-camo.com/44ff44f156f274b8799022e44bcacb804fadc08a/68747470733a2f2f7261772e6769746875622e636f6d2f736d61736877696c736f6e2f6d657267652d636f6e666c696374732f6d61737465722f646f63732f636f6e666c6963742d7265736f6c7574696f6e2e676966)
 
@@ -56,7 +56,7 @@ Using this package, you can run Ruby tests, Rspec examples and Cucumber features
 
 #### Color Picker
 
-A neat color-related package which lets you pick colorsas easy as navigating a color picker. It can be done by pressing ```CMD```+```SHIFT```+```C```.
+A neat color-related package which lets you pick colorsas easy as navigating a color picker. It can be done by pressing `CMD`+`SHIFT`+`C`.
 
 ![Color Picker](https://i.github-camo.com/467c72e686f00893c3d36bf46499e76c10f31787/68747470733a2f2f6769746875622e636f6d2f74686f6d61736c696e647374726f6d2f636f6c6f722d7069636b65722f7261772f6d61737465722f707265766965772e676966)
 
@@ -72,77 +72,85 @@ Keyboard shortcuts are the essential way to do things faster for a develeper wor
 
 #### Key to the Keys
 
-- ```⌘``` : Command key
-- ```⌃``` : Control key
-- ```⌫``` : Delete key
-- ```←``` : Left arrow key
-- ```→``` : Right arrow key
-- ```↑``` : Up arrow key
-- ```↓``` : Down arrow key
-- ```⌥``` : Option or Alt key
-- ```↩``` : Return or Enter key
-- ``````⇧`````` : Shift key
+- `⌘` : Command key
+- `⌃` : Control key
+- `⌫` : Delete key
+- `←` : Left arrow key
+- `→` : Right arrow key
+- `↑` : Up arrow key
+- `↓` : Down arrow key
+- `⌥` : Option or Alt key
+- `↩` : Return or Enter key
+- ``⇧`` : Shift key
 
 #### General
 
 Task | Keystrokes
 ------------ | -------------
-Fuzzy Find Files | ```⌘```-```t```
-Open Command Palette | ```⌘```-```⇧```-```p```
-Open Configuration Editor | ```⌘```-```,```
-Toggle Full Screen | ```⌃```-```⌘```-```f```
-Toggle Tree View | ```⌘```-```\```
-Toggle Line Comments | ```⌘```-```/```
-Select Grammar | ```⌃```-```⇧```-```L```
-Increase Font Size | ```⌘```-```+```
-Decrease Font Size | ```⌘```-```-```
-Convert to Upper Case | ```⌘```-```k```-```u```
-Convert to Lower Case | ```⌘```-```k```-```L```
+Fuzzy Find Files | `⌘`-`t`
+Open Command Palette | `⌘`-`⇧`-`p`
+Open Configuration Editor | `⌘`-`,`
+Toggle Full Screen | `⌃`-`⌘`-`f`
+Toggle Tree View | `⌘`-`\`
+Toggle Line Comments | `⌘`-`/`
+Select Grammar | `⌃`-`⇧`-`L`
+Increase Font Size | `⌘`-`+`
+Decrease Font Size | `⌘`-`-`
+Convert to Upper Case | `⌘`-`k`-`u`
+Convert to Lower Case | `⌘`-`k`-`L`
+Switch Tabs | `⌃`-`tab`
+
+Switching tabs with `⌃`-`tab` is not a feature provided by Atom. You can get this Sublime Text-like behavior by adding the following to keymap:
+
+```
+'body':
+  'ctrl-tab': 'pane:show-next-item'
+```
 
 #### Code Navigation & Management
 
 Task | Keystrokes
 ------------ | -------------
-Select Entire Word | ```⌃```-```⇧```-```w```
-Go to Line | ```⌃```-```g```
-Delete Line | ```⌃```-```⇧```-```k```
-Duplicate Line | ```⌘```-```⇧```-```d```
-Indent Selected Text | ```⌘```-```]```
-Outdent Selected Text | ```⌘```-```[```
-Move to Top of File | ```⌘```-```↑```
-Move to Bottom of File | ```⌘```-```↓```
-Move to First Character of Line | ```⌘```-```←```
-Move to Last Character of Line | ```⌘```-```→```
+Select Entire Word | `⌃`-`⇧`-`w`
+Go to Line | `⌃`-`g`
+Delete Line | `⌃`-`⇧`-`k`
+Duplicate Line | `⌘`-`⇧`-`d`
+Indent Selected Text | `⌘`-`]`
+Outdent Selected Text | `⌘`-`[`
+Move to Top of File | `⌘`-`↑`
+Move to Bottom of File | `⌘`-`↓`
+Move to First Character of Line | `⌘`-`←`
+Move to Last Character of Line | `⌘`-`→`
 
 #### Editor View Tasks
 
 Task | Keystrokes
 ------------ | -------------
-Split Panes Vertically | ```⌘```-```k```-```↓```
-Split Panes Horizontally | ```⌘```-```k```-```→```
-Vertical Navigation Panes | ```⌘```-```k``` ```⌘```-```↓```
-Horizontal Navigation Panes | ```⌘```-```k``` ```⌘```-```→```
+Split Panes Vertically | `⌘`-`k`-`↓`
+Split Panes Horizontally | `⌘`-`k`-`→`
+Vertical Navigation Panes | `⌘`-`k` `⌘`-`↓`
+Horizontal Navigation Panes | `⌘`-`k` `⌘`-`→`
 
 #### File Tasks
 
 Task | Keystrokes
 ------------ | -------------
-Open Tree View | ```⌃```-```0```
-Add a File | ```a```
-Move a File | ```m```
-Delete a File | ```⌫```
+Open Tree View | `⌃`-`0`
+Add a File | `a`
+Move a File | `m`
+Delete a File | `⌫`
 
 #### Find & Replace
 
 Task | Keystrokes
 ------------ | -------------
-Find String in Current File | ``````⌘``````-```f```
-Find String in All Project Files | ```⇧```-```⌘```-```f```
-Find Next Matching String | ```⌘```-```g```
-Find Previous Matching String | ```⇧```-```⌘```-```g```
-Select Next Matching String | ```⌘```-```d```
-Select All Matching Strings | ```⌃```-```⌘```-```g```
-Replace String in Current File | ```⌥```-```⌘```-```f```
+Find String in Current File | `⌘`-`f`
+Find String in All Project Files | `⇧`-`⌘`-`f`
+Find Next Matching String | `⌘`-`g`
+Find Previous Matching String | `⇧`-`⌘`-`g`
+Select Next Matching String | `⌘`-`d`
+Select All Matching Strings | `⌃`-`⌘`-`g`
+Replace String in Current File | `⌥`-`⌘`-`f`
 
 ### References
 
