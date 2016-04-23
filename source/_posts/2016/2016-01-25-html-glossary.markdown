@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "HTML Glossary"
-date: 2016-04-22 15:51
+date: 2016-01-25 15:51
 comments: true
 categories: [html, codecademy, note, web development]
 keywords: html codecademy web
