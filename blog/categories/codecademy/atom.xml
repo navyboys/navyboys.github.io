@@ -4,7 +4,7 @@
   <title><![CDATA[Category: codecademy | @navyboys]]></title>
   <link href="http://NavySPACE.net/blog/categories/codecademy/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-22T16:29:58-07:00</updated>
+  <updated>2016-04-22T21:42:11-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -14,9 +14,286 @@
 
   
   <entry>
+    <title type="html"><![CDATA[CSS Glossary]]></title>
+    <link href="http://NavySPACE.net/blog/css-glossary/"/>
+    <updated>2016-01-26T10:10:00-08:00</updated>
+    <id>http://NavySPACE.net/blog/css-glossary</id>
+    <content type="html"><![CDATA[<p>The <code>markdown</code> version of Codecademy’s <a href="https://www.codecademy.com/articles/glossary-css">CSS Glossary</a>.</p>
+
+<h2 id="comments">Comments</h2>
+
+<p>Comments in CSS are signified by a forward-slash and asterisk.</p>
+
+<p><code>css
+/* This is a single line comment */
+</code></p>
+
+<p><code>css
+/* This
+is a multi-line
+comment */
+</code></p>
+
+<h2 id="properties">Properties</h2>
+
+<p>Properties are defined within selectors by defining a property and a value. They are separated with a colon and delineated with a semi-colon.</p>
+
+<p><code>css
+h1 {
+  color: blue;
+}
+</code></p>
+
+<p>Each CSS rule can have as many properties as you like. Each of them applies to the elements that the selector applies to.</p>
+
+<p><code>css
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  border: 1px solid black;
+  color: pink;
+}
+</code></p>
+
+<h2 id="padding">Padding</h2>
+
+<p>The padding is the spacing between the content and the border (edge of the element.). We can adjust this value with CSS to move the border closer to or farther from the content. Here, the div with id ‘box’ will get 10px of padding all around it.</p>
+
+<p><code>css
+#box {
+  padding: 10px;
+}
+</code></p>
+
+<h2 id="margin">Margin</h2>
+
+<p>The margin is the space around the element. The larger the margin, the more space between our element and the elements around it. We can adjust the margin to move our HTML elements closer to or farther from each other. Here, the div with id ‘box’ will get 10px of margin above and below it, and 5px of margin to the left and right.</p>
+
+<p><code>css
+#box {
+  margin: 10px 5px 10px 5px;
+}
+</code></p>
+
+<h2 id="font-family">font-family</h2>
+
+<p>The <code>font-family</code> property sets the font of an HTML element’s text.</p>
+
+<p><code>css
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+</code></p>
+
+<h2 id="selectors">Selectors</h2>
+
+<p>Selectors are used in CSS to select the parts of the HTML that are being styled. You can use several different methods for selecting an element.</p>
+
+<p><code>css
+selector {
+  rules;
+  rules;
+  rules;
+}
+</code></p>
+
+<h4 id="class-name-selectors">Class name selectors</h4>
+
+<p>You can also select HTML elements by their Class name. Unlike ID selectors, Class selectors select all elements with a matching class.</p>
+
+<p><code>css
+a.link {
+  font-size: 12px;
+}
+</code></p>
+
+<p><code>css
+.jumbo {
+  text-size: 1000px;
+}
+</code></p>
+
+<h4 id="element-selectors">Element selectors</h4>
+
+<p>You are able to select HTML elements first by simply using the name of the element.</p>
+
+<p><code>css
+body {
+  background-color: #333;
+}
+</code></p>
+
+<p><code>css
+h1 {
+  color: blue;
+}
+</code></p>
+
+<p><code>css
+a {
+  text-underline: none;
+}
+</code></p>
+
+<h4 id="id-selectors">ID selectors</h4>
+
+<p>ID selectors are used to select only a single item on a page. Like the term (“identification”) indicates, ID selectors will ONLY select the first element with a matching ID.</p>
+
+<p><code>css
+#thatThingINeededToStyle {
+  color: blue;
+  font-size: 24px;
+}
+</code></p>
+
+<p><code>css
+a#codecademy {
+  color: purple;
+}
+</code></p>
+
+<h4 id="attribute-selectors">Attribute selectors</h4>
+
+<p>HTML elements are also able to be selected by their attributes.</p>
+
+<p><code>css
+a[href="http://codecademy.com"] {
+  color: purple;
+}
+</code></p>
+
+<p><code>css
+input[type="text"] {
+  width: 100px;
+}
+</code></p>
+
+<p><code>css
+input[required] {
+  border: 1px red solid;
+}
+</code></p>
+
+<h4 id="child-selectors">Child selectors</h4>
+
+<p>You can also use multiple selectors to get the exact elements you want, by using parental nesting. By using the “greater-than” symbol (&gt;), you can select only the direct children of an element, going down only one level.</p>
+
+<p>Example</p>
+
+<p>``` css
+ul &gt; li { /* Child */
+  display: inline-block
+}</p>
+
+<p>/* Selects only the first-level list items in all unordered lists in the HTML */
+```</p>
+
+<p>``` css
+ul a { /* Descendant */
+  text-underline: none;
+}</p>
+
+<p>/* Selects all anchors which have an unordered list in their ancestry */
+```</p>
+
+<p>``` css
+ul + span { /* Next-sibling */
+  display: inline;
+}</p>
+
+<p>/* Selects only spans that directly follow an unordered list */
+```</p>
+
+<p>``` css
+a ~ h1 { /* Following-sibling */
+  color: blue;
+}</p>
+
+<p>/* Selects all h1 elements that are in the general vicinity of an anchor */
+```</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_selectors">Read more</a></p>
+
+<h4 id="universal-selector">Universal selector</h4>
+
+<p>The universal selector <code>*</code> may be used to select all the elements in a particular range. Be aware that the universal selector is the most performance taxing selector, and should be used sparingly.</p>
+
+<p><code>css
+* { /* Selects ALL HTML elements in the page */
+  background-color: blue;
+}
+</code></p>
+
+<p><code>css
+body * { /* Selects ALL descendants of the body */
+  color: red;
+}
+</code></p>
+
+<p><code>css
+div &gt; * { /* Selects ALL first-level children of divs */
+  color: red;
+}
+</code></p>
+
+<p>Read more
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors">[1]</a>
+<a href="http://www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">[2]</a>
+<a href="http://dev.opera.com/articles/view/27-css-basics/#universal">[3]</a></p>
+
+<h2 id="pseudo-class-selectors">Pseudo class selectors</h2>
+
+<p>Pseudo Selectors can be used to narrow down a selection with certain rules.</p>
+
+<p>``` css
+li:first-child {
+  color: red;
+}</p>
+
+<p>/*
+  This selects only &lt;li&gt; elements that have no elements before them</p>
+<ul>
+    <li>Selected; will be red</li>
+    <li>Not selected</li>
+    <li>Not selected</li>
+  </ul>
+<p>*/
+```</p>
+
+<p>``` css
+li:last-child {
+  color: red;
+}</p>
+
+<p>/* This does the opposite; only the last &lt;li&gt; will be red. */
+```</p>
+
+<p>``` css
+a:hover {
+  text-decoration: underline;
+}</p>
+
+<p>/* Will underline all links when the user puts their mouse over them */
+```</p>
+
+<p>``` css
+a:active {
+  font-weight: bold;
+}</p>
+
+<p>/* Will make all links bold while the user is clicking on them. */
+```</p>
+
+<p>Read more
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">[1]</a>
+<a href="http://dev.opera.com/articles/view/27-css-basics/#pseudoclasses">[2]</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[HTML Glossary]]></title>
     <link href="http://NavySPACE.net/blog/html-glossary/"/>
-    <updated>2016-04-22T15:51:00-07:00</updated>
+    <updated>2016-01-25T15:51:00-08:00</updated>
     <id>http://NavySPACE.net/blog/html-glossary</id>
     <content type="html"><![CDATA[<p><a href="https://www.codecademy.com/articles/glossary-html">HTML Glossary</a> is a perfect introduction to HTML basics written by Codecademy team. Here is the version for <code>markdown</code> fans.</p>
 
