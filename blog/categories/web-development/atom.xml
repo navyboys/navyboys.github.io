@@ -4,7 +4,7 @@
   <title><![CDATA[Category: web development | @navyboys]]></title>
   <link href="http://NavySPACE.net/blog/categories/web-development/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-22T21:42:11-07:00</updated>
+  <updated>2016-04-28T12:29:25-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -12,6 +12,275 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HTML Basics]]></title>
+    <link href="http://NavySPACE.net/blog/html-basics/"/>
+    <updated>2016-02-02T14:33:00-08:00</updated>
+    <id>http://NavySPACE.net/blog/html-basics</id>
+    <content type="html"><![CDATA[<p>I have got a habit of taking notes while reading technical stuff - books, blogs or even online courses. It really helps me to recall the concepts and points through notes written in <code>Markdown</code>, providing a deeper understanding of the topic.</p>
+
+<p><code>Codecademy</code> uses a step by step learning methodology to help beginners learn web fundamentals through coding practice. Here is the notes of the HTML part of its courses: HTML &amp; CSS, which I’d like to treat it as a cheat sheet and help me recall the basics of HTML within minutes.</p>
+
+<h2 id="concepts">Concepts</h2>
+
+<p>Some concepts and terminologies about HTML.</p>
+
+<ul>
+  <li><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong></li>
+  <li><strong>Hypertext</strong> means “text with links in it.”</li>
+  <li>A <strong>markup language</strong> is a programming language used to make text do more than just sit on a page: it can turn text into images, links, tables, lists, and much more.</li>
+  <li>Things inside <code>&lt;&gt;</code>s are called <strong>Tags</strong>. Tags nearly always come in pairs: an opening tag and a closing tag.</li>
+</ul>
+
+<h2 id="skeleton-of-the-page">Skeleton of the page</h2>
+
+<p>Basic structure(skeleton) of a web page.</p>
+
+<ul>
+  <li>Always put <code>&lt;!DOCTYPE html&gt;</code> on the first line. This tells the browser what language it’s reading (in this case, HTML).</li>
+  <li>Always put <code>&lt;html&gt;</code> on the next line. This starts the HTML document.</li>
+  <li>Always put <code>&lt;/html&gt;</code> on the last line. This ends the HTML document.</li>
+  <li>There are always two parts to an HTML file: the <strong>head</strong> and the <strong>body</strong>.</li>
+  <li>The <strong>head</strong> contains information about your HTML file, like its title. The title is what we see in the browser’s title bar or page tab.</li>
+  <li>The <strong>body</strong> is where you put your content, such as text, images, and links.</li>
+</ul>
+
+<h2 id="heading">Heading</h2>
+
+<p>HTML defines six levels of headings.</p>
+
+<p>``` html</p>
+<h1>The CEO</h1>
+<h2>VP</h2>
+<h3>Director</h3>
+<h4>Middle management</h4>
+<h5>Lowly assistant</h5>
+<h6>Gets coffee for everyone</h6>
+<p>```</p>
+
+<h2 id="image--link">Image &amp; Link</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;a href="http://www.codecademy.com/"&gt;
+  &lt;img src="https://www.google.ca/images/nav_logo242.png"/&gt;
+&lt;/a&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<p><a href="http://www.codecademy.com/">
+  <img src="http://webstir.org/icons/code-cademy-icon.png" />
+</a></p>
+
+<h2 id="ordered-list">Ordered List</h2>
+
+<p><code>HTML</code></p>
+
+<p>``` html</p>
+<ol>
+  <li>Raindrops on roses</li>
+  <li>Whiskers on kittens</li>
+</ol>
+<p>```</p>
+
+<p><code>Result</code></p>
+
+<ol>
+  <li>Raindrops on roses</li>
+  <li>Whiskers on kittens</li>
+</ol>
+
+<h2 id="unordered-list">Unordered List</h2>
+
+<p><code>HTML</code></p>
+
+<p>``` html</p>
+<ul>
+  <li>Cheese</li>
+  <li>Sour Cream</li>
+</ul>
+<p>```</p>
+
+<p><code>Result</code></p>
+
+<ul>
+  <li>Cheese</li>
+  <li>Sour Cream</li>
+</ul>
+
+<h2 id="comment">Comment</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;!-- This is an example of a comment! --&gt;
+</code></p>
+
+<h2 id="font-size">Font Size</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;p style="font-size: 0.5em"&gt;font-size&lt;/p&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<p style="font-size: 0.5em">font-size</p>
+
+<h2 id="font-color">Font Color</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;p style="color: green; font-size: 16px"&gt;Green&lt;/p&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<p style="color: green; font-size: 16px">Green</p>
+
+<h2 id="font-family">Font Family</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;h6 style="font-family: Arial"&gt;Title&lt;/h6&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<h6 style="font-family: Arial">Title</h6>
+
+<h2 id="background-color">Background Color</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;p style="background-color: red"&gt;Hello!&lt;/p&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<p style="background-color: red">Hello!</p>
+
+<h2 id="align">Align</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;h6 style="text-align: center"&gt;Center Heading&lt;/h6&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<h6 style="text-align: center">Center Heading</h6>
+
+<h2 id="strong-word">Strong Word</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;strong&gt;BOLD&lt;/strong&gt;
+</code></p>
+
+<p><code>Results</code></p>
+
+<p><strong>BOLD</strong></p>
+
+<h2 id="emphasize-word">Emphasize Word</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;em&gt;Italicize&lt;/em&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<p><em>Italicize</em></p>
+
+<h2 id="table">Table</h2>
+
+<p><code>HTML</code></p>
+
+<p>``` html</p>
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Famous Monsters</th>
+    </tr>
+    <tr>
+      <th>Famous Monster</th>
+      <th>Birth Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>King Kong</td>
+      <td>1933</td>     
+    </tr>
+    <tr>
+      <td>Dracula</td>
+      <td>1897</td>     
+    </tr>
+  </tbody>
+</table>
+<p>```</p>
+
+<p><code>Result</code></p>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">Famous Monsters</th>
+    </tr>
+    <tr>
+      <th>Famous Monster</th>
+      <th>Birth Year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>King Kong</td>
+      <td>1933</td>     
+    </tr>
+    <tr>
+      <td>Dracula</td>
+      <td>1897</td>     
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="div">Div</h2>
+
+<p><code>HTML</code></p>
+
+<p><code>html
+&lt;div style="width:50px; height:50px; background-color:red"&gt;&lt;/div&gt;
+</code></p>
+
+<p><code>Result</code></p>
+
+<p />
+<div style="width:50px; height:50px; background-color:red"></div>
+
+<h2 id="span">Span</h2>
+
+<p><code>HTML</code></p>
+
+<p>``` html</p>
+<p>Black, except for the word <span style="color: red">red</span>!</p>
+<p>```</p>
+
+<p><code>Result</code></p>
+
+<p>Black, except for the word <span style="color: red">red</span>!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[CSS Glossary]]></title>
