@@ -4,7 +4,7 @@
   <title><![CDATA[@navyboys]]></title>
   <link href="http://NavySPACE.net/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-28T22:10:06-07:00</updated>
+  <updated>2016-04-28T22:13:53-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -518,7 +518,7 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
   <li>Sour Cream</li>
 </ul>
 
-<h2 id="comment">Comment</h2>
+<h2 id="comments">Comments</h2>
 
 <p><code>HTML</code></p>
 
