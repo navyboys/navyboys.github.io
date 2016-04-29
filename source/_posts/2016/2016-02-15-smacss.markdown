@@ -1,0 +1,592 @@
+---
+layout: post
+title: "SMACSS"
+date: 2016-02-15 08:12
+comments: true
+categories: [css, smacss, note, web development]
+keywords: css smacss web
+description: Notes for Snook's book - SMACSS
+---
+
+**SMACSS** (pronounced “smacks”) is a style guide introduced by Canadian web developer, Jonathan Snook. It is a way to examine your design process and as a way to fit rigid frameworks into a flexible thought process. Here is the reading notes of Snook's online book, [Scalable and Modular Architecture for CSS - a flexible guide to developing sites small and large](https://smacss.com/book/).
+
+## Categories
+
+By categorizing CSS rules, we begin to see patterns and can define better practices around each of these patterns. There are five types of categories:
+
+1. **Base** rules are almost exclusively single _element selectors_ but it could include _attribute selectors_, _pseudo-class selectors_, _child selectors_ or _sibling selectors_. Essentially, a base style says that wherever this element is on the page, it should look like this.
+1. **Layout** rules divide the page into sections. Layouts hold one or more modules together.
+1. **Modules** are the reusable, modular parts of our design. They are the _callouts_, the _sidebar sections_, the _product lists_ and so on.
+1. **State** rules are ways to describe how our modules or layouts will look when in a particular state. Is it _hidden_ or _expanded_? Is it _active_ or _inactive_?
+1. **Theme** rules describe how modules or layouts might look. Most sites don’t require a layer of theming but it is good to be aware of it.
+
+## Base Rules
+
+A Base rule is applied to an element using an **element selector**, a **descendent selector**, or a **child selector**, along with any **pseudo-classes**.
+
+``` css
+body, form {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #039;
+}
+a:hover {
+  color: #03F;    
+}
+```
+
+- It is **defining the default styling** for how that element should look in all occurrences on the page.
+- Base styles include setting **heading sizes**, **default link styles**, **default font styles**, and **body backgrounds**.
+- It doesn’t include any class or ID selectors.
+- There should be **no need** to use `!important` in a Base style.
+- Highly recommended that you **specify a body background**.
+
+#### CSS Resets
+
+A CSS Reset is a set of `Base` styles designed to strip out—or reset—the default margin, padding, and other properties. Its purpose is to define a consistent foundation across browsers to build the site on.
+
+- Be sure to understand the drawbacks of the framework you wish to use and plan accordingly.
+- Developing your own set of default styles that you consistently use from project to project can also be advantageous.
+
+## Layout Rules
+
+There is a distinction between layouts dictating the major and minor components of a page.
+
+- The **minor** components, such as a _callout_, or _login form_, or a _navigation_ item, sit within the scope of major components such as a header or footer. I refer to the minor components as **Modules**.
+- The **major** components are referred to as **Layout** styles.
+
+Layout styles can also be divided into major and minor styles based on reuse.
+
+- **Major** layout styles such as _header_ and _footer_ are traditionally styled using `ID` selectors but take the time to think about the elements that are common across all components of the page and use `class` selectors where appropriate.
+- **Minor** Layout styles will use `class` names instead of `ID`s so that the styles can be used multiple times on the page.
+
+Generally, a Layout style only has a single selector: a single `ID` or `class` name. However, there are times when a Layout needs to respond to different factors. For example, you may have different layouts based on user preference. This layout preference would still be declared as a Layout style and used in combination with other Layout styles.
+
+``` css
+#article {
+  float: left;
+}
+#sidebar {
+  float: right;
+}
+.l-flipped #article {
+  float: right;
+}
+.l-flipped #sidebar {
+  float: left;
+}
+```
+
+One other thing to note in the Layout example is the **naming convention** that I have used. The declarations that use ID selectors are named accurately and with no particular namespacing. The class-based selectors, however, do use an **l-** prefix. This helps easily identify the purpose of these styles and separate them from Modules or States. Layout styles are the only primary category type to use ID selectors, if you choose to use them at all. If you wish to namespace your `ID` selectors, you can, but it is not as necessary to do so.
+
+## Module Rules
+
+A Module is a more discrete component of the page. It is your _navigation bars_ and your _carousels_ and your _dialogs_ and your _widgets_ and so on. This is the meat of the page. Each Module should be designed to exist as a **standalone** component.
+
+When defining the rule set for a module, avoid using _IDs_ and _element selectors_, sticking only to **class names**.
+
+#### Avoid element selectors
+
+_Only include a selector that includes semantics._ A `span` or `div` holds none. A heading has some. A class defined on an element has plenty.
+
+``` html
+<!-- Good -->
+<div class="fld">
+  <span class="fld-name">Folder Name</span>
+  <span class="fld-items">(32 items)</span>
+</div>
+
+<!-- Bad -->
+<div class="fld">
+  <span>Folder Name</span>
+  <span>(32 items)</span>
+</div>
+```
+
+If you do wish to use an element selector, it should be within one level of a class selector.
+
+#### Subclassing Modules
+
+Try to avoid conditional styling based on location. If you are changing the look of a module for usage elsewhere on the page or site, sub-class the module instead.
+
+**Case Study**: We have an input with two different widths. Throughout the site, the input has a label beside it and therefore the field should only be half the width. In the sidebar, however, the field would be too small so we increase it to 100% and have the label on top. All looks well and good. Now, we need to add a new component to our page. It uses most of the same styling as a .pod and so we re-use that class. However, this pod is special and has a constrained width no matter where it is on the site. It is a little different, though, and needs a width of `180px`.
+
+``` css
+/* Bad */
+.pod {
+  width: 100%;
+}
+.pod input[type=text] {
+  width: 50%;
+}
+#sidebar .pod input[type=text] {
+  width: 100%;
+}
+.pod-callout {
+  width: 200px;
+}
+#sidebar .pod-callout input[type=text],
+.pod-callout input[type=text] {
+  width: 180px;
+}
+
+/* Good */
+.pod {
+  width: 100%;
+}
+.pod input[type=text] {
+  width: 50%;
+}
+.pod-constrained input[type=text] {
+  width: 100%;
+}
+.pod-callout {
+  width: 200px;
+}
+.pod-callout input[type=text] {
+  width: 180px;
+}
+```
+
+``` html
+<!-- html -->
+<div class="pod pod-constrained">...</div>
+<div class="pod pod-callout">...</div>
+```
+
+## State Rules
+
+A **state** is something that augments and overrides all other styles. For example, an accordion section may be in a collapsed or expanded state. A message may be in a success or error state.
+
+``` html
+<div id="header" class="is-collapsed"> <!-- layout rule -->
+  <form>
+    <div class="msg is-error">         <!-- layout rule -->
+      There is an error!
+    </div>
+    <label for="searchbox" class="is-hidden">Search</label> <!-- base module class -->
+    <input type="search" id="searchbox">
+  </form>
+</div>
+```
+
+#### State vs Sub-Module
+
+There is plenty of similarity between a sub-module style and a state style. They both modify the existing look of an element. However, they differ in two key ways:
+
+1. State styles can apply to layout and/or module styles;
+1. State styles indicate a **JavaScript dependency**.
+
+It is this second point that is the most important distinction. Sub-module styles are applied to an element at render time and then are never changed again. State styles, however, are applied to elements to indicate a change in state while the page is still running on the client machine.
+
+#### Using `!important`
+
+Since the state will likely need to override the style of a more complex rule set, the use of `!important` is  recommended. (I used to say that `!important` was never needed but on complex systems, it is often a necessity.) You won’t normally have two states applied to the same module or two states that tend to affect the same set of styles, so specificity conflicts from using `!important` should be few and far between.
+
+#### Combining State Rules with Modules
+
+In a case where a state rule is made for a specific module, the state class name should include the module name in it. The state rule should also reside with the module rules and not with the rest of the global state rules.
+
+``` css
+.tab {
+  background-color: purple;
+  color: white;
+}
+.is-tab-active {
+  background-color: white;
+  color: black;
+}
+```
+
+## Theme Rules
+
+Theme Rules aren't as often used within a project and because of that, they aren't included as part of the core types.
+
+#### Themes
+
+It is probably self-evident but a theme defines colors and images that give your application or site its look and feel. Separating the theme out into its own set of styles allows for those styles to be easily redefined for alternate themes.
+
+``` css
+/* in module-name.css */
+.mod {
+  border: 1px solid;
+}
+/* in theme.css */
+.mod {
+  border-color: blue;
+}
+```
+
+#### Typography
+
+Last but not least, there are font rules. Similar to themes, there are times when you need to redefine the fonts that are being used on a wholesale basis, such as with internationalization. Locales such as China and Korea have complex ideograms that are difficult to read at smaller font sizes. As a result, we _create separate font files for each locale_ that redefine the font size for those components.
+
+Font rules will normally affect base, module and state styles. Font styles won’t normally be specified at the layout level as layouts are intended for positioning and placement, not for stylistic changes like fonts and colors.
+
+## Changing State
+
+Various components on your page are likely to need to be represented in various states. There is the default state that something should appear in and then what it should look like when the state changes.
+
+#### What is a state change?
+
+- A **class name** change happens with JavaScript. Via some interaction, be it moving the mouse around, hitting something on the keyboard, or some other event occurring. An element gets a new class applied and then the visual appearance changes.
+- A **pseudo-class** change is done via any number of pseudo-classes, and there are a lot. In these cases, we no longer have to rely on JavaScript to describe the state change. Pseudo-classes are still limited in that we can only style changes to elements that are descendants or siblings of the element in which the pseudo-class applies. Otherwise, we are back to using JavaScript.
+- Lastly, **media queries** describe how things should be styled under defined criteria, such as different viewport sizes.
+
+#### Change via Class Name
+
+JavaScript changing state via class name
+
+``` javascript
+$('.btn-close').click(function(){
+  $(this).parents('.dialog').addClass('is-hidden');
+})
+```
+
+**Case Study**: A common interface design pattern is that of a button being pressed and displaying a menu. In this case, the menu changes to a pressed state and the menu changes to a visible state.
+
+Button and menu in separate parts of the same document
+
+``` html
+<div id="content">
+ <div class="toolbar">
+  <button id="btn-new" class="btn" data-action="menu">New</button>
+ </div>
+</div>
+<div id="menu-new" class="menu">
+ <ul> ... </ul>
+</div>
+```
+
+Loading Menu with jQuery
+
+``` javascript
+// bind a click handler to the button
+$('#btn-new').click(function(){
+  // wrap the clicked button in jQuery
+  var el = $(this);
+
+  // change the state of the button
+  el.addClass('is-pressed');
+
+  // find the menu by stripping btn- and
+  // adding it to menu selector
+  $('#menu-' + el.id.substr(4)).removeClass('is-hidden');
+});
+```
+
+#### Handling State Change with Attribute Selectors
+
+Depending on your browser support, you can also take advantage of attribute selectors to handle state change. This can be useful for:
+
+- isolating states from layout and module classes
+- allowing easier transitions between multiple states
+
+``` css
+/* css */
+.btn[data-state=default] { color: #333; }
+.btn[data-state=pressed] { color: #000; }
+.btn[data-state=disabled] { opacity: .5; pointer-events: none; }
+```
+
+``` html
+<!-- html -->
+<button class="btn" data-state="disabled">Disabled</button>
+```
+
+``` javascript
+// javascript
+$(".btn").bind("click", function(){
+  // change the state to pressed
+  $(this).attr('data-state', 'pressed');
+});
+```
+
+#### Class-based State Change with CSS Animations
+
+We use CSS to define a visual state. We can use JavaScript to switch the state of an element on our page. JavaScript should not be used to describe the state, though. That is, it shouldn’t be used to add inline styles.
+
+**Case Study**: A message appear on the page for a short period of time and then fade out
+
+``` css
+/* css */
+
+@-webkit-keyframes fade {
+    0% { opacity:0;  }
+  100% { opacity:1; display:block; }
+}
+
+.is-visible {
+  opacity: 1;
+  animation: fade 2s;
+}
+
+.is-hidden {
+  opacity: 0;
+  animation: fade 2s reverse;
+}
+
+.is-removed {
+  display: none;
+}
+```
+
+``` javascript
+// javascript
+
+function showMessage (s) {
+  var el = document.getElementById('message');
+  el.innerHTML = s;
+
+  /* set state */
+  el.className = 'is-visible';
+  setTimeout(function(){
+    /* set state back */
+    el.className = 'is-hidden';
+    setTimeout(function(){
+      el.className = 'is-removed';
+    }, 2000);
+  }, 3000);
+}
+```
+
+#### Change via Pseudo-class
+
+From CSS2.1, the three most useful pseudo-classes are the "dynamic" ones that react to user interaction: `:hover`, `:focus`, and `:active`. CSS3 adds a number of new pseudo-classes, most of which style based on HTML structure (such as `:nth-child` or `:last-child`).
+
+``` css
+.btn {
+  background-color: #333; /* gray */
+}
+.btn:hover {
+  background-color: #336; /* blueish */
+}
+.btn:focus {
+  box-shadow: 0 0 3px rgba(48,48,96,.3); /* blueish focus ring */
+}
+```
+
+#### Change via Media Query
+
+Adaptive design and Responsive Web Design use media queries to react to various criteria. Print style sheets were one of the first media queries that allowed us to define how elements should look when printed on a page.
+
+A media query can be defined as a separate style sheet using the media attribute on the link element or it can be defined within a `@media` block within a specific style sheet.
+
+``` html
+<!-- html -->
+<link href="main.css" rel="stylesheet">
+<link href="print.css" rel="stylesheet" media="print">
+```
+
+``` css
+/* css */
+@media screen and (max-width: 400px) {
+  #content { float: none; }
+}
+```
+
+**Case Study**: Modular Media Queries
+
+``` css
+/* default state for nav items */
+.nav > li {
+ float: left;
+}
+
+/* alternate state for nav items on small screens */
+@media screen and (max-width: 400px) {
+  .nav > li { float: none; }
+}
+
+/*... elsewhere for layout ...*/
+
+/* default layout */
+.content {
+  float: left;
+  width: 75%;
+}
+
+.sidebar {
+  float: right;
+  width: 25%;
+}
+
+/* alternate state for layout on small screens */
+@media screen and (max-width: 400px) {
+  .content, .sidebar {
+    float: none;
+    width: auto;
+  }
+}
+```
+
+## Depth of Applicability
+
+Bad example: too deep
+
+``` css
+#sidebar div {
+  border: 1px solid #333;
+}
+#sidebar div h3 {
+  margin-top: 5px;
+}
+#sidebar div ul {
+  margin-bottom: 5px;
+}
+```
+
+There are two particular concerns with the example CSS:
+
+1. Relying heavily on a defined HTML structure.
+1. The depth of HTML to which the selectors apply is too deep.
+
+#### Minimizing the Depth
+
+Simplification of rules
+
+``` css
+.pod {
+  border: 1px solid #333;
+}
+.pod > h3 {
+  margin-top: 5px;
+}
+.pod > ul {
+  margin-bottom: 5px;
+}
+```
+
+An advantage to using this shallow depth of applicability approach is also the ability to more readily convert these modules into **templates** for dynamic content.
+
+``` html
+<div class="pod">
+  <h3>heading</h3>
+  <ul>
+    items
+    <li>item</li>
+  </ul>
+</div>
+```
+
+## Selector Performance
+
+Before getting into recommendations, we need to understand a little better about how browsers evaluate CSS.
+
+#### How CSS gets evaluated
+
+1. **The style of an element is evaluated on element creation**: Browsers are designed to handle documents like a **stream**. They begin to receive the document from the server and can render the document before it has completely downloaded. _Each node is evaluated and rendered to the viewport as it is received._
+1. **CSS gets evaluated from right to left**: If you have a rule like `body div#content p { color: #003366; }` then for every element，it will first ask if it is a paragraph element.
+
+#### Inefficient Rules
+
+There are four main rules that be considered inefficient.
+
+1. Rules with descendant selectors. E.g. `#content h3`
+1. Rules with child or adjacent selectors. E.g. `#content > h3`
+1. Rules with overly qualified selectors. E.g. `div#content > h3`
+1. Rules that apply `:hover` to non-link elements. E.g. `div#content:hover`
+
+#### Constrain yourself, don’t choke yourself
+
+3 simple guidelines
+
+1. Use child selectors
+1. Avoid tag selectors for common elements
+1. Use class names as the right-most selector
+
+The delta between the best case and the worst case was _50ms_. In other words, **consider selector performance but don’t waste too much time on it**.
+
+## HTML5 and SMACSS
+
+SMACSS approach has two core goals:
+
+1. Increase the semantic value of a section of HTML and content
+1. Decrease the expectation of a specific HTML structure
+
+**Case Study**: Navigation
+
+Normal way
+
+``` html
+<!-- html -->
+<nav class="nav-primary">
+  <h1>Primary Navigation</h1>
+  <ul>
+    <li>About Us
+      <ul>
+        <li>Team</li>
+        <li>Location</li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<nav class="nav-secondary">
+  <h1>External Links</h1>
+  <ul>…</ul>
+</nav>
+```
+
+``` css
+/* css */
+nav.nav-primary li {
+  display: inline-block;
+}
+nav.nav-secondary li,
+nav.nav-primary li li {
+  display: block;
+}
+```
+
+SMACSS-style
+
+``` html
+<!-- html -->
+<nav class="l-inline">
+  <h1>Primary Navigation</h1>
+  <ul>
+    <li>About Us
+      <ul class="l-stacked">
+        <li>Team</li>
+        <li>Location</li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<nav class="l-stacked">
+  <h1>External Links</h1>
+  <ul>…</ul>
+</nav>
+```
+
+``` css
+/* css */
+.l-inline > * {
+    display: inline-block;
+}
+.l-stacked > * {
+    display: block;
+}
+```
+
+The downfall to this approach is that the rules will have to be evaluated for every single element on the page and not just the list items. The targeting of just direct descendants avoids too much traversal. This lets us use the inline and stacked classes on pretty much any element where we want the child elements to take on those styles.
+
+## Prototyping
+
+SMACSS is about identifying the patterns in your design and codifying them. A prototype should assist in viewing components in part or in whole and to allow the codification of the design language into building blocks.
+
+#### Goals of a prototype
+
+1. **Show states**: From the default state to collapsed states to error states to whatever states you have defined, it is important to be able to visualize each of these states and make sure that the module is built accurately.
+1. **Review localization**: For projects that need to support multiple locales, it will be valuable to be able to test modules using strings from the different locales to ensure layouts don’t break as a result.
+1. **Isolate dependencies**: In larger projects where lazy loading is used, being able to isolate dependencies to the bare minimum required means that you have built a module effectively and can integrate that module into the site without negatively impacting other modules on the page.
+
+#### Pieces of the puzzle
+
+Built a prototyping engine to help facilitate this process
+
+![Yahoo prototype engine](https://smacss.com/img/prototype.png)
+
+The prototype engine uses a `mustache` template as the root. Mock data is stored in a `JSON` file, localization strings are stored in `key/value` pairs in a text file, and CSS and JavaScript dependencies are pulled in as needed. This allows the team to view a menu or a dialog or a form by itself or in the context of the entire site. In doing so, everybody can review functionality and design before going into engineering. We can also shift assets to engineering knowing that integration will be more seamless as a result.
