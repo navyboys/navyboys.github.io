@@ -4,7 +4,7 @@
   <title><![CDATA[@navyboys]]></title>
   <link href="http://NavySPACE.net/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-28T12:29:25-07:00</updated>
+  <updated>2016-04-28T22:10:06-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -12,6 +12,400 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[CSS Basics]]></title>
+    <link href="http://NavySPACE.net/blog/css-basics/"/>
+    <updated>2016-02-10T06:28:00-08:00</updated>
+    <id>http://NavySPACE.net/blog/css-basics</id>
+    <content type="html"><![CDATA[<p>Here is the notes I’ve taken while reading CSS part of Codecademy’s web fundamentals course: HTML &amp; CSS. It is not clear enough compared with <em>CSS Glossary</em>, that is also summarized by Codecademy and can be treated as a fantastic CSS cheat sheet.</p>
+
+<h2 id="concepts">Concepts</h2>
+
+<p>CSS, which stands for <strong>Cascading Style Sheets</strong>, is a language used to describe the appearance and formatting of your HTML.</p>
+
+<ul>
+  <li>A <strong>style sheet</strong> is a file that describes how an HTML file should look.</li>
+  <li>We say these style sheets are <strong>cascading</strong> because the sheets can apply formatting when more than one style applies.</li>
+</ul>
+
+<h2 id="why-separate-form-from-function">Why separate form from function?</h2>
+
+<p>You can apply the same formatting <strong>to several HTML elements</strong> without rewriting code over and over.
+You can apply similar appearance and formatting <strong>to several HTML pages</strong> from a single CSS file</p>
+
+<h2 id="three-ways-to-insert-css">Three Ways to Insert CSS</h2>
+
+<p>inline styling</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;p</span> <span class="na">style=</span><span class="s">&quot;color:red&quot;</span><span class="nt">&gt;</span>Red font!<span class="nt">&lt;/p&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>in the <code>&lt;head&gt;</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line">  <span class="nt">&lt;head&gt;</span>
+</span><span class="line">    <span class="nt">&lt;style&gt;</span>
+</span><span class="line">      <span class="nt">p</span> <span class="p">{</span>
+</span><span class="line">        <span class="k">color</span><span class="o">:</span> <span class="nb">purple</span><span class="p">;</span>
+</span><span class="line">        <span class="p">}</span>
+</span><span class="line">	  <span class="nt">&lt;/style&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/head&gt;</span>
+</span><span class="line">  <span class="nt">&lt;body&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>in separate file</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;html&gt;</span>
+</span><span class="line">  <span class="nt">&lt;head&gt;</span>
+</span><span class="line">    <span class="nt">&lt;link</span> <span class="na">type=</span><span class="s">&quot;text/css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href=</span><span class="s">&quot;stylesheet.css&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/head&gt;</span>
+</span><span class="line">  <span class="nt">&lt;body&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/body&gt;</span>
+</span><span class="line"><span class="nt">&lt;/html&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="one-selector-many-properties">One selector, many properties</h2>
+
+<p>You can set many properties for one selector.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">p</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">font-family</span><span class="o">:</span> <span class="n">Arial</span><span class="p">;</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class="line">  <span class="k">font-size</span><span class="o">:</span> <span class="m">24px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="comments">Comments</h2>
+
+<p>The stuff inside the <code>/*</code> <code>*/</code> marks are CSS comments.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* I&#39;m a comment! */</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="color">Color</h2>
+
+<p>CSS understand millions of colors in the form of <strong>hexadecimal values</strong>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">h1</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="m">#8B1C69</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li>Hexadecimal counting is <strong>base-16</strong>. Each digit can be the numbers 0 through 9 or the letters <strong>a</strong> through <strong>f</strong>!</li>
+  <li>Hex values are <strong>case-insensitive</strong>: that is, they don’t care about capitalization. <code>#FFC125</code> and <code>#ffc125</code> are the same color.</li>
+</ul>
+
+<h2 id="pixels-and-ems">Pixels and ems</h2>
+
+<p>A <strong>pixel</strong> is a dot on your computer screen. Specifying font sizes in pixels is great when you want the user to see exactly on their screen what you designed on yours, though it assumes your screens are of similar size.
+The font-size unit <strong>em</strong> is a relative measure: one <code>em</code> is equal to the default font size on whatever screen the user is using. That makes it great for smartphone screens, since it doesn’t try to tell the smartphone exactly how big to make a font: it just says, “Hey, <code>1em</code> is the font size that you normally use, so <code>2em</code> is twice as big and <code>0.5em</code> is half that size!”</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">p</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">font-size</span><span class="o">:</span> <span class="m">0.5em</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="font">Font</h2>
+
+<p>Most computers will understand popular fonts like <code>Verdana</code>, <code>Courier</code>, and <code>Garamond</code>, but each individual computer has different fonts installed on it. CSS has some <strong>built-in</strong> defaults meant to ensure your users see what you intend. They are:</p>
+
+<ul>
+  <li><strong>serif</strong>: A font with little decorative bits on the ends of the strokes that make up letters.</li>
+  <li><strong>sans-serif</strong>: A plain-looking font, like this one. It doesn’t have the little doohickies on the ends of letters like a serif font does.</li>
+  <li><strong>cursive</strong>: A scripty font! It looks like cursive writing.</li>
+</ul>
+
+<h2 id="backup-values">Backup values</h2>
+
+<p>You can tell CSS to try several fonts, going from one to the next if the one you want isn’t available.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">p</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">font-family</span><span class="o">:</span> <span class="n">Tahoma</span><span class="o">,</span> <span class="n">Verdana</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="bordering">Bordering</h2>
+
+<p>The border property supports several values.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">selector</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="k">solid</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="links-and-text-decoration">Links and text decoration</h2>
+
+<p>Links have a property, text-decoration, that you can change to give your links a little more custom flair.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">a</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="m">#cc0000</span><span class="p">;</span>
+</span><span class="line">  <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="multiple-selectors">Multiple Selectors</h2>
+
+<p>Select only the h3 header nested inside three <code>&lt;div&gt;</code>s</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="nt">div</span> <span class="nt">div</span> <span class="nt">h3</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="universal-selector">Universal selector</h2>
+
+<p>One selector to rule them all</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="o">*</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="k">solid</span> <span class="nb">black</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="children">Children</h2>
+
+<p>Grab direct children</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="o">&gt;</span> <span class="nt">p</span> <span class="p">{</span> <span class="c">/* Some CSS */</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="override">Override</h2>
+
+<p>Certain selectors will <em>override</em> others if they have a greater specificity value.</p>
+
+<ul>
+  <li><code>ul li p {</code> is more specific CSS than just <code>p {</code>, so when CSS sees tags that are both <code>&lt;p&gt;</code> tags and happen to be inside unordered lists, it will apply the more specific styling (<code>ul li p {</code>) to the text inside the lists.</li>
+  <li>There are two selectors that are even more specific than nested selectors like the ones above: <strong>classes</strong> and <strong>IDs</strong>.</li>
+</ul>
+
+<h2 id="class">Class</h2>
+
+<p>Classes are useful when you have a bunch of elements that should all receive the same styling</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- html --&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;square&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class="line"><span class="nt">&lt;img</span> <span class="na">class=</span><span class="s">&quot;square&quot;</span><span class="nt">/&gt;</span>
+</span><span class="line"><span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">&quot;square&quot;</span><span class="nt">&gt;&lt;/td&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* css */</span>
+</span><span class="line"><span class="nc">.square</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">height</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="id">ID</h2>
+
+<p>IDs are great for when you have exactly one element that should receive a certain kind of styling.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- html --&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;first&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;second&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* css */</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">#first</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">height</span><span class="o">:</span> <span class="m">50px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nf">#second</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">height</span><span class="o">:</span> <span class="m">100px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="pseudo-class">Pseudo-class</h2>
+
+<p>A <strong>pseudo-class selector</strong> is a way of accessing HTML items that aren’t part of the document tree</p>
+
+<p>Pseudo-class selectors let us style <strong>changes</strong> in our HTML document.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+</span><span class="line">	<span class="k">color</span><span class="o">:</span> <span class="m">#cc0000</span><span class="p">;</span>
+</span><span class="line">	<span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>There are a number of useful pseudo-class selectors for links, including:</p>
+
+<ul>
+  <li><code>a:link</code>: An unvisited link.</li>
+  <li><code>a:visited</code>: A visited link.</li>
+  <li><code>a:hover</code>: A link you’re hovering your mouse over.</li>
+</ul>
+
+<p><code>first-child</code> is used to apply styling to only the elements that are the first children of their parents.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">p</span><span class="nd">:first-child</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>Nth child</code> would turn every paragraph that is the second child of its parent element red.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">p</span><span class="nd">:nth-child</span><span class="o">(</span><span class="nt">2</span><span class="o">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="taking-up-space">Taking up space</h2>
+
+<p>4 possible values of <strong>display</strong> property:</p>
+
+<ol>
+  <li><strong>block</strong>: This makes the element a block box. It won’t let anything sit next to it on the page! It takes up the full width.</li>
+  <li><strong>inline-block</strong>: This makes the element a block box, but will allow other elements to sit next to it on the same line.</li>
+  <li><strong>inline</strong>: This makes the element sit on the same line as another element, but without formatting it like a block. It only takes up as much width as it needs.</li>
+  <li><strong>none</strong>: This makes the element and its content disappear from the page entirely!</li>
+</ol>
+
+<h2 id="margins-borders-and-padding">Margins, Borders, and Padding</h2>
+
+<p><img src="http://s3.amazonaws.com/codecademy-blog/assets/ae09140c.png" /></p>
+
+<h4 id="margin">Margin</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="p">{</span>
+</span><span class="line">	<span class="k">margin</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span> <span class="c">/* centering it on the page */</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="p">{</span>
+</span><span class="line">	<span class="k">margin</span><span class="o">:</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">3px</span> <span class="m">4px</span><span class="p">;</span> <span class="c">/* top right bottom left */</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="padding">Padding</h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="p">{</span>
+</span><span class="line">	<span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span> <span class="c">/* 10 pixels of padding on all sides */</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="negative-values">Negative values</h4>
+
+<p><code>margin-left: -20px</code> will move the element twenty pixels to the <em>left</em>.</p>
+
+<h2 id="floating">Floating</h2>
+
+<p>When you <strong>float</strong> an element on the page, you’re telling the webpage: “I’m about to tell you where to put this element, but you have to <em>put it into the flow of other elements</em>.”</p>
+
+<h4 id="clearing-elements">Clearing elements</h4>
+
+<p>If you tell an element to <code>clear: left</code>, it will immediately move below any floating elements on the left side of the page; it can also clear elements on the <code>right</code>. If you tell it to <code>clear: both</code>, it will get out of the way of elements floating on the left and right!</p>
+
+<h2 id="absolute-relative-and-fixed-positioning">Absolute, Relative, and Fixed Positioning</h2>
+
+<p>If you don’t specify an element’s positioning type, it defaults to <code>static</code> and just plunks itself down in the document.</p>
+
+<h4 id="absolute-positioning">Absolute positioning</h4>
+
+<p>When an element is set to <code>position: absolute</code>, it’s then positioned in relation to the first parent element it has that doesn’t have <code>position: static</code>. If there’s no such element, the element with <code>position: absolute</code> gets positioned relative to <code>&lt;html&gt;</code>.</p>
+
+<h4 id="relative-positioning">Relative positioning</h4>
+
+<p>Relative tells the element to move relative to where it would have landed if it just had the default <code>static</code> positioning.</p>
+
+<h4 id="fixed-positioning">Fixed positioning</h4>
+
+<ul>
+  <li><code>fixed</code> positioning anchors an element to the browser window—you can think of it as gluing the element to the screen. If you scroll up and down, the fixed element stays put even as other elements scroll past.</li>
+  <li>You can think of the <code>z-index</code> as a measure of importance: the higher an element’s <code>z-index</code>, the higher it will be “stacked” on the page. Giving your header a <code>z-index</code> of 1 while not giving any of the other elements a <code>z-index</code> ensures that your header will sit “on top of” your other elements and won’t get stuck behind them.</li>
+</ul>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[HTML Basics]]></title>
