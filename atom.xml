@@ -4,7 +4,7 @@
   <title><![CDATA[@navyboys]]></title>
   <link href="http://NavySPACE.net/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-29T00:41:54-07:00</updated>
+  <updated>2016-04-29T16:09:25-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -1070,7 +1070,7 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="nt">div</span> <span class="nt">div</span> <span class="nt">h3</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -1082,7 +1082,7 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="css"><span class="line"><span class="o">*</span> <span class="p">{</span>
-</span><span class="line">    <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="k">solid</span> <span class="nb">black</span><span class="p">;</span>
+</span><span class="line">  <span class="k">border</span><span class="o">:</span> <span class="m">2px</span> <span class="k">solid</span> <span class="nb">black</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -1172,8 +1172,8 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 <span class="line-number">3</span>
 <span class="line-number">4</span>
 </pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
-</span><span class="line">	<span class="k">color</span><span class="o">:</span> <span class="m">#cc0000</span><span class="p">;</span>
-</span><span class="line">	<span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="m">#cc0000</span><span class="p">;</span>
+</span><span class="line">  <span class="k">text-decoration</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -1226,7 +1226,7 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="p">{</span>
-</span><span class="line">	<span class="k">margin</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span> <span class="c">/* centering it on the page */</span>
+</span><span class="line">  <span class="k">margin</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span> <span class="c">/* centering it on the page */</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -1234,7 +1234,7 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="p">{</span>
-</span><span class="line">	<span class="k">margin</span><span class="o">:</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">3px</span> <span class="m">4px</span><span class="p">;</span> <span class="c">/* top right bottom left */</span>
+</span><span class="line">  <span class="k">margin</span><span class="o">:</span> <span class="m">1px</span> <span class="m">2px</span> <span class="m">3px</span> <span class="m">4px</span><span class="p">;</span> <span class="c">/* top right bottom left */</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 
@@ -1244,7 +1244,7 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 <span class="line-number">2</span>
 <span class="line-number">3</span>
 </pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">div</span> <span class="p">{</span>
-</span><span class="line">	<span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span> <span class="c">/* 10 pixels of padding on all sides */</span>
+</span><span class="line">  <span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span> <span class="c">/* 10 pixels of padding on all sides */</span>
 </span><span class="line"><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
 

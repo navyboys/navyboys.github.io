@@ -4,7 +4,7 @@
   <title><![CDATA[Category: css | @navyboys]]></title>
   <link href="http://NavySPACE.net/blog/categories/css/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-29T00:41:54-07:00</updated>
+  <updated>2016-04-29T16:09:25-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -781,7 +781,7 @@ a {
 
 <p><code>css
 div div div h3 {
-    color: red;
+  color: red;
 }
 </code></p>
 
@@ -791,7 +791,7 @@ div div div h3 {
 
 <p><code>css
 * {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 </code></p>
 
@@ -861,8 +861,8 @@ div &gt; p { /* Some CSS */ }
 
 <p><code>css
 a:hover {
-	color: #cc0000;
-	text-decoration: none;
+  color: #cc0000;
+  text-decoration: none;
 }
 </code></p>
 
@@ -910,13 +910,13 @@ p:nth-child(2) {
 
 <p><code>css
 div {
-	margin: auto; /* centering it on the page */
+  margin: auto; /* centering it on the page */
 }
 </code></p>
 
 <p><code>css
 div {
-	margin: 1px 2px 3px 4px; /* top right bottom left */
+  margin: 1px 2px 3px 4px; /* top right bottom left */
 }
 </code></p>
 
@@ -924,7 +924,7 @@ div {
 
 <p><code>css
 div {
-	padding: 10px; /* 10 pixels of padding on all sides */
+  padding: 10px; /* 10 pixels of padding on all sides */
 }
 </code></p>
 
