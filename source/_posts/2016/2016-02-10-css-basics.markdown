@@ -147,7 +147,7 @@ Select only the h3 header nested inside three `<div>`s
 
 ``` css
 div div div h3 {
-    color: red;
+  color: red;
 }
 ```
 
@@ -157,7 +157,7 @@ One selector to rule them all
 
 ``` css
 * {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 ```
 
@@ -225,8 +225,8 @@ Pseudo-class selectors let us style **changes** in our HTML document.
 
 ``` css
 a:hover {
-	color: #cc0000;
-	text-decoration: none;
+  color: #cc0000;
+  text-decoration: none;
 }
 ```
 
@@ -270,13 +270,13 @@ p:nth-child(2) {
 
 ``` css
 div {
-	margin: auto; /* centering it on the page */
+  margin: auto; /* centering it on the page */
 }
 ```
 
 ``` css
 div {
-	margin: 1px 2px 3px 4px; /* top right bottom left */
+  margin: 1px 2px 3px 4px; /* top right bottom left */
 }
 ```
 
@@ -284,7 +284,7 @@ div {
 
 ``` css
 div {
-	padding: 10px; /* 10 pixels of padding on all sides */
+  padding: 10px; /* 10 pixels of padding on all sides */
 }
 ```
 
