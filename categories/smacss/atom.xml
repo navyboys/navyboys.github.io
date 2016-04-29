@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: smacss | @navyboys]]></title>
+  <link href="http://NavySPACE.net/categories/smacss/atom.xml" rel="self"/>
+  <link href="http://NavySPACE.net/"/>
+  <updated>2016-04-29T16:35:05-07:00</updated>
+  <id>http://NavySPACE.net/</id>
+  <author>
+    <name><![CDATA[NavySPACE.net]]></name>
+    <email><![CDATA[navyboys@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[SMACSS]]></title>
+    <link href="http://NavySPACE.net/smacss/"/>
+    <updated>2016-02-15T08:12:00-08:00</updated>
+    <id>http://NavySPACE.net/smacss</id>
+    <content type="html"><![CDATA[<p><strong>SMACSS</strong> (pronounced “smacks”) is a style guide introduced by Canadian web developer, Jonathan Snook. It is a way to examine your design process and as a way to fit rigid frameworks into a flexible thought process. Here is the reading notes of Snook’s online book, <a href="https://smacss.com/book/">Scalable and Modular Architecture for CSS - a flexible guide to developing sites small and large</a>.</p>
+
+<h2 id="categories">Categories</h2>
+
+<p>By categorizing CSS rules, we begin to see patterns and can define better practices around each of these patterns. There are five types of categories:</p>
+
+<ol>
+  <li><strong>Base</strong> rules are almost exclusively single <em>element selectors</em> but it could include <em>attribute selectors</em>, <em>pseudo-class selectors</em>, <em>child selectors</em> or <em>sibling selectors</em>. Essentially, a base style says that wherever this element is on the page, it should look like this.</li>
+  <li><strong>Layout</strong> rules divide the page into sections. Layouts hold one or more modules together.</li>
+  <li><strong>Modules</strong> are the reusable, modular parts of our design. They are the <em>callouts</em>, the <em>sidebar sections</em>, the <em>product lists</em> and so on.</li>
+  <li><strong>State</strong> rules are ways to describe how our modules or layouts will look when in a particular state. Is it <em>hidden</em> or <em>expanded</em>? Is it <em>active</em> or <em>inactive</em>?</li>
+  <li><strong>Theme</strong> rules describe how modules or layouts might look. Most sites don’t require a layer of theming but it is good to be aware of it.</li>
+</ol>
+
+<h2 id="base-rules">Base Rules</h2>
+
+<p>A Base rule is applied to an element using an <strong>element selector</strong>, a <strong>descendent selector</strong>, or a <strong>child selector</strong>, along with any <strong>pseudo-classes</strong>.</p>
+
+<p><code>css
+body, form {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #039;
+}
+a:hover {
+  color: #03F;    
+}
+</code></p>
+
+<ul>
+  <li>It is <strong>defining the default styling</strong> for how that element should look in all occurrences on the page.</li>
+  <li>Base styles include setting <strong>heading sizes</strong>, <strong>default link styles</strong>, <strong>default font styles</strong>, and <strong>body backgrounds</strong>.</li>
+  <li>It doesn’t include any class or ID selectors.</li>
+  <li>There should be <strong>no need</strong> to use <code>!important</code> in a Base style.</li>
+  <li>Highly recommended that you <strong>specify a body background</strong>.</li>
+</ul>
+
+<h4 id="css-resets">CSS Resets</h4>
+
+<p>A CSS Reset is a set of <code>Base</code> styles designed to strip out—or reset—the default margin, padding, and other properties. Its purpose is to define a consistent foundation across browsers to build the site on.</p>
+
+<ul>
+  <li>Be sure to understand the drawbacks of the framework you wish to use and plan accordingly.</li>
+  <li>Developing your own set of default styles that you consistently use from project to project can also be advantageous.</li>
+</ul>
+
+<h2 id="layout-rules">Layout Rules</h2>
+
+<p>There is a distinction between layouts dictating the major and minor components of a page.</p>
+
+<ul>
+  <li>The <strong>minor</strong> components, such as a <em>callout</em>, or <em>login form</em>, or a <em>navigation</em> item, sit within the scope of major components such as a header or footer. I refer to the minor components as <strong>Modules</strong>.</li>
+  <li>The <strong>major</strong> components are referred to as <strong>Layout</strong> styles.</li>
+</ul>
+
+<p>Layout styles can also be divided into major and minor styles based on reuse.</p>
+
+<ul>
+  <li><strong>Major</strong> layout styles such as <em>header</em> and <em>footer</em> are traditionally styled using <code>ID</code> selectors but take the time to think about the elements that are common across all components of the page and use <code>class</code> selectors where appropriate.</li>
+  <li><strong>Minor</strong> Layout styles will use <code>class</code> names instead of <code>ID</code>s so that the styles can be used multiple times on the page.</li>
+</ul>
+
+<p>Generally, a Layout style only has a single selector: a single <code>ID</code> or <code>class</code> name. However, there are times when a Layout needs to respond to different factors. For example, you may have different layouts based on user preference. This layout preference would still be declared as a Layout style and used in combination with other Layout styles.</p>
+
+<p><code>css
+#article {
+  float: left;
+}
+#sidebar {
+  float: right;
+}
+.l-flipped #article {
+  float: right;
+}
+.l-flipped #sidebar {
+  float: left;
+}
+</code></p>
+
+<p>One other thing to note in the Layout example is the <strong>naming convention</strong> that I have used. The declarations that use ID selectors are named accurately and with no particular namespacing. The class-based selectors, however, do use an <strong>l-</strong> prefix. This helps easily identify the purpose of these styles and separate them from Modules or States. Layout styles are the only primary category type to use ID selectors, if you choose to use them at all. If you wish to namespace your <code>ID</code> selectors, you can, but it is not as necessary to do so.</p>
+
+<h2 id="module-rules">Module Rules</h2>
+
+<p>A Module is a more discrete component of the page. It is your <em>navigation bars</em> and your <em>carousels</em> and your <em>dialogs</em> and your <em>widgets</em> and so on. This is the meat of the page. Each Module should be designed to exist as a <strong>standalone</strong> component.</p>
+
+<p>When defining the rule set for a module, avoid using <em>IDs</em> and <em>element selectors</em>, sticking only to <strong>class names</strong>.</p>
+
+<h4 id="avoid-element-selectors">Avoid element selectors</h4>
+
+<p><em>Only include a selector that includes semantics.</em> A <code>span</code> or <code>div</code> holds none. A heading has some. A class defined on an element has plenty.</p>
+
+<p>``` html
+<!-- Good -->
+&lt;div class="fld"&gt;
+  <span class="fld-name">Folder Name</span>
+  <span class="fld-items">(32 items)</span>
+&lt;/div&gt;</p>
+
+<!-- Bad -->
+<div class="fld">
+  <span>Folder Name</span>
+  <span>(32 items)</span>
+</div>
+<p>```</p>
+
+<p>If you do wish to use an element selector, it should be within one level of a class selector.</p>
+
+<h4 id="subclassing-modules">Subclassing Modules</h4>
+
+<p>Try to avoid conditional styling based on location. If you are changing the look of a module for usage elsewhere on the page or site, sub-class the module instead.</p>
+
+<p><strong>Case Study</strong>: We have an input with two different widths. Throughout the site, the input has a label beside it and therefore the field should only be half the width. In the sidebar, however, the field would be too small so we increase it to 100% and have the label on top. All looks well and good. Now, we need to add a new component to our page. It uses most of the same styling as a .pod and so we re-use that class. However, this pod is special and has a constrained width no matter where it is on the site. It is a little different, though, and needs a width of <code>180px</code>.</p>
+
+<p>``` css
+/* Bad */
+.pod {
+  width: 100%;
+}
+.pod input[type=text] {
+  width: 50%;
+}
+#sidebar .pod input[type=text] {
+  width: 100%;
+}
+.pod-callout {
+  width: 200px;
+}
+#sidebar .pod-callout input[type=text],
+.pod-callout input[type=text] {
+  width: 180px;
+}</p>
+
+<p>/* Good */
+.pod {
+  width: 100%;
+}
+.pod input[type=text] {
+  width: 50%;
+}
+.pod-constrained input[type=text] {
+  width: 100%;
+}
+.pod-callout {
+  width: 200px;
+}
+.pod-callout input[type=text] {
+  width: 180px;
+}
+```</p>
+
+<p><code>html
+&lt;!-- html --&gt;
+&lt;div class="pod pod-constrained"&gt;...&lt;/div&gt;
+&lt;div class="pod pod-callout"&gt;...&lt;/div&gt;
+</code></p>
+
+<h2 id="state-rules">State Rules</h2>
+
+<p>A <strong>state</strong> is something that augments and overrides all other styles. For example, an accordion section may be in a collapsed or expanded state. A message may be in a success or error state.</p>
+
+<p>``` html
+&lt;div id="header" class="is-collapsed"&gt; <!-- layout rule --></p>
+<form>
+    <div class="msg is-error">         <!-- layout rule -->
+      There is an error!
+    </div>
+    <label for="searchbox" class="is-hidden">Search</label> <!-- base module class -->
+    <input type="search" id="searchbox" />
+  </form>
+<p>&lt;/div&gt;
+```</p>
+
+<h4 id="state-vs-sub-module">State vs Sub-Module</h4>
+
+<p>There is plenty of similarity between a sub-module style and a state style. They both modify the existing look of an element. However, they differ in two key ways:</p>
+
+<ol>
+  <li>State styles can apply to layout and/or module styles;</li>
+  <li>State styles indicate a <strong>JavaScript dependency</strong>.</li>
+</ol>
+
+<p>It is this second point that is the most important distinction. Sub-module styles are applied to an element at render time and then are never changed again. State styles, however, are applied to elements to indicate a change in state while the page is still running on the client machine.</p>
+
+<h4 id="using-important">Using <code>!important</code></h4>
+
+<p>Since the state will likely need to override the style of a more complex rule set, the use of <code>!important</code> is  recommended. (I used to say that <code>!important</code> was never needed but on complex systems, it is often a necessity.) You won’t normally have two states applied to the same module or two states that tend to affect the same set of styles, so specificity conflicts from using <code>!important</code> should be few and far between.</p>
+
+<h4 id="combining-state-rules-with-modules">Combining State Rules with Modules</h4>
+
+<p>In a case where a state rule is made for a specific module, the state class name should include the module name in it. The state rule should also reside with the module rules and not with the rest of the global state rules.</p>
+
+<p><code>css
+.tab {
+  background-color: purple;
+  color: white;
+}
+.is-tab-active {
+  background-color: white;
+  color: black;
+}
+</code></p>
+
+<h2 id="theme-rules">Theme Rules</h2>
+
+<p>Theme Rules aren’t as often used within a project and because of that, they aren’t included as part of the core types.</p>
+
+<h4 id="themes">Themes</h4>
+
+<p>It is probably self-evident but a theme defines colors and images that give your application or site its look and feel. Separating the theme out into its own set of styles allows for those styles to be easily redefined for alternate themes.</p>
+
+<p><code>css
+/* in module-name.css */
+.mod {
+  border: 1px solid;
+}
+/* in theme.css */
+.mod {
+  border-color: blue;
+}
+</code></p>
+
+<h4 id="typography">Typography</h4>
+
+<p>Last but not least, there are font rules. Similar to themes, there are times when you need to redefine the fonts that are being used on a wholesale basis, such as with internationalization. Locales such as China and Korea have complex ideograms that are difficult to read at smaller font sizes. As a result, we <em>create separate font files for each locale</em> that redefine the font size for those components.</p>
+
+<p>Font rules will normally affect base, module and state styles. Font styles won’t normally be specified at the layout level as layouts are intended for positioning and placement, not for stylistic changes like fonts and colors.</p>
+
+<h2 id="changing-state">Changing State</h2>
+
+<p>Various components on your page are likely to need to be represented in various states. There is the default state that something should appear in and then what it should look like when the state changes.</p>
+
+<h4 id="what-is-a-state-change">What is a state change?</h4>
+
+<ul>
+  <li>A <strong>class name</strong> change happens with JavaScript. Via some interaction, be it moving the mouse around, hitting something on the keyboard, or some other event occurring. An element gets a new class applied and then the visual appearance changes.</li>
+  <li>A <strong>pseudo-class</strong> change is done via any number of pseudo-classes, and there are a lot. In these cases, we no longer have to rely on JavaScript to describe the state change. Pseudo-classes are still limited in that we can only style changes to elements that are descendants or siblings of the element in which the pseudo-class applies. Otherwise, we are back to using JavaScript.</li>
+  <li>Lastly, <strong>media queries</strong> describe how things should be styled under defined criteria, such as different viewport sizes.</li>
+</ul>
+
+<h4 id="change-via-class-name">Change via Class Name</h4>
+
+<p>JavaScript changing state via class name</p>
+
+<p><code>javascript
+$('.btn-close').click(function(){
+  $(this).parents('.dialog').addClass('is-hidden');
+})
+</code></p>
+
+<p><strong>Case Study</strong>: A common interface design pattern is that of a button being pressed and displaying a menu. In this case, the menu changes to a pressed state and the menu changes to a visible state.</p>
+
+<p>Button and menu in separate parts of the same document</p>
+
+<p>``` html
+&lt;div id="content"&gt;
+ &lt;div class="toolbar"&gt;
+  &lt;button id="btn-new" class="btn" data-action="menu"&gt;New&lt;/button&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="menu-new" class="menu"&gt;</p>
+<ul> ... </ul>
+<p>&lt;/div&gt;
+```</p>
+
+<p>Loading Menu with jQuery</p>
+
+<p>``` javascript
+// bind a click handler to the button
+$(‘#btn-new’).click(function(){
+  // wrap the clicked button in jQuery
+  var el = $(this);</p>
+
+<p>// change the state of the button
+  el.addClass(‘is-pressed’);</p>
+
+<p>// find the menu by stripping btn- and
+  // adding it to menu selector
+  $(‘#menu-‘ + el.id.substr(4)).removeClass(‘is-hidden’);
+});
+```</p>
+
+<h4 id="handling-state-change-with-attribute-selectors">Handling State Change with Attribute Selectors</h4>
+
+<p>Depending on your browser support, you can also take advantage of attribute selectors to handle state change. This can be useful for:</p>
+
+<ul>
+  <li>isolating states from layout and module classes</li>
+  <li>allowing easier transitions between multiple states</li>
+</ul>
+
+<p><code>css
+/* css */
+.btn[data-state=default] { color: #333; }
+.btn[data-state=pressed] { color: #000; }
+.btn[data-state=disabled] { opacity: .5; pointer-events: none; }
+</code></p>
+
+<p><code>html
+&lt;!-- html --&gt;
+&lt;button class="btn" data-state="disabled"&gt;Disabled&lt;/button&gt;
+</code></p>
+
+<p><code>javascript
+// javascript
+$(".btn").bind("click", function(){
+  // change the state to pressed
+  $(this).attr('data-state', 'pressed');
+});
+</code></p>
+
+<h4 id="class-based-state-change-with-css-animations">Class-based State Change with CSS Animations</h4>
+
+<p>We use CSS to define a visual state. We can use JavaScript to switch the state of an element on our page. JavaScript should not be used to describe the state, though. That is, it shouldn’t be used to add inline styles.</p>
+
+<p><strong>Case Study</strong>: A message appear on the page for a short period of time and then fade out</p>
+
+<p>``` css
+/* css */</p>
+
+<p>@-webkit-keyframes fade {
+    0% { opacity:0;  }
+  100% { opacity:1; display:block; }
+}</p>
+
+<p>.is-visible {
+  opacity: 1;
+  animation: fade 2s;
+}</p>
+
+<p>.is-hidden {
+  opacity: 0;
+  animation: fade 2s reverse;
+}</p>
+
+<p>.is-removed {
+  display: none;
+}
+```</p>
+
+<p>``` javascript
+// javascript</p>
+
+<p>function showMessage (s) {
+  var el = document.getElementById(‘message’);
+  el.innerHTML = s;</p>
+
+<p>/* set state <em>/
+  el.className = ‘is-visible’;
+  setTimeout(function(){
+    /</em> set state back */
+    el.className = ‘is-hidden’;
+    setTimeout(function(){
+      el.className = ‘is-removed’;
+    }, 2000);
+  }, 3000);
+}
+```</p>
+
+<h4 id="change-via-pseudo-class">Change via Pseudo-class</h4>
+
+<p>From CSS2.1, the three most useful pseudo-classes are the “dynamic” ones that react to user interaction: <code>:hover</code>, <code>:focus</code>, and <code>:active</code>. CSS3 adds a number of new pseudo-classes, most of which style based on HTML structure (such as <code>:nth-child</code> or <code>:last-child</code>).</p>
+
+<p><code>css
+.btn {
+  background-color: #333; /* gray */
+}
+.btn:hover {
+  background-color: #336; /* blueish */
+}
+.btn:focus {
+  box-shadow: 0 0 3px rgba(48,48,96,.3); /* blueish focus ring */
+}
+</code></p>
+
+<h4 id="change-via-media-query">Change via Media Query</h4>
+
+<p>Adaptive design and Responsive Web Design use media queries to react to various criteria. Print style sheets were one of the first media queries that allowed us to define how elements should look when printed on a page.</p>
+
+<p>A media query can be defined as a separate style sheet using the media attribute on the link element or it can be defined within a <code>@media</code> block within a specific style sheet.</p>
+
+<p><code>html
+&lt;!-- html --&gt;
+&lt;link href="main.css" rel="stylesheet"&gt;
+&lt;link href="print.css" rel="stylesheet" media="print"&gt;
+</code></p>
+
+<p><code>css
+/* css */
+@media screen and (max-width: 400px) {
+  #content { float: none; }
+}
+</code></p>
+
+<p><strong>Case Study</strong>: Modular Media Queries</p>
+
+<p>``` css
+/* default state for nav items */
+.nav &gt; li {
+ float: left;
+}</p>
+
+<p>/* alternate state for nav items on small screens */
+@media screen and (max-width: 400px) {
+  .nav &gt; li { float: none; }
+}</p>
+
+<p>/<em>… elsewhere for layout …</em>/</p>
+
+<p>/* default layout */
+.content {
+  float: left;
+  width: 75%;
+}</p>
+
+<p>.sidebar {
+  float: right;
+  width: 25%;
+}</p>
+
+<p>/* alternate state for layout on small screens */
+@media screen and (max-width: 400px) {
+  .content, .sidebar {
+    float: none;
+    width: auto;
+  }
+}
+```</p>
+
+<h2 id="depth-of-applicability">Depth of Applicability</h2>
+
+<p>Bad example: too deep</p>
+
+<p><code>css
+#sidebar div {
+  border: 1px solid #333;
+}
+#sidebar div h3 {
+  margin-top: 5px;
+}
+#sidebar div ul {
+  margin-bottom: 5px;
+}
+</code></p>
+
+<p>There are two particular concerns with the example CSS:</p>
+
+<ol>
+  <li>Relying heavily on a defined HTML structure.</li>
+  <li>The depth of HTML to which the selectors apply is too deep.</li>
+</ol>
+
+<h4 id="minimizing-the-depth">Minimizing the Depth</h4>
+
+<p>Simplification of rules</p>
+
+<p><code>css
+.pod {
+  border: 1px solid #333;
+}
+.pod &gt; h3 {
+  margin-top: 5px;
+}
+.pod &gt; ul {
+  margin-bottom: 5px;
+}
+</code></p>
+
+<p>An advantage to using this shallow depth of applicability approach is also the ability to more readily convert these modules into <strong>templates</strong> for dynamic content.</p>
+
+<p>``` html
+&lt;div class="pod"&gt;</p>
+<h3>heading</h3>
+<ul>
+    items
+    <li>item</li>
+  </ul>
+<p>&lt;/div&gt;
+```</p>
+
+<h2 id="selector-performance">Selector Performance</h2>
+
+<p>Before getting into recommendations, we need to understand a little better about how browsers evaluate CSS.</p>
+
+<h4 id="how-css-gets-evaluated">How CSS gets evaluated</h4>
+
+<ol>
+  <li><strong>The style of an element is evaluated on element creation</strong>: Browsers are designed to handle documents like a <strong>stream</strong>. They begin to receive the document from the server and can render the document before it has completely downloaded. <em>Each node is evaluated and rendered to the viewport as it is received.</em></li>
+  <li><strong>CSS gets evaluated from right to left</strong>: If you have a rule like <code>body div#content p { color: #003366; }</code> then for every element，it will first ask if it is a paragraph element.</li>
+</ol>
+
+<h4 id="inefficient-rules">Inefficient Rules</h4>
+
+<p>There are four main rules that be considered inefficient.</p>
+
+<ol>
+  <li>Rules with descendant selectors. E.g. <code>#content h3</code></li>
+  <li>Rules with child or adjacent selectors. E.g. <code>#content &gt; h3</code></li>
+  <li>Rules with overly qualified selectors. E.g. <code>div#content &gt; h3</code></li>
+  <li>Rules that apply <code>:hover</code> to non-link elements. E.g. <code>div#content:hover</code></li>
+</ol>
+
+<h4 id="constrain-yourself-dont-choke-yourself">Constrain yourself, don’t choke yourself</h4>
+
+<p>3 simple guidelines</p>
+
+<ol>
+  <li>Use child selectors</li>
+  <li>Avoid tag selectors for common elements</li>
+  <li>Use class names as the right-most selector</li>
+</ol>
+
+<p>The delta between the best case and the worst case was <em>50ms</em>. In other words, <strong>consider selector performance but don’t waste too much time on it</strong>.</p>
+
+<h2 id="html5-and-smacss">HTML5 and SMACSS</h2>
+
+<p>SMACSS approach has two core goals:</p>
+
+<ol>
+  <li>Increase the semantic value of a section of HTML and content</li>
+  <li>Decrease the expectation of a specific HTML structure</li>
+</ol>
+
+<p><strong>Case Study</strong>: Navigation</p>
+
+<p>Normal way</p>
+
+<p>``` html
+<!-- html -->
+&lt;nav class="nav-primary"&gt;</p>
+<h1>Primary Navigation</h1>
+<ul>
+    <li>About Us
+      <ul>
+        <li>Team</li>
+        <li>Location</li>
+      </ul>
+    </li>
+  </ul>
+<p>&lt;/nav&gt;
+&lt;nav class="nav-secondary"&gt;</p>
+<h1>External Links</h1>
+<ul>…</ul>
+<p>&lt;/nav&gt;
+```</p>
+
+<p><code>css
+/* css */
+nav.nav-primary li {
+  display: inline-block;
+}
+nav.nav-secondary li,
+nav.nav-primary li li {
+  display: block;
+}
+</code></p>
+
+<p>SMACSS-style</p>
+
+<p>``` html
+<!-- html -->
+&lt;nav class="l-inline"&gt;</p>
+<h1>Primary Navigation</h1>
+<ul>
+    <li>About Us
+      <ul class="l-stacked">
+        <li>Team</li>
+        <li>Location</li>
+      </ul>
+    </li>
+  </ul>
+<p>&lt;/nav&gt;
+&lt;nav class="l-stacked"&gt;</p>
+<h1>External Links</h1>
+<ul>…</ul>
+<p>&lt;/nav&gt;
+```</p>
+
+<p><code>css
+/* css */
+.l-inline &gt; * {
+    display: inline-block;
+}
+.l-stacked &gt; * {
+    display: block;
+}
+</code></p>
+
+<p>The downfall to this approach is that the rules will have to be evaluated for every single element on the page and not just the list items. The targeting of just direct descendants avoids too much traversal. This lets us use the inline and stacked classes on pretty much any element where we want the child elements to take on those styles.</p>
+
+<h2 id="prototyping">Prototyping</h2>
+
+<p>SMACSS is about identifying the patterns in your design and codifying them. A prototype should assist in viewing components in part or in whole and to allow the codification of the design language into building blocks.</p>
+
+<h4 id="goals-of-a-prototype">Goals of a prototype</h4>
+
+<ol>
+  <li><strong>Show states</strong>: From the default state to collapsed states to error states to whatever states you have defined, it is important to be able to visualize each of these states and make sure that the module is built accurately.</li>
+  <li><strong>Review localization</strong>: For projects that need to support multiple locales, it will be valuable to be able to test modules using strings from the different locales to ensure layouts don’t break as a result.</li>
+  <li><strong>Isolate dependencies</strong>: In larger projects where lazy loading is used, being able to isolate dependencies to the bare minimum required means that you have built a module effectively and can integrate that module into the site without negatively impacting other modules on the page.</li>
+</ol>
+
+<h4 id="pieces-of-the-puzzle">Pieces of the puzzle</h4>
+
+<p>Built a prototyping engine to help facilitate this process</p>
+
+<p><img src="https://smacss.com/img/prototype.png" alt="Yahoo prototype engine" /></p>
+
+<p>The prototype engine uses a <code>mustache</code> template as the root. Mock data is stored in a <code>JSON</code> file, localization strings are stored in <code>key/value</code> pairs in a text file, and CSS and JavaScript dependencies are pulled in as needed. This allows the team to view a menu or a dialog or a form by itself or in the context of the entire site. In doing so, everybody can review functionality and design before going into engineering. We can also shift assets to engineering knowing that integration will be more seamless as a result.</p>
+]]></content>
+  </entry>
+  
+</feed>

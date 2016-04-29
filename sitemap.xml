@@ -1,51 +1,51 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://NavySPACE.net/blog/program-or-be-programmed/</loc>
-        <lastmod>2016-03-18T16:37:03-07:00</lastmod>
+        <loc>http://NavySPACE.net/program-or-be-programmed/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
-        <loc>http://NavySPACE.net/blog/using-atom-for-web-development/</loc>
-        <lastmod>2016-03-20T12:42:53-07:00</lastmod>
+        <loc>http://NavySPACE.net/using-atom-for-web-development/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
-        <loc>http://NavySPACE.net/blog/atom-as-markdown-editor/</loc>
-        <lastmod>2016-03-20T12:51:00-07:00</lastmod>
+        <loc>http://NavySPACE.net/atom-as-markdown-editor/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
-        <loc>http://NavySPACE.net/blog/html-glossary/</loc>
-        <lastmod>2016-04-22T21:37:06-07:00</lastmod>
+        <loc>http://NavySPACE.net/html-glossary/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
-        <loc>http://NavySPACE.net/blog/css-glossary/</loc>
-        <lastmod>2016-04-22T21:41:47-07:00</lastmod>
+        <loc>http://NavySPACE.net/css-glossary/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
-        <loc>http://NavySPACE.net/blog/html-basics/</loc>
-        <lastmod>2016-04-28T22:13:14-07:00</lastmod>
+        <loc>http://NavySPACE.net/html-basics/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
-        <loc>http://NavySPACE.net/blog/css-basics/</loc>
-        <lastmod>2016-04-29T16:08:46-07:00</lastmod>
+        <loc>http://NavySPACE.net/css-basics/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
-        <loc>http://NavySPACE.net/blog/smacss/</loc>
-        <lastmod>2016-04-29T00:41:40-07:00</lastmod>
+        <loc>http://NavySPACE.net/smacss/</loc>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
         <loc>http://NavySPACE.net/blog/archives/</loc>
-        <lastmod>2016-04-29T16:08:46-07:00</lastmod>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
         <loc>http://NavySPACE.net/blog/categories/</loc>
-        <lastmod>2016-03-18T16:37:03-07:00</lastmod>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
         <loc>http://NavySPACE.net/</loc>
-        <lastmod>2016-04-29T16:08:46-07:00</lastmod>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
     <url>
         <loc>http://NavySPACE.net/robots.txt</loc>
-        <lastmod>2016-03-18T16:37:03-07:00</lastmod>
+        <lastmod>2016-04-29T16:30:34-07:00</lastmod>
     </url>
 </urlset>

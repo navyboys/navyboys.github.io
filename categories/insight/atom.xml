@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: insight | @navyboys]]></title>
+  <link href="http://NavySPACE.net/categories/insight/atom.xml" rel="self"/>
+  <link href="http://NavySPACE.net/"/>
+  <updated>2016-04-29T16:35:05-07:00</updated>
+  <id>http://NavySPACE.net/</id>
+  <author>
+    <name><![CDATA[NavySPACE.net]]></name>
+    <email><![CDATA[navyboys@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Program or be programmed]]></title>
+    <link href="http://NavySPACE.net/program-or-be-programmed/"/>
+    <updated>2015-05-13T19:12:00-07:00</updated>
+    <id>http://NavySPACE.net/program-or-be-programmed</id>
+    <content type="html"><![CDATA[<p><br /></p>
+
+<blockquote>
+  <p>Do we direct technology, or do we let ourselves be directed by it and those who have mastered it? Choose the former, you gain access to the control panel of civilization. Choose the latter, it could be the last real choice you get to make.</p>
+</blockquote>
+
+<div style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/imV3pPIUy1k" frameborder="0" allowfullscreen=""></iframe></div>
+
+<p>Douglas Rushkoff, an world-renowned media theorist and counterculture figure, pointed out that <strong>programming is the new literacy of the digital age</strong> in his controversial speech <a href="https://www.youtube.com/watch?v=imV3pPIUy1k">Program or be Programmed: Ten Commands for a Digital Age</a>. Although I am not sure that programming is just a craft like woodworking or architecture or it will change the whole thinking of the world, my carrer is completely changed by thinking of relationship of human and technology.</p>
+
+<p>I have worked for two major Japan-based IT solution providers for over ten years, coding with languages such as <code>Oracle PL/SQL</code>, <code>Visual Basic</code>, <code>C++</code>, <code>Java</code> as a developer in previous several years, and then transferred to managerial positions as project manager and director of business divisions. But I really didn’t want to leave technology behind because I do believe that information technology will change the world dramatically than ever before, so I began to take a PhD program researching on data mining algorithms and its application, and fortunately got the degree after several year’s efforts.</p>
+
+<p>In the world we called enterprise computing, our job is to work with dozens of (sometimes hundreds of) outsourced developers/designers/testers to build up systems like ERP/MES/CRM for big firms, and the project will spend a long period, months to years. So, in 2006, when I heard Google acquired YouTube.com at a $1.65 billion which was founded by only two developers, I was completely shocked. I realized that the way we used to build up systems must different thoroughly, not only the developing languages, but also the way we think and take, something like <code>TDD/BDD</code>, <code>CI</code>, <code>Agile(Scrum/XP)</code>, <code>Lean Startup</code>, etc., which I known afterward.</p>
+
+<p>Then I began to run a consulting firm in Shanghai with several developers, serving small business firms in a non-traditional way, and developing our own products at the same time. As the founder of a startup, I realized that having the ability to rapidly prototype ideas and iterate rapidly is essential for the process changing ideas to real applications and putting the control to your own hands. So, after several years, I paid thounds of dollars to join an online Ruby on Rails bootcamp named <a href="www.gotealeaf.com">TeaLeaf Academy</a> and restarted programming again.</p>
+
+<p>Back to the arguing about “Program or Programmed”, I really have no idea if everyone in the future should learn programming to avoid “being programmed”, but I choose to be the one “gain access to the control panel of civilization”. And I do believe guys in enterprise computing field should open eyes to find out what’s happening in another world, both technology and way of thinking &amp; working. </p>
+]]></content>
+  </entry>
+  
+</feed>

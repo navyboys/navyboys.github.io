@@ -4,7 +4,7 @@
   <title><![CDATA[@navyboys]]></title>
   <link href="http://NavySPACE.net/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-29T16:09:25-07:00</updated>
+  <updated>2016-04-29T16:35:05-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[SMACSS]]></title>
-    <link href="http://NavySPACE.net/blog/smacss/"/>
+    <link href="http://NavySPACE.net/smacss/"/>
     <updated>2016-02-15T08:12:00-08:00</updated>
-    <id>http://NavySPACE.net/blog/smacss</id>
+    <id>http://NavySPACE.net/smacss</id>
     <content type="html"><![CDATA[<p><strong>SMACSS</strong> (pronounced “smacks”) is a style guide introduced by Canadian web developer, Jonathan Snook. It is a way to examine your design process and as a way to fit rigid frameworks into a flexible thought process. Here is the reading notes of Snook’s online book, <a href="https://smacss.com/book/">Scalable and Modular Architecture for CSS - a flexible guide to developing sites small and large</a>.</p>
 
 <h2 id="categories">Categories</h2>
@@ -889,9 +889,9 @@
   
   <entry>
     <title type="html"><![CDATA[CSS Basics]]></title>
-    <link href="http://NavySPACE.net/blog/css-basics/"/>
+    <link href="http://NavySPACE.net/css-basics/"/>
     <updated>2016-02-10T06:28:00-08:00</updated>
-    <id>http://NavySPACE.net/blog/css-basics</id>
+    <id>http://NavySPACE.net/css-basics</id>
     <content type="html"><![CDATA[<p>Here is the notes I’ve taken while reading CSS part of Codecademy’s web fundamentals course: HTML &amp; CSS. It is not clear enough compared with <em>CSS Glossary</em>, that is also summarized by Codecademy and can be treated as a fantastic CSS cheat sheet.</p>
 
 <h2 id="concepts">Concepts</h2>
@@ -1283,9 +1283,9 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
   
   <entry>
     <title type="html"><![CDATA[HTML Basics]]></title>
-    <link href="http://NavySPACE.net/blog/html-basics/"/>
+    <link href="http://NavySPACE.net/html-basics/"/>
     <updated>2016-02-02T14:33:00-08:00</updated>
-    <id>http://NavySPACE.net/blog/html-basics</id>
+    <id>http://NavySPACE.net/html-basics</id>
     <content type="html"><![CDATA[<p>I have got a habit of taking notes while reading technical stuff - books, blogs or even online courses. It really helps me to recall the concepts and points through notes written in <code>Markdown</code>, providing a deeper understanding of the topic.</p>
 
 <p><code>Codecademy</code> uses a step by step learning methodology to help beginners learn web fundamentals through coding practice. Here is the notes of the HTML part of its courses: HTML &amp; CSS, which I’d like to treat it as a cheat sheet and help me recall the basics of HTML within minutes.</p>
@@ -1585,9 +1585,9 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
   
   <entry>
     <title type="html"><![CDATA[CSS Glossary]]></title>
-    <link href="http://NavySPACE.net/blog/css-glossary/"/>
+    <link href="http://NavySPACE.net/css-glossary/"/>
     <updated>2016-01-26T10:10:00-08:00</updated>
-    <id>http://NavySPACE.net/blog/css-glossary</id>
+    <id>http://NavySPACE.net/css-glossary</id>
     <content type="html"><![CDATA[<p>The <code>markdown</code> version of Codecademy’s <a href="https://www.codecademy.com/articles/glossary-css">CSS Glossary</a>.</p>
 
 <h2 id="comments">Comments</h2>
@@ -1947,9 +1947,9 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
   
   <entry>
     <title type="html"><![CDATA[HTML Glossary]]></title>
-    <link href="http://NavySPACE.net/blog/html-glossary/"/>
+    <link href="http://NavySPACE.net/html-glossary/"/>
     <updated>2016-01-25T15:51:00-08:00</updated>
-    <id>http://NavySPACE.net/blog/html-glossary</id>
+    <id>http://NavySPACE.net/html-glossary</id>
     <content type="html"><![CDATA[<p><a href="https://www.codecademy.com/articles/glossary-html">HTML Glossary</a> is a perfect introduction to HTML basics written by Codecademy team. Here is the version for <code>markdown</code> fans.</p>
 
 <h2 id="attributes">Attributes</h2>
@@ -2320,9 +2320,9 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
   
   <entry>
     <title type="html"><![CDATA[Atom as Markdown Editor]]></title>
-    <link href="http://NavySPACE.net/blog/atom-as-markdown-editor/"/>
+    <link href="http://NavySPACE.net/atom-as-markdown-editor/"/>
     <updated>2016-01-20T12:34:00-08:00</updated>
-    <id>http://NavySPACE.net/blog/atom-as-markdown-editor</id>
+    <id>http://NavySPACE.net/atom-as-markdown-editor</id>
     <content type="html"><![CDATA[<p><strong>Markdown</strong> is an easy-to-use markup language in a plain text format and it became my favorite writing format several years ago because it makes me stay focused on recording thoughts and ideas efficiently.</p>
 
 <p>Up to now I’ve used dedicated Markdown editors like <strong>MOU</strong> and <strong>Haroopad</strong> as a tool of writing while they all have pros and cons individually. When Atom replaced Sublime Text as my code editor for web development, I tried to use it as a Markdown editor either and the result is amazing. Atom proves itself as a fantastic solution for writing in markdown and it can be customized to whatever you want to match your writing style.</p>
@@ -2434,9 +2434,9 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
   
   <entry>
     <title type="html"><![CDATA[Using Atom for Web Development]]></title>
-    <link href="http://NavySPACE.net/blog/using-atom-for-web-development/"/>
+    <link href="http://NavySPACE.net/using-atom-for-web-development/"/>
     <updated>2015-12-10T12:00:00-08:00</updated>
-    <id>http://NavySPACE.net/blog/using-atom-for-web-development</id>
+    <id>http://NavySPACE.net/using-atom-for-web-development</id>
     <content type="html"><![CDATA[<p>As a programmer, I have tried a variety of different editors as a programmer. Back to the days when I got my first job as a developer in NEC, I used <strong>Hitemaru</strong>, which once was a popular editor among Japanese programmers, to  write PL/SQL programs. That was the first time I met with text editors other than advanced but ‘heavy’ IDEs. In the following days, I tried <strong>Notepad++</strong>, <strong>Vim</strong> and settled down with <strong>Sublime Text</strong> when I began coding in Ruby a few years ago. But recently, I shifted to <strong>Atom</strong> without missing one single feature of the previous so far. I really love Atom for its zero-compromise combination of hackability and usability. Also, it’s free and is in continuous development by the core team from Github.</p>
 
 <p>Since Atom comes with a great set of defaults, <em>Following the Default is King</em> philosophy works very well with Atom. For example, support for multiple languages, linters, integration with the terminal, tree-view, and Git, etc. Furthermore, Atom provides an extensive level of customization via themes and packages. Just like Sublime Text, for a long time, text editors have been able to be tuned and tweaked, but Atom has taken it to a new level.</p>
@@ -2750,9 +2750,9 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
   
   <entry>
     <title type="html"><![CDATA[Program or be programmed]]></title>
-    <link href="http://NavySPACE.net/blog/program-or-be-programmed/"/>
+    <link href="http://NavySPACE.net/program-or-be-programmed/"/>
     <updated>2015-05-13T19:12:00-07:00</updated>
-    <id>http://NavySPACE.net/blog/program-or-be-programmed</id>
+    <id>http://NavySPACE.net/program-or-be-programmed</id>
     <content type="html"><![CDATA[<p><br /></p>
 
 <blockquote>

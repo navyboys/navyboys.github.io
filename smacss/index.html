@@ -1,0 +1,1034 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>SMACSS - @navyboys</title>
+	<meta name="author" content="NavySPACE.net">
+
+	
+	<meta name="description" content="Notes for Snook's book - SMACSS">
+	<meta name="keywords" content="css smacss web">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="@navyboys" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://NavySPACE.net/smacss/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-462947-2']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("navyboys@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">@navyboys</a></h1>
+  
+    <h2>Ruby on Rails Developer</h2>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Posts</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://Past.NavySPACE.net"  target="_blank">Past</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:navyboys@gmail.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/navyboys" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">SMACSS</h1>
+	<div class="entry-content" itemprop="articleBody"><p><strong>SMACSS</strong> (pronounced “smacks”) is a style guide introduced by Canadian web developer, Jonathan Snook. It is a way to examine your design process and as a way to fit rigid frameworks into a flexible thought process. Here is the reading notes of Snook’s online book, <a href="https://smacss.com/book/">Scalable and Modular Architecture for CSS - a flexible guide to developing sites small and large</a>.</p>
+
+<h2 id="categories">Categories</h2>
+
+<p>By categorizing CSS rules, we begin to see patterns and can define better practices around each of these patterns. There are five types of categories:</p>
+
+<ol>
+  <li><strong>Base</strong> rules are almost exclusively single <em>element selectors</em> but it could include <em>attribute selectors</em>, <em>pseudo-class selectors</em>, <em>child selectors</em> or <em>sibling selectors</em>. Essentially, a base style says that wherever this element is on the page, it should look like this.</li>
+  <li><strong>Layout</strong> rules divide the page into sections. Layouts hold one or more modules together.</li>
+  <li><strong>Modules</strong> are the reusable, modular parts of our design. They are the <em>callouts</em>, the <em>sidebar sections</em>, the <em>product lists</em> and so on.</li>
+  <li><strong>State</strong> rules are ways to describe how our modules or layouts will look when in a particular state. Is it <em>hidden</em> or <em>expanded</em>? Is it <em>active</em> or <em>inactive</em>?</li>
+  <li><strong>Theme</strong> rules describe how modules or layouts might look. Most sites don’t require a layer of theming but it is good to be aware of it.</li>
+</ol>
+
+<h2 id="base-rules">Base Rules</h2>
+
+<p>A Base rule is applied to an element using an <strong>element selector</strong>, a <strong>descendent selector</strong>, or a <strong>child selector</strong>, along with any <strong>pseudo-classes</strong>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">body</span><span class="o">,</span> <span class="nt">form</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nt">a</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="m">#039</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="m">#03F</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li>It is <strong>defining the default styling</strong> for how that element should look in all occurrences on the page.</li>
+  <li>Base styles include setting <strong>heading sizes</strong>, <strong>default link styles</strong>, <strong>default font styles</strong>, and <strong>body backgrounds</strong>.</li>
+  <li>It doesn’t include any class or ID selectors.</li>
+  <li>There should be <strong>no need</strong> to use <code>!important</code> in a Base style.</li>
+  <li>Highly recommended that you <strong>specify a body background</strong>.</li>
+</ul>
+
+<h4 id="css-resets">CSS Resets</h4>
+
+<p>A CSS Reset is a set of <code>Base</code> styles designed to strip out—or reset—the default margin, padding, and other properties. Its purpose is to define a consistent foundation across browsers to build the site on.</p>
+
+<ul>
+  <li>Be sure to understand the drawbacks of the framework you wish to use and plan accordingly.</li>
+  <li>Developing your own set of default styles that you consistently use from project to project can also be advantageous.</li>
+</ul>
+
+<h2 id="layout-rules">Layout Rules</h2>
+
+<p>There is a distinction between layouts dictating the major and minor components of a page.</p>
+
+<ul>
+  <li>The <strong>minor</strong> components, such as a <em>callout</em>, or <em>login form</em>, or a <em>navigation</em> item, sit within the scope of major components such as a header or footer. I refer to the minor components as <strong>Modules</strong>.</li>
+  <li>The <strong>major</strong> components are referred to as <strong>Layout</strong> styles.</li>
+</ul>
+
+<p>Layout styles can also be divided into major and minor styles based on reuse.</p>
+
+<ul>
+  <li><strong>Major</strong> layout styles such as <em>header</em> and <em>footer</em> are traditionally styled using <code>ID</code> selectors but take the time to think about the elements that are common across all components of the page and use <code>class</code> selectors where appropriate.</li>
+  <li><strong>Minor</strong> Layout styles will use <code>class</code> names instead of <code>ID</code>s so that the styles can be used multiple times on the page.</li>
+</ul>
+
+<p>Generally, a Layout style only has a single selector: a single <code>ID</code> or <code>class</code> name. However, there are times when a Layout needs to respond to different factors. For example, you may have different layouts based on user preference. This layout preference would still be declared as a Layout style and used in combination with other Layout styles.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nf">#article</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nf">#sidebar</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.l-flipped</span> <span class="nf">#article</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.l-flipped</span> <span class="nf">#sidebar</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>One other thing to note in the Layout example is the <strong>naming convention</strong> that I have used. The declarations that use ID selectors are named accurately and with no particular namespacing. The class-based selectors, however, do use an <strong>l-</strong> prefix. This helps easily identify the purpose of these styles and separate them from Modules or States. Layout styles are the only primary category type to use ID selectors, if you choose to use them at all. If you wish to namespace your <code>ID</code> selectors, you can, but it is not as necessary to do so.</p>
+
+<h2 id="module-rules">Module Rules</h2>
+
+<p>A Module is a more discrete component of the page. It is your <em>navigation bars</em> and your <em>carousels</em> and your <em>dialogs</em> and your <em>widgets</em> and so on. This is the meat of the page. Each Module should be designed to exist as a <strong>standalone</strong> component.</p>
+
+<p>When defining the rule set for a module, avoid using <em>IDs</em> and <em>element selectors</em>, sticking only to <strong>class names</strong>.</p>
+
+<h4 id="avoid-element-selectors">Avoid element selectors</h4>
+
+<p><em>Only include a selector that includes semantics.</em> A <code>span</code> or <code>div</code> holds none. A heading has some. A class defined on an element has plenty.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- Good --&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;fld&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;fld-name&quot;</span><span class="nt">&gt;</span>Folder Name<span class="nt">&lt;/span&gt;</span>
+</span><span class="line">  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">&quot;fld-items&quot;</span><span class="nt">&gt;</span>(32 items)<span class="nt">&lt;/span&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span><span class="line">
+</span><span class="line"><span class="c">&lt;!-- Bad --&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;fld&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;span&gt;</span>Folder Name<span class="nt">&lt;/span&gt;</span>
+</span><span class="line">  <span class="nt">&lt;span&gt;</span>(32 items)<span class="nt">&lt;/span&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If you do wish to use an element selector, it should be within one level of a class selector.</p>
+
+<h4 id="subclassing-modules">Subclassing Modules</h4>
+
+<p>Try to avoid conditional styling based on location. If you are changing the look of a module for usage elsewhere on the page or site, sub-class the module instead.</p>
+
+<p><strong>Case Study</strong>: We have an input with two different widths. Throughout the site, the input has a label beside it and therefore the field should only be half the width. In the sidebar, however, the field would be too small so we increase it to 100% and have the label on top. All looks well and good. Now, we need to add a new component to our page. It uses most of the same styling as a .pod and so we re-use that class. However, this pod is special and has a constrained width no matter where it is on the site. It is a little different, though, and needs a width of <code>180px</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* Bad */</span>
+</span><span class="line"><span class="nc">.pod</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nf">#sidebar</span> <span class="nc">.pod</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod-callout</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nf">#sidebar</span> <span class="nc">.pod-callout</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">],</span>
+</span><span class="line"><span class="nc">.pod-callout</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">180px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c">/* Good */</span>
+</span><span class="line"><span class="nc">.pod</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">50</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod-constrained</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod-callout</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">200px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod-callout</span> <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="nt">text</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">180px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- html --&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pod pod-constrained&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pod pod-callout&quot;</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="state-rules">State Rules</h2>
+
+<p>A <strong>state</strong> is something that augments and overrides all other styles. For example, an accordion section may be in a collapsed or expanded state. A message may be in a success or error state.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;header&quot;</span> <span class="na">class=</span><span class="s">&quot;is-collapsed&quot;</span><span class="nt">&gt;</span> <span class="c">&lt;!-- layout rule --&gt;</span>
+</span><span class="line">  <span class="nt">&lt;form&gt;</span>
+</span><span class="line">    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;msg is-error&quot;</span><span class="nt">&gt;</span>         <span class="c">&lt;!-- layout rule --&gt;</span>
+</span><span class="line">      There is an error!
+</span><span class="line">    <span class="nt">&lt;/div&gt;</span>
+</span><span class="line">    <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">&quot;searchbox&quot;</span> <span class="na">class=</span><span class="s">&quot;is-hidden&quot;</span><span class="nt">&gt;</span>Search<span class="nt">&lt;/label&gt;</span> <span class="c">&lt;!-- base module class --&gt;</span>
+</span><span class="line">    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">&quot;search&quot;</span> <span class="na">id=</span><span class="s">&quot;searchbox&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/form&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="state-vs-sub-module">State vs Sub-Module</h4>
+
+<p>There is plenty of similarity between a sub-module style and a state style. They both modify the existing look of an element. However, they differ in two key ways:</p>
+
+<ol>
+  <li>State styles can apply to layout and/or module styles;</li>
+  <li>State styles indicate a <strong>JavaScript dependency</strong>.</li>
+</ol>
+
+<p>It is this second point that is the most important distinction. Sub-module styles are applied to an element at render time and then are never changed again. State styles, however, are applied to elements to indicate a change in state while the page is still running on the client machine.</p>
+
+<h4 id="using-important">Using <code>!important</code></h4>
+
+<p>Since the state will likely need to override the style of a more complex rule set, the use of <code>!important</code> is  recommended. (I used to say that <code>!important</code> was never needed but on complex systems, it is often a necessity.) You won’t normally have two states applied to the same module or two states that tend to affect the same set of styles, so specificity conflicts from using <code>!important</code> should be few and far between.</p>
+
+<h4 id="combining-state-rules-with-modules">Combining State Rules with Modules</h4>
+
+<p>In a case where a state rule is made for a specific module, the state class name should include the module name in it. The state rule should also reside with the module rules and not with the rest of the global state rules.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nc">.tab</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">background-color</span><span class="o">:</span> <span class="nb">purple</span><span class="p">;</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.is-tab-active</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">background-color</span><span class="o">:</span> <span class="nb">white</span><span class="p">;</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="nb">black</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="theme-rules">Theme Rules</h2>
+
+<p>Theme Rules aren’t as often used within a project and because of that, they aren’t included as part of the core types.</p>
+
+<h4 id="themes">Themes</h4>
+
+<p>It is probably self-evident but a theme defines colors and images that give your application or site its look and feel. Separating the theme out into its own set of styles allows for those styles to be easily redefined for alternate themes.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* in module-name.css */</span>
+</span><span class="line"><span class="nc">.mod</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="c">/* in theme.css */</span>
+</span><span class="line"><span class="nc">.mod</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border-color</span><span class="o">:</span> <span class="nb">blue</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="typography">Typography</h4>
+
+<p>Last but not least, there are font rules. Similar to themes, there are times when you need to redefine the fonts that are being used on a wholesale basis, such as with internationalization. Locales such as China and Korea have complex ideograms that are difficult to read at smaller font sizes. As a result, we <em>create separate font files for each locale</em> that redefine the font size for those components.</p>
+
+<p>Font rules will normally affect base, module and state styles. Font styles won’t normally be specified at the layout level as layouts are intended for positioning and placement, not for stylistic changes like fonts and colors.</p>
+
+<h2 id="changing-state">Changing State</h2>
+
+<p>Various components on your page are likely to need to be represented in various states. There is the default state that something should appear in and then what it should look like when the state changes.</p>
+
+<h4 id="what-is-a-state-change">What is a state change?</h4>
+
+<ul>
+  <li>A <strong>class name</strong> change happens with JavaScript. Via some interaction, be it moving the mouse around, hitting something on the keyboard, or some other event occurring. An element gets a new class applied and then the visual appearance changes.</li>
+  <li>A <strong>pseudo-class</strong> change is done via any number of pseudo-classes, and there are a lot. In these cases, we no longer have to rely on JavaScript to describe the state change. Pseudo-classes are still limited in that we can only style changes to elements that are descendants or siblings of the element in which the pseudo-class applies. Otherwise, we are back to using JavaScript.</li>
+  <li>Lastly, <strong>media queries</strong> describe how things should be styled under defined criteria, such as different viewport sizes.</li>
+</ul>
+
+<h4 id="change-via-class-name">Change via Class Name</h4>
+
+<p>JavaScript changing state via class name</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.btn-close&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">&#39;.dialog&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;is-hidden&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">})</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Case Study</strong>: A common interface design pattern is that of a button being pressed and displaying a menu. In this case, the menu changes to a pressed state and the menu changes to a visible state.</p>
+
+<p>Button and menu in separate parts of the same document</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;toolbar&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">&quot;btn-new&quot;</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span> <span class="na">data-action=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>New<span class="nt">&lt;/button&gt;</span>
+</span><span class="line"> <span class="nt">&lt;/div&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span><span class="line"><span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;menu-new&quot;</span> <span class="na">class=</span><span class="s">&quot;menu&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"> <span class="nt">&lt;ul&gt;</span> ... <span class="nt">&lt;/ul&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Loading Menu with jQuery</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="c1">// bind a click handler to the button</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#btn-new&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="c1">// wrap the clicked button in jQuery</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// change the state of the button</span>
+</span><span class="line">  <span class="nx">el</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;is-pressed&#39;</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line">  <span class="c1">// find the menu by stripping btn- and</span>
+</span><span class="line">  <span class="c1">// adding it to menu selector</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#menu-&#39;</span> <span class="o">+</span> <span class="nx">el</span><span class="p">.</span><span class="nx">id</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">4</span><span class="p">)).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;is-hidden&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="handling-state-change-with-attribute-selectors">Handling State Change with Attribute Selectors</h4>
+
+<p>Depending on your browser support, you can also take advantage of attribute selectors to handle state change. This can be useful for:</p>
+
+<ul>
+  <li>isolating states from layout and module classes</li>
+  <li>allowing easier transitions between multiple states</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* css */</span>
+</span><span class="line"><span class="nc">.btn</span><span class="o">[</span><span class="nt">data-state</span><span class="o">=</span><span class="nt">default</span><span class="o">]</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="nc">.btn</span><span class="o">[</span><span class="nt">data-state</span><span class="o">=</span><span class="nt">pressed</span><span class="o">]</span> <span class="p">{</span> <span class="k">color</span><span class="o">:</span> <span class="m">#000</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="nc">.btn</span><span class="o">[</span><span class="nt">data-state</span><span class="o">=</span><span class="nt">disabled</span><span class="o">]</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span> <span class="o">.</span><span class="m">5</span><span class="p">;</span> <span class="k">pointer</span><span class="o">-</span><span class="n">events</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- html --&gt;</span>
+</span><span class="line"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">&quot;btn&quot;</span> <span class="na">data-state=</span><span class="s">&quot;disabled&quot;</span><span class="nt">&gt;</span>Disabled<span class="nt">&lt;/button&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="c1">// javascript</span>
+</span><span class="line"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.btn&quot;</span><span class="p">).</span><span class="nx">bind</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">  <span class="c1">// change the state to pressed</span>
+</span><span class="line">  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;data-state&#39;</span><span class="p">,</span> <span class="s1">&#39;pressed&#39;</span><span class="p">);</span>
+</span><span class="line"><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="class-based-state-change-with-css-animations">Class-based State Change with CSS Animations</h4>
+
+<p>We use CSS to define a visual state. We can use JavaScript to switch the state of an element on our page. JavaScript should not be used to describe the state, though. That is, it shouldn’t be used to add inline styles.</p>
+
+<p><strong>Case Study</strong>: A message appear on the page for a short period of time and then fade out</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* css */</span>
+</span><span class="line">
+</span><span class="line"><span class="k">@-webkit-keyframes</span> <span class="nt">fade</span> <span class="p">{</span>
+</span><span class="line">    <span class="nt">0</span><span class="o">%</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">0</span><span class="p">;</span>  <span class="p">}</span>
+</span><span class="line">  <span class="nt">100</span><span class="o">%</span> <span class="p">{</span> <span class="k">opacity</span><span class="o">:</span><span class="m">1</span><span class="p">;</span> <span class="k">display</span><span class="o">:</span><span class="k">block</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.is-visible</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">opacity</span><span class="o">:</span> <span class="m">1</span><span class="p">;</span>
+</span><span class="line">  <span class="n">animation</span><span class="o">:</span> <span class="n">fade</span> <span class="m">2s</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.is-hidden</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">opacity</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class="line">  <span class="n">animation</span><span class="o">:</span> <span class="n">fade</span> <span class="m">2s</span> <span class="n">reverse</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.is-removed</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">display</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="c1">// javascript</span>
+</span><span class="line">
+</span><span class="line"><span class="kd">function</span> <span class="nx">showMessage</span> <span class="p">(</span><span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">el</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">);</span>
+</span><span class="line">  <span class="nx">el</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">s</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line">  <span class="cm">/* set state */</span>
+</span><span class="line">  <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;is-visible&#39;</span><span class="p">;</span>
+</span><span class="line">  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">    <span class="cm">/* set state back */</span>
+</span><span class="line">    <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;is-hidden&#39;</span><span class="p">;</span>
+</span><span class="line">    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+</span><span class="line">      <span class="nx">el</span><span class="p">.</span><span class="nx">className</span> <span class="o">=</span> <span class="s1">&#39;is-removed&#39;</span><span class="p">;</span>
+</span><span class="line">    <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+</span><span class="line">  <span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="change-via-pseudo-class">Change via Pseudo-class</h4>
+
+<p>From CSS2.1, the three most useful pseudo-classes are the “dynamic” ones that react to user interaction: <code>:hover</code>, <code>:focus</code>, and <code>:active</code>. CSS3 adds a number of new pseudo-classes, most of which style based on HTML structure (such as <code>:nth-child</code> or <code>:last-child</code>).</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nc">.btn</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">background-color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span> <span class="c">/* gray */</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.btn</span><span class="nd">:hover</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">background-color</span><span class="o">:</span> <span class="m">#336</span><span class="p">;</span> <span class="c">/* blueish */</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.btn</span><span class="nd">:focus</span> <span class="p">{</span>
+</span><span class="line">  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">3px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">48</span><span class="o">,</span><span class="m">48</span><span class="o">,</span><span class="m">96</span><span class="o">,.</span><span class="m">3</span><span class="p">);</span> <span class="c">/* blueish focus ring */</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="change-via-media-query">Change via Media Query</h4>
+
+<p>Adaptive design and Responsive Web Design use media queries to react to various criteria. Print style sheets were one of the first media queries that allowed us to define how elements should look when printed on a page.</p>
+
+<p>A media query can be defined as a separate style sheet using the media attribute on the link element or it can be defined within a <code>@media</code> block within a specific style sheet.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- html --&gt;</span>
+</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;main.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span><span class="nt">&gt;</span>
+</span><span class="line"><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">&quot;print.css&quot;</span> <span class="na">rel=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">media=</span><span class="s">&quot;print&quot;</span><span class="nt">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* css */</span>
+</span><span class="line"><span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">400px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nf">#content</span> <span class="p">{</span> <span class="k">float</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Case Study</strong>: Modular Media Queries</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* default state for nav items */</span>
+</span><span class="line"><span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class="line"> <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c">/* alternate state for nav items on small screens */</span>
+</span><span class="line"><span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">400px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nc">.nav</span> <span class="o">&gt;</span> <span class="nt">li</span> <span class="p">{</span> <span class="k">float</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c">/*... elsewhere for layout ...*/</span>
+</span><span class="line">
+</span><span class="line"><span class="c">/* default layout */</span>
+</span><span class="line"><span class="nc">.content</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">75</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.sidebar</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">25</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="c">/* alternate state for layout on small screens */</span>
+</span><span class="line"><span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">400px</span><span class="o">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="nc">.content</span><span class="o">,</span> <span class="nc">.sidebar</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">float</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class="line">    <span class="k">width</span><span class="o">:</span> <span class="k">auto</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="depth-of-applicability">Depth of Applicability</h2>
+
+<p>Bad example: too deep</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nf">#sidebar</span> <span class="nt">div</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nf">#sidebar</span> <span class="nt">div</span> <span class="nt">h3</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">margin-top</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nf">#sidebar</span> <span class="nt">div</span> <span class="nt">ul</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>There are two particular concerns with the example CSS:</p>
+
+<ol>
+  <li>Relying heavily on a defined HTML structure.</li>
+  <li>The depth of HTML to which the selectors apply is too deep.</li>
+</ol>
+
+<h4 id="minimizing-the-depth">Minimizing the Depth</h4>
+
+<p>Simplification of rules</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nc">.pod</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod</span> <span class="o">&gt;</span> <span class="nt">h3</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">margin-top</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.pod</span> <span class="o">&gt;</span> <span class="nt">ul</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">margin-bottom</span><span class="o">:</span> <span class="m">5px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>An advantage to using this shallow depth of applicability approach is also the ability to more readily convert these modules into <strong>templates</strong> for dynamic content.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;pod&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;h3&gt;</span>heading<span class="nt">&lt;/h3&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ul&gt;</span>
+</span><span class="line">    items
+</span><span class="line">    <span class="nt">&lt;li&gt;</span>item<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/ul&gt;</span>
+</span><span class="line"><span class="nt">&lt;/div&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="selector-performance">Selector Performance</h2>
+
+<p>Before getting into recommendations, we need to understand a little better about how browsers evaluate CSS.</p>
+
+<h4 id="how-css-gets-evaluated">How CSS gets evaluated</h4>
+
+<ol>
+  <li><strong>The style of an element is evaluated on element creation</strong>: Browsers are designed to handle documents like a <strong>stream</strong>. They begin to receive the document from the server and can render the document before it has completely downloaded. <em>Each node is evaluated and rendered to the viewport as it is received.</em></li>
+  <li><strong>CSS gets evaluated from right to left</strong>: If you have a rule like <code>body div#content p { color: #003366; }</code> then for every element，it will first ask if it is a paragraph element.</li>
+</ol>
+
+<h4 id="inefficient-rules">Inefficient Rules</h4>
+
+<p>There are four main rules that be considered inefficient.</p>
+
+<ol>
+  <li>Rules with descendant selectors. E.g. <code>#content h3</code></li>
+  <li>Rules with child or adjacent selectors. E.g. <code>#content &gt; h3</code></li>
+  <li>Rules with overly qualified selectors. E.g. <code>div#content &gt; h3</code></li>
+  <li>Rules that apply <code>:hover</code> to non-link elements. E.g. <code>div#content:hover</code></li>
+</ol>
+
+<h4 id="constrain-yourself-dont-choke-yourself">Constrain yourself, don’t choke yourself</h4>
+
+<p>3 simple guidelines</p>
+
+<ol>
+  <li>Use child selectors</li>
+  <li>Avoid tag selectors for common elements</li>
+  <li>Use class names as the right-most selector</li>
+</ol>
+
+<p>The delta between the best case and the worst case was <em>50ms</em>. In other words, <strong>consider selector performance but don’t waste too much time on it</strong>.</p>
+
+<h2 id="html5-and-smacss">HTML5 and SMACSS</h2>
+
+<p>SMACSS approach has two core goals:</p>
+
+<ol>
+  <li>Increase the semantic value of a section of HTML and content</li>
+  <li>Decrease the expectation of a specific HTML structure</li>
+</ol>
+
+<p><strong>Case Study</strong>: Navigation</p>
+
+<p>Normal way</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- html --&gt;</span>
+</span><span class="line"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;nav-primary&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;h1&gt;</span>Primary Navigation<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ul&gt;</span>
+</span><span class="line">    <span class="nt">&lt;li&gt;</span>About Us
+</span><span class="line">      <span class="nt">&lt;ul&gt;</span>
+</span><span class="line">        <span class="nt">&lt;li&gt;</span>Team<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">        <span class="nt">&lt;li&gt;</span>Location<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">      <span class="nt">&lt;/ul&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/li&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/ul&gt;</span>
+</span><span class="line"><span class="nt">&lt;/nav&gt;</span>
+</span><span class="line"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;nav-secondary&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;h1&gt;</span>External Links<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ul&gt;</span>…<span class="nt">&lt;/ul&gt;</span>
+</span><span class="line"><span class="nt">&lt;/nav&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* css */</span>
+</span><span class="line"><span class="nt">nav</span><span class="nc">.nav-primary</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nt">nav</span><span class="nc">.nav-secondary</span> <span class="nt">li</span><span class="o">,</span>
+</span><span class="line"><span class="nt">nav</span><span class="nc">.nav-primary</span> <span class="nt">li</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>SMACSS-style</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+</pre></td><td class="code"><pre><code class="html"><span class="line"><span class="c">&lt;!-- html --&gt;</span>
+</span><span class="line"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;l-inline&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;h1&gt;</span>Primary Navigation<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ul&gt;</span>
+</span><span class="line">    <span class="nt">&lt;li&gt;</span>About Us
+</span><span class="line">      <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">&quot;l-stacked&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">        <span class="nt">&lt;li&gt;</span>Team<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">        <span class="nt">&lt;li&gt;</span>Location<span class="nt">&lt;/li&gt;</span>
+</span><span class="line">      <span class="nt">&lt;/ul&gt;</span>
+</span><span class="line">    <span class="nt">&lt;/li&gt;</span>
+</span><span class="line">  <span class="nt">&lt;/ul&gt;</span>
+</span><span class="line"><span class="nt">&lt;/nav&gt;</span>
+</span><span class="line"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">&quot;l-stacked&quot;</span><span class="nt">&gt;</span>
+</span><span class="line">  <span class="nt">&lt;h1&gt;</span>External Links<span class="nt">&lt;/h1&gt;</span>
+</span><span class="line">  <span class="nt">&lt;ul&gt;</span>…<span class="nt">&lt;/ul&gt;</span>
+</span><span class="line"><span class="nt">&lt;/nav&gt;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="c">/* css */</span>
+</span><span class="line"><span class="nc">.l-inline</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line"><span class="nc">.l-stacked</span> <span class="o">&gt;</span> <span class="o">*</span> <span class="p">{</span>
+</span><span class="line">    <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The downfall to this approach is that the rules will have to be evaluated for every single element on the page and not just the list items. The targeting of just direct descendants avoids too much traversal. This lets us use the inline and stacked classes on pretty much any element where we want the child elements to take on those styles.</p>
+
+<h2 id="prototyping">Prototyping</h2>
+
+<p>SMACSS is about identifying the patterns in your design and codifying them. A prototype should assist in viewing components in part or in whole and to allow the codification of the design language into building blocks.</p>
+
+<h4 id="goals-of-a-prototype">Goals of a prototype</h4>
+
+<ol>
+  <li><strong>Show states</strong>: From the default state to collapsed states to error states to whatever states you have defined, it is important to be able to visualize each of these states and make sure that the module is built accurately.</li>
+  <li><strong>Review localization</strong>: For projects that need to support multiple locales, it will be valuable to be able to test modules using strings from the different locales to ensure layouts don’t break as a result.</li>
+  <li><strong>Isolate dependencies</strong>: In larger projects where lazy loading is used, being able to isolate dependencies to the bare minimum required means that you have built a module effectively and can integrate that module into the site without negatively impacting other modules on the page.</li>
+</ol>
+
+<h4 id="pieces-of-the-puzzle">Pieces of the puzzle</h4>
+
+<p>Built a prototyping engine to help facilitate this process</p>
+
+<p><img src="https://smacss.com/img/prototype.png" alt="Yahoo prototype engine" /></p>
+
+<p>The prototype engine uses a <code>mustache</code> template as the root. Mock data is stored in a <code>JSON</code> file, localization strings are stored in <code>key/value</code> pairs in a text file, and CSS and JavaScript dependencies are pulled in as needed. This allows the team to view a menu or a dialog or a form by itself or in the context of the entire site. In doing so, everybody can review functionality and design before going into engineering. We can also shift assets to engineering knowing that integration will be more seamless as a result.</p>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="navy's blog"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"navyboys"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - NavySPACE.net -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
