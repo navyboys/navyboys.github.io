@@ -97,7 +97,7 @@ HTML defines six levels of headings.
   <li>Sour Cream</li>
 </ul>
 
-## Comment
+## Comments
 
 `HTML`
 
