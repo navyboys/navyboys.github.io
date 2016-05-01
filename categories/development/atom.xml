@@ -4,7 +4,7 @@
   <title><![CDATA[Category: development | @navyboys]]></title>
   <link href="http://NavySPACE.net/categories/development/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-30T21:12:22-07:00</updated>
+  <updated>2016-04-30T21:36:37-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -18,7 +18,7 @@
     <link href="http://NavySPACE.net/using-atom-for-web-development/"/>
     <updated>2015-12-10T12:00:00-08:00</updated>
     <id>http://NavySPACE.net/using-atom-for-web-development</id>
-    <content type="html"><![CDATA[<p>As a programmer, I have tried a variety of different editors as a programmer. Back to the days when I got my first job as a developer in NEC, I used <strong>Hitemaru</strong>, which once was a popular editor among Japanese programmers, to  write PL/SQL programs. That was the first time I met with text editors other than advanced but ‘heavy’ IDEs. In the following days, I tried <strong>Notepad++</strong>, <strong>Vim</strong> and settled down with <strong>Sublime Text</strong> when I began coding in Ruby a few years ago. But recently, I shifted to <strong>Atom</strong> without missing one single feature of the previous so far. I really love Atom for its zero-compromise combination of hackability and usability. Also, it’s free and is in continuous development by the core team from Github.</p>
+    <content type="html"><![CDATA[<p>As a programmer, I have tried a variety of different editors. Back to the days when I got my first job as a developer in NEC, I used <strong>Hitemaru</strong>, which once was a popular editor among Japanese programmers, to  write PL/SQL programs. That was the first time I met with text editors other than advanced but ‘heavy’ IDEs. In the following days, I tried <strong>Notepad++</strong>, <strong>Vim</strong> and settled down with <strong>Sublime Text</strong> when I began coding in Ruby a few years ago. But recently, I shifted to <strong>Atom</strong> without missing one single feature of the previous so far. I really love Atom for its zero-compromise combination of hackability and usability. Also, it’s free and is in continuous development by the core team from Github.</p>
 
 <p>Since Atom comes with a great set of defaults, <em>Following the Default is King</em> philosophy works very well with Atom. For example, support for multiple languages, linters, integration with the terminal, tree-view, and Git, etc. Furthermore, Atom provides an extensive level of customization via themes and packages. Just like Sublime Text, for a long time, text editors have been able to be tuned and tweaked, but Atom has taken it to a new level.</p>
 
