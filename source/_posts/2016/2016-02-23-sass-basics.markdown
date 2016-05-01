@@ -8,7 +8,7 @@ keywords: css sass web
 description: Notes for Sass Guide
 ---
 
-Sass is a powerful CSS extension language as well as preprocessor that can be a useful tool to make web developers efficient for writing CSS. Here is the note I was taking while reading a concise [guide](http://sass-lang.com/guide) to Sass from its official site.
+Sass (stands for **S**yntactically **A**wesome **S**tyle **S**heets) is a powerful CSS extension language as well as preprocessor that can be a useful tool to make web developers efficient for writing CSS. Here is the note I was taking while reading a concise [guide](http://sass-lang.com/guide) to Sass from its official site.
 
 ## Syntax
 
