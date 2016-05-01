@@ -9,7 +9,7 @@
 	<meta name="author" content="NavySPACE.net">
 
 	
-	<meta name="description" content="Feb 15th, 2016 css, note, smacss, web development Comments SMACSS SMACSS (pronounced “smacks”) is a style guide introduced by Canadian web developer &hellip;">
+	<meta name="description" content="Feb 23rd, 2016 css, note, sass, web development Comments Sass Basics Sass is a powerful CSS extension language as well as preprocessor that can be a &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,6 +106,469 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-02-23T13:20:00-08:00" data-updated="true" itemprop="datePublished">Feb 23<span>rd</span>, 2016</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/categories/css/'>css</a>, <a class='category' href='/categories/note/'>note</a>, <a class='category' href='/categories/sass/'>sass</a>, <a class='category' href='/categories/web-development/'>web development</a>
+
+
+</div>
+		
+		
+                                    <span class="comments"><a href="/sass-basics/#comments">Comments</a></span>
+                        
+	</div>
+	<h1 class="title" itemprop="name"><a href="/sass-basics/" itemprop="url">Sass Basics</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Sass is a powerful CSS extension language as well as preprocessor that can be a useful tool to make web developers efficient for writing CSS. Here is the note I was taking while reading a concise <a href="http://sass-lang.com/guide">guide</a> to Sass from its official site.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>There are two syntaxes available for Sass.</p>
+
+<p><strong>SCSS</strong> (Sassy CSS) is an extension of the syntax of CSS.</p>
+
+<ul>
+  <li>Using <code>.scss</code> extension.</li>
+  <li>Every valid CSS stylesheet is a valid SCSS file</li>
+  <li>Enhanced with the Sass features</li>
+  <li>Understands most CSS hacks and vendor-specific syntax</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="na">$primary-color</span><span class="o">:</span> <span class="mh">#333</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">body</span> <span class="p">{</span>
+</span><span class="line">  <span class="na">color</span><span class="o">:</span> <span class="nv">$primary-color</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><strong>Sass</strong>, The older syntax, provides a more concise way of writing CSS.</p>
+
+<ul>
+  <li>Using <code>.scss</code> extension.</li>
+  <li><strong>Indentation</strong> rather than <code>{}</code> to indicate nesting of selectors</li>
+  <li><strong>Newlines</strong> rather than <code>;</code> to separate properties</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="sass"><span class="line"><span class="na">$primary-color</span><span class="o">:</span> <span class="mh">#333</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">body</span>
+</span><span class="line">  <span class="na">color</span><span class="o">:</span> <span class="nv">$primary-color</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Either syntax can <strong>import</strong> files written in the other.</p>
+
+<p>Files can be automatically converted from one syntax to the other using the <code>sass-convert</code> command line tool:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># Convert Sass to SCSS</span>
+</span><span class="line"><span class="nv">$ </span>sass-convert style.sass style.scss
+</span><span class="line">
+</span><span class="line"><span class="c"># Convert SCSS to Sass</span>
+</span><span class="line"><span class="nv">$ </span>sass-convert style.scss style.sass
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="preprocessing">Preprocessing</h2>
+
+<p>Sass take your preprocessed Sass file and save it as a normal CSS file that you can use in your web site.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="c"># run Sass from the command line</span>
+</span><span class="line">sass input.scss output.css
+</span><span class="line">
+</span><span class="line"><span class="c"># watch the file, update the CSS every time the Sass file changes</span>
+</span><span class="line">sass --watch input.scss:output.css
+</span><span class="line">
+</span><span class="line"><span class="c"># watch the entire directory with many Sass files</span>
+</span><span class="line">sass --watch app/sass:public/stylesheets
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="variables">Variables</h2>
+
+<p>You can store things like colors, font stacks, or any CSS value you think you’ll want to reuse. Sass uses the <code>$</code> symbol to make something a variable.</p>
+
+<p><code>SCSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="na">$font-stack</span><span class="o">:</span>    <span class="n">Helvetica</span><span class="o">,</span> <span class="no">sans-serif</span><span class="p">;</span>
+</span><span class="line"><span class="na">$primary-color</span><span class="o">:</span> <span class="mh">#333</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">body</span> <span class="p">{</span>
+</span><span class="line">  <span class="na">font</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span> <span class="nv">$font-stack</span><span class="p">;</span>
+</span><span class="line">  <span class="na">color</span><span class="o">:</span> <span class="nv">$primary-color</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>CSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">body</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">font</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="nesting">Nesting</h2>
+
+<p>Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML.</p>
+
+<p><code>SCSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="nt">nav</span> <span class="p">{</span>
+</span><span class="line">  <span class="nt">ul</span> <span class="p">{</span>
+</span><span class="line">    <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">    <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">    <span class="na">list-style</span><span class="o">:</span> <span class="no">none</span><span class="p">;</span>
+</span><span class="line">  <span class="p">}</span>
+</span><span class="line">
+</span><span class="line">  <span class="nt">li</span> <span class="p">{</span> <span class="na">display</span><span class="o">:</span> <span class="no">inline</span><span class="o">-</span><span class="no">block</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>CSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">nav</span> <span class="nt">ul</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">list-style</span><span class="o">:</span> <span class="k">none</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">nav</span> <span class="nt">li</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">display</span><span class="o">:</span> <span class="k">inline</span><span class="o">-</span><span class="k">block</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="partials--import">Partials &amp; Import</h2>
+
+<p>Using partials is a great way to modularize your CSS and help keep things easier to maintain.</p>
+
+<ul>
+  <li>Name partials with a leading underscore, like <code>_partial.scss</code></li>
+  <li>Sass partials are used with the <code>@import</code> directive.</li>
+</ul>
+
+<p><code>SCSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="c1">// _reset.scss</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">html</span><span class="o">,</span>
+</span><span class="line"><span class="nt">body</span><span class="o">,</span>
+</span><span class="line"><span class="nt">ul</span><span class="o">,</span>
+</span><span class="line"><span class="nt">ol</span> <span class="p">{</span>
+</span><span class="line">   <span class="na">margin</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line">  <span class="na">padding</span><span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="c1">// base.scss</span>
+</span><span class="line">
+</span><span class="line"><span class="k">@import</span> <span class="s1">&#39;</span><span class="s2">reset&#39;</span><span class="p">;</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">body</span> <span class="p">{</span>
+</span><span class="line">  <span class="na">font</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="no">sans-serif</span><span class="p">;</span>
+</span><span class="line">  <span class="na">background-color</span><span class="o">:</span> <span class="mh">#efefef</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>CSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nt">html</span><span class="o">,</span> <span class="nt">body</span><span class="o">,</span> <span class="nt">ul</span><span class="o">,</span> <span class="nt">ol</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">margin</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class="line">  <span class="k">padding</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">body</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">font</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span> <span class="n">Helvetica</span><span class="o">,</span> <span class="k">sans-serif</span><span class="p">;</span>
+</span><span class="line">  <span class="k">background-color</span><span class="o">:</span> <span class="m">#efefef</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="mixins">Mixins</h2>
+
+<p>A mixin lets you make groups of CSS declarations that you want to reuse throughout your site.</p>
+
+<ul>
+  <li>Pass in values to make your mixin more flexible</li>
+  <li>A good use of a mixin is for vendor prefixes</li>
+</ul>
+
+<p><code>SCSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="k">@mixin</span><span class="nf"> border-radius</span><span class="p">(</span><span class="nv">$radius</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="na">-webkit-border-radius</span><span class="o">:</span> <span class="nv">$radius</span><span class="p">;</span>
+</span><span class="line">     <span class="na">-moz-border-radius</span><span class="o">:</span> <span class="nv">$radius</span><span class="p">;</span>
+</span><span class="line">      <span class="na">-ms-border-radius</span><span class="o">:</span> <span class="nv">$radius</span><span class="p">;</span>
+</span><span class="line">          <span class="na">border-radius</span><span class="o">:</span> <span class="nv">$radius</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.box</span> <span class="p">{</span> <span class="k">@include</span><span class="nd"> border-radius</span><span class="p">(</span><span class="mi">10</span><span class="kt">px</span><span class="p">);</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>CSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nc">.box</span> <span class="p">{</span>
+</span><span class="line">  <span class="o">-</span><span class="n">webkit</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class="line">  <span class="o">-</span><span class="n">moz</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class="line">  <span class="o">-</span><span class="n">ms</span><span class="o">-</span><span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class="line">  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="extendinheritance">Extend/Inheritance</h2>
+
+<p>Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your Sass very <strong>DRY</strong>.</p>
+
+<p><code>SCSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="nc">.message</span> <span class="p">{</span>
+</span><span class="line">  <span class="na">border</span><span class="o">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="no">solid</span> <span class="mh">#ccc</span><span class="p">;</span>
+</span><span class="line">  <span class="na">padding</span><span class="o">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span class="line">  <span class="na">color</span><span class="o">:</span> <span class="mh">#333</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.success</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">@extend</span> <span class="nc">.message</span><span class="o">;</span>
+</span><span class="line">  <span class="nt">border-color</span><span class="nd">:</span> <span class="nt">green</span><span class="o">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.error</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">@extend</span> <span class="nc">.message</span><span class="o">;</span>
+</span><span class="line">  <span class="nt">border-color</span><span class="nd">:</span> <span class="nt">red</span><span class="o">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.warning</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">@extend</span> <span class="nc">.message</span><span class="o">;</span>
+</span><span class="line">  <span class="nt">border-color</span><span class="nd">:</span> <span class="nt">yellow</span><span class="o">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>CSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nc">.message</span><span class="o">,</span> <span class="nc">.success</span><span class="o">,</span> <span class="nc">.error</span><span class="o">,</span> <span class="nc">.warning</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border</span><span class="o">:</span> <span class="m">1px</span> <span class="k">solid</span> <span class="m">#cccccc</span><span class="p">;</span>
+</span><span class="line">  <span class="k">padding</span><span class="o">:</span> <span class="m">10px</span><span class="p">;</span>
+</span><span class="line">  <span class="k">color</span><span class="o">:</span> <span class="m">#333</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.success</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border-color</span><span class="o">:</span> <span class="nb">green</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.error</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border-color</span><span class="o">:</span> <span class="nb">red</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nc">.warning</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">border-color</span><span class="o">:</span> <span class="nb">yellow</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="operators">Operators</h2>
+
+<p>Doing math in your CSS is very helpful. Sass has a handful of standard math operators like <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>%</code>.</p>
+
+<p><code>SCSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+</pre></td><td class="code"><pre><code class="scss"><span class="line"><span class="nc">.container</span> <span class="p">{</span> <span class="na">width</span><span class="o">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">article</span><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="na">float</span><span class="o">:</span> <span class="no">left</span><span class="p">;</span>
+</span><span class="line">  <span class="na">width</span><span class="o">:</span> <span class="mi">600</span><span class="kt">px</span> <span class="o">/</span> <span class="mi">960</span><span class="kt">px</span> <span class="o">*</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">aside</span><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="s2">&quot;complementary&quot;</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="na">float</span><span class="o">:</span> <span class="no">right</span><span class="p">;</span>
+</span><span class="line">  <span class="na">width</span><span class="o">:</span> <span class="mi">300</span><span class="kt">px</span> <span class="o">/</span> <span class="mi">960</span><span class="kt">px</span> <span class="o">*</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>CSS</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+</pre></td><td class="code"><pre><code class="css"><span class="line"><span class="nc">.container</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">article</span><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="s2">&quot;main&quot;</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">left</span><span class="p">;</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">62</span><span class="o">.</span><span class="m">5</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span><span class="line">
+</span><span class="line"><span class="nt">aside</span><span class="o">[</span><span class="nt">role</span><span class="o">=</span><span class="s2">&quot;complementary&quot;</span><span class="o">]</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">float</span><span class="o">:</span> <span class="k">right</span><span class="p">;</span>
+</span><span class="line">  <span class="k">width</span><span class="o">:</span> <span class="m">31</span><span class="o">.</span><span class="m">25</span><span class="o">%</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">

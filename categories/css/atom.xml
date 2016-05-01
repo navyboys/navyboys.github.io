@@ -4,7 +4,7 @@
   <title><![CDATA[Category: css | @navyboys]]></title>
   <link href="http://NavySPACE.net/categories/css/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-29T16:41:23-07:00</updated>
+  <updated>2016-04-30T21:12:22-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -12,6 +12,305 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Sass Basics]]></title>
+    <link href="http://NavySPACE.net/sass-basics/"/>
+    <updated>2016-02-23T13:20:00-08:00</updated>
+    <id>http://NavySPACE.net/sass-basics</id>
+    <content type="html"><![CDATA[<p>Sass is a powerful CSS extension language as well as preprocessor that can be a useful tool to make web developers efficient for writing CSS. Here is the note I was taking while reading a concise <a href="http://sass-lang.com/guide">guide</a> to Sass from its official site.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>There are two syntaxes available for Sass.</p>
+
+<p><strong>SCSS</strong> (Sassy CSS) is an extension of the syntax of CSS.</p>
+
+<ul>
+  <li>Using <code>.scss</code> extension.</li>
+  <li>Every valid CSS stylesheet is a valid SCSS file</li>
+  <li>Enhanced with the Sass features</li>
+  <li>Understands most CSS hacks and vendor-specific syntax</li>
+</ul>
+
+<p>``` scss
+$primary-color: #333;</p>
+
+<p>body {
+  color: $primary-color;
+}
+```</p>
+
+<p><strong>Sass</strong>, The older syntax, provides a more concise way of writing CSS.</p>
+
+<ul>
+  <li>Using <code>.scss</code> extension.</li>
+  <li><strong>Indentation</strong> rather than <code>{}</code> to indicate nesting of selectors</li>
+  <li><strong>Newlines</strong> rather than <code>;</code> to separate properties</li>
+</ul>
+
+<p>``` sass
+$primary-color: #333</p>
+
+<p>body
+  color: $primary-color
+```</p>
+
+<p>Either syntax can <strong>import</strong> files written in the other.</p>
+
+<p>Files can be automatically converted from one syntax to the other using the <code>sass-convert</code> command line tool:</p>
+
+<p>``` bash
+# Convert Sass to SCSS
+$ sass-convert style.sass style.scss</p>
+
+<h1 id="convert-scss-to-sass">Convert SCSS to Sass</h1>
+<p>$ sass-convert style.scss style.sass
+```</p>
+
+<h2 id="preprocessing">Preprocessing</h2>
+
+<p>Sass take your preprocessed Sass file and save it as a normal CSS file that you can use in your web site.</p>
+
+<p>``` bash
+# run Sass from the command line
+sass input.scss output.css</p>
+
+<h1 id="watch-the-file-update-the-css-every-time-the-sass-file-changes">watch the file, update the CSS every time the Sass file changes</h1>
+<p>sass –watch input.scss:output.css</p>
+
+<h1 id="watch-the-entire-directory-with-many-sass-files">watch the entire directory with many Sass files</h1>
+<p>sass –watch app/sass:public/stylesheets
+```</p>
+
+<h2 id="variables">Variables</h2>
+
+<p>You can store things like colors, font stacks, or any CSS value you think you’ll want to reuse. Sass uses the <code>$</code> symbol to make something a variable.</p>
+
+<p><code>SCSS</code></p>
+
+<p>``` scss
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;</p>
+
+<p>body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+```</p>
+
+<p><code>CSS</code></p>
+
+<p><code>css
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
+</code></p>
+
+<h2 id="nesting">Nesting</h2>
+
+<p>Sass will let you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML.</p>
+
+<p><code>SCSS</code></p>
+
+<p>``` scss
+nav {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }</p>
+
+<p>li { display: inline-block; }
+}
+```</p>
+
+<p><code>CSS</code></p>
+
+<p>``` css
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}</p>
+
+<p>nav li {
+  display: inline-block;
+}
+```</p>
+
+<h2 id="partials--import">Partials &amp; Import</h2>
+
+<p>Using partials is a great way to modularize your CSS and help keep things easier to maintain.</p>
+
+<ul>
+  <li>Name partials with a leading underscore, like <code>_partial.scss</code></li>
+  <li>Sass partials are used with the <code>@import</code> directive.</li>
+</ul>
+
+<p><code>SCSS</code></p>
+
+<p>``` scss
+// _reset.scss</p>
+
+<p>html,
+body,
+ul,
+ol {
+   margin: 0;
+  padding: 0;
+}
+```</p>
+
+<p>``` scss
+// base.scss</p>
+
+<p>@import ‘reset’;</p>
+
+<p>body {
+  font: 100% Helvetica, sans-serif;
+  background-color: #efefef;
+}
+```</p>
+
+<p><code>CSS</code></p>
+
+<p>``` css
+html, body, ul, ol {
+  margin: 0;
+  padding: 0;
+}</p>
+
+<p>body {
+  font: 100% Helvetica, sans-serif;
+  background-color: #efefef;
+}
+```</p>
+
+<h2 id="mixins">Mixins</h2>
+
+<p>A mixin lets you make groups of CSS declarations that you want to reuse throughout your site.</p>
+
+<ul>
+  <li>Pass in values to make your mixin more flexible</li>
+  <li>A good use of a mixin is for vendor prefixes</li>
+</ul>
+
+<p><code>SCSS</code></p>
+
+<p>``` scss
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}</p>
+
+<p>.box { @include border-radius(10px); }
+```</p>
+
+<p><code>CSS</code></p>
+
+<p><code>css
+.box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+}
+</code></p>
+
+<h2 id="extendinheritance">Extend/Inheritance</h2>
+
+<p>Using <code>@extend</code> lets you share a set of CSS properties from one selector to another. It helps keep your Sass very <strong>DRY</strong>.</p>
+
+<p><code>SCSS</code></p>
+
+<p>``` scss
+.message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}</p>
+
+<p>.success {
+  @extend .message;
+  border-color: green;
+}</p>
+
+<p>.error {
+  @extend .message;
+  border-color: red;
+}</p>
+
+<p>.warning {
+  @extend .message;
+  border-color: yellow;
+}
+```</p>
+
+<p><code>CSS</code></p>
+
+<p>``` css
+.message, .success, .error, .warning {
+  border: 1px solid #cccccc;
+  padding: 10px;
+  color: #333;
+}</p>
+
+<p>.success {
+  border-color: green;
+}</p>
+
+<p>.error {
+  border-color: red;
+}</p>
+
+<p>.warning {
+  border-color: yellow;
+}
+```</p>
+
+<h2 id="operators">Operators</h2>
+
+<p>Doing math in your CSS is very helpful. Sass has a handful of standard math operators like <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>%</code>.</p>
+
+<p><code>SCSS</code></p>
+
+<p>``` scss
+.container { width: 100%; }</p>
+
+<p>article[role=”main”] {
+  float: left;
+  width: 600px / 960px * 100%;
+}</p>
+
+<p>aside[role=”complementary”] {
+  float: right;
+  width: 300px / 960px * 100%;
+}
+```</p>
+
+<p><code>CSS</code></p>
+
+<p>``` css
+.container {
+  width: 100%;
+}</p>
+
+<p>article[role=”main”] {
+  float: left;
+  width: 62.5%;
+}</p>
+
+<p>aside[role=”complementary”] {
+  float: right;
+  width: 31.25%;
+}
+```</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[SMACSS]]></title>
