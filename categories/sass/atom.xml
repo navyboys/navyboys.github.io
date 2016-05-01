@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sass | @navyboys]]></title>
   <link href="http://NavySPACE.net/categories/sass/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-04-30T21:36:37-07:00</updated>
+  <updated>2016-04-30T23:03:47-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -18,7 +18,7 @@
     <link href="http://NavySPACE.net/sass-basics/"/>
     <updated>2016-02-23T13:20:00-08:00</updated>
     <id>http://NavySPACE.net/sass-basics</id>
-    <content type="html"><![CDATA[<p>Sass is a powerful CSS extension language as well as preprocessor that can be a useful tool to make web developers efficient for writing CSS. Here is the note I was taking while reading a concise <a href="http://sass-lang.com/guide">guide</a> to Sass from its official site.</p>
+    <content type="html"><![CDATA[<p>Sass (stands for <strong>S</strong>yntactically <strong>A</strong>wesome <strong>S</strong>tyle <strong>S</strong>heets) is a powerful CSS extension language as well as preprocessor that can be a useful tool to make web developers efficient for writing CSS. Here is the note I was taking while reading a concise <a href="http://sass-lang.com/guide">guide</a> to Sass from its official site.</p>
 
 <h2 id="syntax">Syntax</h2>
 
