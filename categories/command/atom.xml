@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: command | @navyboys]]></title>
+  <link href="http://NavySPACE.net/categories/command/atom.xml" rel="self"/>
+  <link href="http://NavySPACE.net/"/>
+  <updated>2016-05-17T14:13:36-07:00</updated>
+  <id>http://NavySPACE.net/</id>
+  <author>
+    <name><![CDATA[NavySPACE.net]]></name>
+    <email><![CDATA[navyboys@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Command Line Basics]]></title>
+    <link href="http://NavySPACE.net/command-line-basics/"/>
+    <updated>2016-03-01T06:15:00-08:00</updated>
+    <id>http://NavySPACE.net/command-line-basics</id>
+    <content type="html"><![CDATA[<p>Here is the notes I’ve taken while reading Codecademy’s course: <em>Learn the Command Line</em>. This is the mixed version of both course note and <em>Glossary of commonly used command</em> summarized by Codecademy itself.</p>
+
+<p>The command line is a text interface for your computer. It’s a program that takes in commands, which it passes on to the computer’s operating system to run.</p>
+
+<p>From the command line, you can navigate through files and folders on your computer, just as you would with Windows Explorer on Windows or Finder on Mac OS. The difference is that the command line is fully text-based.</p>
+
+<p><br /></p>
+
+<h1 id="navigation">Navigation</h1>
+
+<p>Get up and running with the command line by navigating directories and files.</p>
+
+<h2 id="pwd"><code>pwd</code></h2>
+
+<p><code>pwd</code>: <strong>print working directory</strong></p>
+
+<p><code>bash
+$ pwd
+/home/ccuser/workspace/blog
+</code></p>
+
+<h2 id="ls"><code>ls</code></h2>
+
+<p><code>ls</code> <strong>lists</strong> all files and directories in the working directory</p>
+
+<p><code>bash
+$ ls
+2014  2015  hardware.txt
+</code></p>
+
+<p><code>ls -a</code> lists <strong>all</strong> contents in the working directory, including <em>hidden files</em> and <em>directories</em></p>
+
+<p><code>bash
+$ ls -a
+.  ..  .preferences  action  drama comedy  genres.xt
+</code></p>
+
+<p><code>ls -l</code> lists all contents of a directory in <strong>long</strong> format. <a href="https://www.codecademy.com/en/courses/learn-the-command-line/lessons/manipulation/exercises/ls-revisited">Here</a> is what each column means.</p>
+
+<ol>
+  <li>Access rights. These are actions that are permitted on a file or directory.</li>
+  <li>Number of hard links. This number counts the number of child directories and files. This number includes the parent directory link (..) and current directory link (.).</li>
+  <li>The username of the file’s owner. Here the username is <code>cc</code>.</li>
+  <li>The name of the group that owns the file. Here the group name is <code>eng</code>.</li>
+  <li>The size of the file in bytes.</li>
+  <li>The date &amp; time that the file was last modified.</li>
+  <li>The name of the file or directory.</li>
+</ol>
+
+<p><code>bash
+$ ls -l
+drwxr-xr-x 5  cc  eng  4096 Jun 24 16:51  action
+drwxr-xr-x 4  cc  eng  4096 Jun 24 16:51  comedy
+drwxr-xr-x 6  cc  eng  4096 Jun 24 16:51  drama
+-rw-r--r-- 1  cc  eng     0 Jun 24 16:51  genres.txt
+</code></p>
+
+<p><code>ls -t</code> orders files and directories by the time they were last modified.</p>
+
+<p><code>bash
+$ ls -t
+</code></p>
+
+<p>Multiple options can be used together.</p>
+
+<p><code>bash
+$ ls -alt
+</code></p>
+
+<h2 id="cd"><code>cd</code></h2>
+
+<p><code>cd</code>: <strong>change directory</strong>, takes a directory name as an argument, and switches into that directory.</p>
+
+<p><code>bash
+$ cd Desktop/
+</code></p>
+
+<p>To navigate directly to a directory, use <code>cd</code> with the directory’s path as an argument. Here, <code>cd jan/memory/</code> command navigates directly to the <code>jan/memory</code> directory.</p>
+
+<p><code>bash
+$ cd jan/memory
+</code></p>
+
+<p>To move up one directory, use <code>cd ..</code>. Here, <code>cd ..</code> navigates up from <code>jan/memory/</code> to <code>jan/</code>.</p>
+
+<p><code>bash
+$ cd ..
+</code></p>
+
+<h2 id="mkdir"><code>mkdir</code></h2>
+
+<p><code>mkdir</code>: <strong>make directory</strong>, takes in a directory name as an argument, and then creates a new directory in the current working directory. Here we used <code>mkdir</code> to create a new directory named <code>media/</code>.</p>
+
+<p><code>bash
+$ mkdir media
+</code></p>
+
+<h2 id="touch"><code>touch</code></h2>
+
+<p><code>touch</code> <strong>creates a new file</strong> inside the working directory. It takes in a file name as an argument, and then creates a new empty file in the current working directory. Here we used <code>touch</code> to create a new file named <code>keyboard.txt</code> inside the current working directory.</p>
+
+<p>If the file exists, <code>touch</code> is used to update the modification time of the file</p>
+
+<p><code>bash
+$ touch data.txt
+</code></p>
+
+<p><br /></p>
+
+<h1 id="manipulation">Manipulation</h1>
+
+<p>We can also use the command line to <strong>copy</strong>, <strong>move</strong>, and <strong>remove</strong> files and directories.</p>
+
+<h2 id="cp"><code>cp</code></h2>
+
+<p><code>cp</code> <strong>copies</strong> files or directories. Here, we copy the file <code>lincoln.txt</code> and place it in the <code>historical/</code> directory.</p>
+
+<p><code>bash
+$ cp lincoln.txt historical/
+</code></p>
+
+<p>The wildcard <code>*</code> selects in the working directory, so here we use <code>cp</code> to copy all files into the <code>satire/</code> directory.</p>
+
+<p><code>bash
+$ cp * satire/
+</code></p>
+
+<p><code>m*.txt</code> selects all files in the working directory starting with <strong>m</strong> and ending with <strong>.txt</strong>, and copies them to <code>scifi/</code>.</p>
+
+<p><code>bash
+$ cp m*.txt scifi/
+</code></p>
+
+<h2 id="mv"><code>mv</code></h2>
+
+<p>To <strong>move</strong> a file into a directory, use <code>mv</code> with the source file as the first argument and the destination directory as the second argument. Here we move <code>superman.txt</code> into <code>superhero/</code>.</p>
+
+<p><code>bash
+$ mv superman.txt superhero/
+</code></p>
+
+<p>Move <strong>multiple</strong> files into a directory.</p>
+
+<p><code>bash
+$ mv wonderwoman.txt batman.txt superhero/
+</code></p>
+
+<p><strong>Rename</strong> the file <code>batman.txt</code> to <code>spiderman.txt</code>.</p>
+
+<p><code>bash
+$ mv batman.txt spiderman.txt
+</code></p>
+
+<h2 id="rm"><code>rm</code></h2>
+
+<p><code>rm</code> deletes files. Here we <strong>remove</strong> the file <code>waterboy.txt</code> from the file system.</p>
+
+<p><code>bash
+$ rm waterboy.txt
+</code></p>
+
+<p><code>rm -r</code> deletes a <strong>directory</strong> and all of its child directories.</p>
+
+<p><code>bash
+$ rm -r comedy
+</code>
+<br /></p>
+
+<h1 id="redirection">Redirection</h1>
+
+<p>Learn to redirect input and output to and from files and programs.</p>
+
+<ul>
+  <li><strong>Standard Input</strong>, abbreviated as <code>stdin</code>, is information inputted into the terminal through the keyboard or input device.</li>
+  <li><strong>Standard Output</strong>, abbreviated as <code>stdout</code>, is the information outputted after a process is run.</li>
+  <li><strong>Standard Error</strong>, abbreviated as <code>stderr</code>, is an error message outputted by a failed process.</li>
+</ul>
+
+<h2 id="echo"><code>echo</code></h2>
+
+<p>The <code>echo</code> command accepts the string “Hello” as standard input, and <strong>echoes</strong> the string “Hello” back to the terminal as standard output.</p>
+
+<p><code>bash
+$ echo "Hello"
+Hello
+</code></p>
+
+<h2 id="cat"><code>cat</code></h2>
+
+<p>The <code>cat</code> command outputs the contents of a file to the terminal. When you type <code>cat hello.txt</code>, the contents of <code>hello.txt</code> are displayed.</p>
+
+<p><strong>Catenate</strong> is an obscure word meaning “to connect in a series”, which is what the <code>cat</code> command does to one or more files.</p>
+
+<p><code>bash
+$ cat hello.txt
+Hello
+</code></p>
+
+<h2 id="section"><code>&gt;</code></h2>
+
+<p>The <code>&gt;</code> command redirects the standard output to a file.</p>
+
+<p><code>bash
+$ echo "Hello" &gt; hello.txt
+</code></p>
+
+<p><code>&gt;</code> takes the standard output of the command on the left, and redirects it to the file on the right. Note that <code>&gt;</code> <strong>overwrites</strong> all original content in <code>continents.txt</code>.</p>
+
+<p><code>bash
+$ cat oceans.txt &gt; continents.txt
+</code></p>
+
+<h2 id="section-1"><code>&gt;&gt;</code></h2>
+
+<p><code>&gt;&gt;</code> takes the standard output of the command on the left and <strong>appends</strong> (adds) it to the file on the right.</p>
+
+<p><code>bash
+$ cat glaciers.txt &gt;&gt; rivers.txt
+</code></p>
+
+<h2 id="section-2"><code>&lt;</code></h2>
+
+<p><code>&lt;</code> takes the standard input from the file on the right and <strong>inputs</strong> it into the program on the left. Here, <code>lakes.txt</code> is the standard input for the <code>cat</code> command. The standard output appears in the terminal.</p>
+
+<p><code>bash
+$ cat &lt; lakes.txt
+</code></p>
+
+<h2 id="section-3"><code>|</code></h2>
+
+<p><code>|</code> is a <strong>pipe</strong>. The <code>|</code> takes the standard output of the command on the left, and pipes it as standard input to the command on the right. You can think of this as “command to command” redirection.</p>
+
+<p>Here the output of <code>cat volcanoes.txt</code> is the standard input of <code>wc</code>. In turn, the <code>wc</code> command outputs the <strong>number of lines, words, and characters</strong> in <code>volcanoes.txt</code>, respectively.</p>
+
+<p><code>bash
+$ cat volcanoes.txt | wc
+</code></p>
+
+<p>Multiple <code>|</code>s can be chained together. Here the standard output of <code>cat volcanoes.txt</code> is “piped” to the <code>wc</code> command. The standard output of <code>wc</code> is then “piped” to <code>cat</code>. Finally, the standard output of <code>cat</code> is redirected to <code>islands.txt</code>.</p>
+
+<p><code>bash
+$ cat volcanoes.txt | wc | cat &gt; islands.txt
+</code></p>
+
+<h2 id="sort"><code>sort</code></h2>
+
+<p><code>sort</code> takes the standard input and orders it alphabetically for the standard output. Here, the lakes in <code>sort lakes.txt</code> are listed in alphabetical order.</p>
+
+<p><code>bash
+$ sort lakes.txt
+</code></p>
+
+<p>Here, the command takes the standard output from <code>cat lakes.txt</code> and “pipes” it to <code>sort</code>. The standard output of <code>sort</code> is redirected to <code>sorted-lakes.txt</code>.</p>
+
+<p><code>bash
+$ cat lakes.txt | sort &gt; sorted-lakes.txt
+</code></p>
+
+<h2 id="uniq"><code>uniq</code></h2>
+
+<p><code>uniq</code> stands for <strong>unique</strong> and filters out adjacent, duplicate lines in a file. Here <code>uniq deserts.txt</code> filters out duplicates of “Sahara Desert”, because the duplicate of ‘Sahara Desert’ directly follows the previous instance. The “Kalahari Desert” duplicates are not adjacent, and thus remain.</p>
+
+<p><code>bash
+$ uniq deserts.txt
+</code></p>
+
+<p>A more effective way to call <code>uniq</code> is to call <code>sort</code> to alphabetize a file, and “pipe” the standard output to <code>uniq</code>. Here by piping <code>sort deserts.txt</code> to <code>uniq</code>, all duplicate lines are alphabetized (and thereby made adjacent) and filtered out.</p>
+
+<p><code>bash
+$ sort deserts.txt | uniq
+</code></p>
+
+<p>Send filtered contents to <code>uniq-deserts.txt</code>.</p>
+
+<p><code>bash
+sort deserts.txt | uniq &gt; uniq-deserts.txt
+</code></p>
+
+<h2 id="grep"><code>grep</code></h2>
+
+<p><code>grep</code> stands for <strong>global regular expression print</strong>. It searches files for lines that match a pattern and returns the results. It is case <em>sensitive</em>.</p>
+
+<p>You can use <strong>regular expressions</strong> to search for patterns in files.</p>
+
+<p><code>bash
+$ grep Mount mountains.txt
+</code></p>
+
+<p><code>grep -i</code> enables the command to be case <em>insensitive</em>.</p>
+
+<p><code>bash
+$ grep -i Mount mountains.txt
+</code></p>
+
+<p><code>grep -R</code> searches all files in a <strong>directory</strong> and outputs filenames and lines containing matched results. <code>-R</code> stands for <strong>recursive</strong>.</p>
+
+<p><code>bash
+$ grep -R Arctic /home/ccuser/workspace/geography
+/home/ccuser/workspace/geography/deserts.txt:Arctic Desert
+/home/ccuser/workspace/geography/oceans.txt:Arctic Ocean
+/home/ccuser/workspace/geography/uniq-deserts.txt:Arctic Desert
+/home/ccuser/workspace/geography/continents.txt:Arctic Ocean
+</code></p>
+
+<p><code>grep -Rl</code> searches all files in a directory and outputs only filenames with matched results. <code>-R</code> stands for <strong>recursive</strong> and <code>l</code> stands for <strong>files with matches</strong>.</p>
+
+<p><code>bash
+$ grep -Rl Arctic /home/ccuser/workspace/geography
+/home/ccuser/workspace/geography/deserts.txt
+/home/ccuser/workspace/geography/oceans.txt
+/home/ccuser/workspace/geography/uniq-deserts.txt
+/home/ccuser/workspace/geography/continents.txt
+</code></p>
+
+<h2 id="sed"><code>sed</code></h2>
+
+<p><code>sed</code> stands for <strong>stream editor</strong>. It accepts standard input and modifies it based on an expression, before displaying it as output data.</p>
+
+<p><code>bash
+$ sed 's/snow/rain/' forests.txt
+</code></p>
+
+<p>In the expression <code>'s/snow/rain/'</code>:</p>
+
+<ul>
+  <li><code>s</code>: stands for <strong>substitution</strong>.</li>
+  <li><code>snow</code>: the search string, the text to find.</li>
+  <li><code>rain</code>: the replacement string, the text to add in place.</li>
+</ul>
+
+<p>In this case, <code>sed</code> searches <code>forests.txt</code> for the word “snow” and replaces it with “rain.” Importantly, the above command will only replace the <strong>first instance</strong> of “snow” on a line.</p>
+
+<p><code>bash
+$ sed 's/snow/rain/g' forests.txt
+</code></p>
+
+<p>The above command uses the <code>g</code> expression, meaning <strong>global</strong>. Here <code>sed</code> searches <code>forests.txt</code> for the word “snow” and replaces it with “rain”, globally. All instances of “snow” on a line will be turned to “rain”.</p>
+
+<p><br /></p>
+
+<h1 id="environment">Environment</h1>
+
+<p>Each time we launch the terminal application, it creates a new session. The session immediately loads <em>settings</em> and <em>preferences</em> that make up the command line environment.</p>
+
+<p>We can configure the environment to support the commands and programs we create. This enables us to customize greetings and command <strong>aliases</strong>, and create <strong>variables</strong> to share across commands and programs.</p>
+
+<h2 id="clear"><code>clear</code></h2>
+
+<p><strong>Clear</strong> the terminal window. The command prompt should now be at the top of the window.</p>
+
+<p><code>bash
+$ clear
+</code></p>
+
+<h2 id="nano"><code>nano</code></h2>
+
+<p><code>nano</code> is a command line text editor. It works just like a desktop text editor like TextEdit or Notepad, except that it is accessible from the the command line and only accepts keyboard input.</p>
+
+<ul>
+  <li><code>Ctrl + O</code> saves a file. ‘O’ stands for <strong>output</strong>.</li>
+  <li><code>Ctrl + X</code> exits the nano program. ‘X’ stands for <strong>exit</strong>.</li>
+  <li><code>Ctrl + G</code> opens a <strong>help</strong> menu.</li>
+</ul>
+
+<p><code>bash
+$ nano hello.txt
+</code></p>
+
+<h2 id="bashprofile"><code>~/.bash_profile</code></h2>
+
+<p><code>~/.bash_profile</code> is the name of file used to <strong>store environment settings</strong>. It is commonly called the <em>bash profile</em>. When a session starts, it will load the contents of the bash profile before executing commands.</p>
+
+<ul>
+  <li>The <code>~</code> represents the user’s <strong>home directory</strong>.</li>
+  <li>The <code>.</code> indicates a <strong>hidden</strong> file.</li>
+  <li>The name <code>~/.bash_profile</code> is important, since this is how the command line recognizes the bash profile.</li>
+</ul>
+
+<p><code>bash
+$ nano ~/.bash_profile
+</code></p>
+
+<h2 id="source"><code>source</code></h2>
+
+<p><code>source</code> <strong>activates the changes</strong> in <code>~/.bash_profile</code> for the current session. Instead of closing the terminal and needing to start a new session, <code>source</code> makes the changes available right away in the session we are in.</p>
+
+<p><code>bash
+$ source ~/.bash_profile
+</code></p>
+
+<h2 id="alias"><code>alias</code></h2>
+
+<p>The <code>alias</code> command allows you to create keyboard shortcuts, or <strong>aliases</strong>, for commonly used commands.</p>
+
+<p><code>bash
+$ alias pd="pwd"
+</code></p>
+
+<h2 id="history"><code>history</code></h2>
+
+<p>Show command histories.</p>
+
+<p><code>bash
+$ history
+1 nano hello.txt
+2 clear
+3 nano ~/.bash_profile
+4 clear
+</code></p>
+
+<p><br /></p>
+
+<h1 id="environment-variables">Environment Variables</h1>
+
+<p><strong>Environment Variables</strong> are variables that can be used across commands and programs and hold information about the environment.</p>
+
+<h2 id="export"><code>export</code></h2>
+
+<p>The line <code>USER="Jane Doe"</code> sets the environment variable <code>USER</code> to a name “Jane Doe”. Usually the <code>USER</code> variable is set to the name of the computer’s owner.</p>
+
+<p>The line <code>export</code> makes the variable to be <strong>available</strong> to all child sessions initiated from the session you are in. This is a way to make the variable persist across programs.</p>
+
+<p><code>bash
+export USER="Jane Doe"
+</code></p>
+
+<p><code>$</code> is always used when returning a variable’s value. Here, the command <code>echo $USER</code> returns the name set for the variable.</p>
+
+<p><code>bash
+$ echo $USER
+Jane Doe
+</code></p>
+
+<h2 id="ps1"><code>PS1</code></h2>
+
+<p><code>PS1</code> is a variable that defines the makeup and style of the <strong>command prompt</strong>. Here we change the default command prompt from $ to ».</p>
+
+<p><code>bash
+$ export PS1="&gt;&gt; "
+$ source ~/.bash_profile
+&gt;&gt;
+</code></p>
+
+<h2 id="home"><code>HOME</code></h2>
+
+<p>The <code>HOME</code> variable is an environment variable that displays the path of the <strong>home directory</strong>.</p>
+
+<p><code>bash
+$ echo $HOME
+/home/ccuser
+</code></p>
+
+<h2 id="path"><code>PATH</code></h2>
+
+<p><code>PATH</code> is an environment variable that stores a list of directories separated by a colon. Each directory contains scripts for the command line to execute. <code>PATH</code> lists which <strong>directories contain scripts</strong>.</p>
+
+<p><code>bash
+$ echo $PATH
+/home/ccuser/.gem/ruby/2.0.0/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/sbin:/bin
+</code></p>
+
+<h2 id="env"><code>env</code></h2>
+
+<p>The <code>env</code> command stands for <strong>environment</strong>, and returns a list of the environment variables for the current user.</p>
+
+<p><code>bash
+$ env
+</code></p>
+
+<p><code>env | grep PATH</code> is a command that displays the value of a single environment variable (=PATH).</p>
+
+<p><code>bash
+$ env | grep PATH
+</code></p>
+]]></content>
+  </entry>
+  
+</feed>
