@@ -4,7 +4,7 @@
   <title><![CDATA[Category: note | @navyboys]]></title>
   <link href="http://NavySPACE.net/categories/note/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-05-17T14:13:36-07:00</updated>
+  <updated>2016-05-18T19:08:55-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -12,6 +12,485 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Regex Basics]]></title>
+    <link href="http://NavySPACE.net/regex-basics+/"/>
+    <updated>2016-03-10T15:48:00-08:00</updated>
+    <id>http://NavySPACE.net/regex-basics </id>
+    <content type="html"><![CDATA[<p>Here is the notes taken for <a href="http://regexone.com/">RegexOne</a>’s interactive tutorial which explores the more practical uses of regular expressions so that we can use them as quickly as possible.</p>
+
+<h2 id="cheat-sheet">Cheat Sheet</h2>
+
+<p>Here is the summary of basic regex usages.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regex</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>abc…</code></td>
+      <td>Letters</td>
+    </tr>
+    <tr>
+      <td><code>123…</code></td>
+      <td>Digits</td>
+    </tr>
+    <tr>
+      <td><code>\d</code></td>
+      <td>Any Digit</td>
+    </tr>
+    <tr>
+      <td><code>\D</code></td>
+      <td>Any Non-digit character</td>
+    </tr>
+    <tr>
+      <td><code>.</code></td>
+      <td>Any Character</td>
+    </tr>
+    <tr>
+      <td><code>\.</code></td>
+      <td>Period</td>
+    </tr>
+    <tr>
+      <td><code>[abc]</code></td>
+      <td>Only a, b, or c</td>
+    </tr>
+    <tr>
+      <td><code>[^abc]</code></td>
+      <td>Not a, b, nor c</td>
+    </tr>
+    <tr>
+      <td><code>[a-z]</code></td>
+      <td>Characters a to z</td>
+    </tr>
+    <tr>
+      <td><code>[0-9]</code></td>
+      <td>Numbers 0 to 9</td>
+    </tr>
+    <tr>
+      <td><code>\w</code></td>
+      <td>Any Alphanumeric character</td>
+    </tr>
+    <tr>
+      <td><code>\W</code></td>
+      <td>Any Non-alphanumeric character</td>
+    </tr>
+    <tr>
+      <td><code>{m}</code></td>
+      <td>m Repetitions</td>
+    </tr>
+    <tr>
+      <td><code>{m,n}</code></td>
+      <td>m to n Repetitions</td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Zero or more repetitions</td>
+    </tr>
+    <tr>
+      <td><code>+</code></td>
+      <td>One or more repetitions</td>
+    </tr>
+    <tr>
+      <td><code>?</code></td>
+      <td>Optional character</td>
+    </tr>
+    <tr>
+      <td><code>\s</code></td>
+      <td>Any Whitespace</td>
+    </tr>
+    <tr>
+      <td><code>\S</code></td>
+      <td>Any Non-whitespace character</td>
+    </tr>
+    <tr>
+      <td><code>^…$</code></td>
+      <td>Starts and ends</td>
+    </tr>
+    <tr>
+      <td><code>(…)</code></td>
+      <td>Capture Group</td>
+    </tr>
+    <tr>
+      <td><code>(a(bc))</code></td>
+      <td>Capture Sub-group</td>
+    </tr>
+    <tr>
+      <td><code>(.*)</code></td>
+      <td>Capture all</td>
+    </tr>
+    <tr>
+      <td><code>(abc|def)</code></td>
+      <td>Matches abc or def</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="lesson-1-an-introduction-and-the-abcs">Lesson 1: An Introduction, and the ABCs</h2>
+
+<p><strong>Everything is essentially a character</strong>. We are writing patterns to match a specific sequence of characters (also known as a string).</p>
+
+<p><strong>Pattern</strong>: <code>abc</code></p>
+
+<p><code>ruby
+Task 	Text 	 
+match 	'abcdefg'
+match 	'abcde'
+match 	'abc'
+</code></p>
+
+<h2 id="lesson-1-the-123s">Lesson 1½: The 123s</h2>
+
+<p><strong>Pattern</strong>: <code>123</code></p>
+
+<p><code>ruby
+Task 	Text 	 
+match 	'abc123xyz'
+match 	'define "123"'
+match 	'var g = 123;'
+</code></p>
+
+<h2 id="lesson-2-the-dot">Lesson 2: The Dot</h2>
+
+<p><strong>Pattern</strong>: <code>...\.</code></p>
+
+<p><code>ruby
+Task 	Text 	 
+match 	'cat.'
+match 	'896.'
+match 	'?=+.'
+skip 	'abc1'
+</code></p>
+
+<h2 id="lesson-3-matching-specific-characters">Lesson 3: Matching specific characters</h2>
+
+<p><strong>Pattern</strong>: <code>[cmf]an</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'can'
+match	'man'
+match	'fan'
+skip	'dan'
+skip	'ran'
+skip	'pan'
+</code></p>
+
+<h2 id="lesson-4-excluding-specific-characters">Lesson 4: Excluding specific characters</h2>
+
+<p><strong>Pattern</strong>: <code>[^b]og</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'hog'
+match	'dog'
+skip	'bog'
+</code></p>
+
+<h2 id="lesson-5-character-ranges">Lesson 5: Character ranges</h2>
+
+<p><strong>Pattern</strong>: <code>[A-C][n-p][a-c]</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'Ana'
+match	'Bob'
+match	'Cpc'
+skip	'aax'
+skip	'bby'
+skip	'ccz'
+</code></p>
+
+<h2 id="lesson-6-catching-some-zzzs">Lesson 6: Catching some zzz’s</h2>
+
+<p><strong>Pattern</strong>: <code>waz{2,4}up</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'wazzzzup'
+match	'wazzzup'
+skip	'wazup'
+</code></p>
+
+<h2 id="lesson-7-mr-kleene-mr-kleene">Lesson 7: Mr. Kleene, Mr. Kleene</h2>
+
+<p><strong>Pattern</strong>: <code>aa+b*c+</code> or <code>a{2,4}b{0,4}c{1,2}</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'aaaabcc'
+match	'aabbbbc'
+match	'aacc'
+skip	'a'
+</code></p>
+
+<h2 id="lesson-8-characters-optional">Lesson 8: Characters optional</h2>
+
+<p>Pattern: <code>\d+ files? found\?</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'1 file found?'
+match	'2 files found?'
+match	'24 files found?'
+skip	'No files found.'
+</code></p>
+
+<h2 id="lesson-9-all-this-whitespace">Lesson 9: All this whitespace</h2>
+
+<p><strong>Pattern</strong>: <code>\d\.\s+abc</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'1.  abc'
+match	'2.	  abc'
+match	'3.      abc'
+skip	'4.abc'
+</code></p>
+
+<h2 id="lesson-10-starting-and-ending">Lesson 10: Starting and ending</h2>
+
+<p><strong>Pattern</strong>: <code>^Mission: successful$</code></p>
+
+<p><code>ruby
+Task	Text	 
+match	'Mission: successful'
+skip	'Last Mission: unsuccessful'
+skip	'Next Mission: successful upon capture of target'
+</code></p>
+
+<h2 id="lesson-11-capturing-groups">Lesson 11: Capturing groups</h2>
+
+<p>Regular expressions allow us to not just <strong>match text</strong> but also to <strong>extract information</strong> for further processing. This is done by defining <strong>groups of characters</strong> and capturing them using the special parentheses <code>(</code> and <code>)</code> metacharacters.</p>
+
+<ul>
+  <li><code>^(IMG\d+\.png)$</code>: capture and extract the full filename</li>
+  <li><code>^(IMG\d+)\.png$</code>: capture the part before the period</li>
+</ul>
+
+<p><strong>Pattern</strong>: <code>^(file.+)\.pdf$</code></p>
+
+<p><code>ruby
+Task     Text                          Capture Groups	 
+capture  'file_record_transcript.pdf'  'file_record_transcript'
+capture  'file_07241999.pdf'           'file_07241999'
+skip     'testfile_fake.pdf.tmp'
+</code></p>
+
+<h2 id="lesson-12-nested-groups">Lesson 12: Nested groups</h2>
+
+<p><strong>Pattern</strong>: <code>(\w+ (\d+))</code></p>
+
+<p><code>ruby
+Task     Text        Capture Groups
+capture  'Jan 1987'  'Jan 1987' '1987'
+capture  'May 1969'  'May 1969' '1969'
+capture  'Aug 2011'  'Aug 2011' '2011'
+</code></p>
+
+<h2 id="lesson-13-more-group-work">Lesson 13: More group work</h2>
+
+<p><strong>Pattern</strong>: <code>((\d+)x(\d+))</code></p>
+
+<p><code>ruby
+Task     Text         Capture Groups
+Capture  '1280x720'   '1280' '720'
+Capture  '1920x1600'  '1920' '1600'
+Capture  '1024x768'   '1024' '768'
+</code></p>
+
+<h2 id="lesson-14-its-all-conditional">Lesson 14: It’s all conditional</h2>
+
+<p>Writing patterns with many conditions can be hard to read, so you should consider making them separate patterns if they get too complex.</p>
+
+<p><strong>Pattern</strong>: <code>I love (cats|dogs)</code></p>
+
+<p><code>ruby
+Task   Text	 
+match	 'I love cats'
+match	 'I love dogs'
+skip	 'I love logs'
+skip	 'I love cogs'
+</code></p>
+
+<h2 id="lesson-15-other-special-characterss">Lesson 15: Other special characterss</h2>
+
+<p><strong>Boundary</strong></p>
+
+<ul>
+  <li><code>\b</code>: boundary between a word and a non-word character</li>
+  <li><code>\w+\b</code>: capturing entire words</li>
+</ul>
+
+<p><strong>Back Referencing</strong></p>
+
+<ul>
+  <li><code>\0</code>: the full matched text</li>
+  <li><code>\1</code>: group 1</li>
+  <li><code>\2</code>: group 2</li>
+</ul>
+
+<p>This is useful for example when you are in a text editor and doing a search and replace using regular expressions to swap two numbers, you can search for <code>(\d+)-(\d+)</code> and replace it with <code>\2-\1</code> to put the second captured number first, and the first captured number second for example.</p>
+
+<p>Pattern: <code>.*</code></p>
+
+<p><code>ruby
+Task   Text	 
+match  'The quick brown fox jumped over the lazy dog.'
+match  'There were 614 instances of students getting 90.0% or above.'
+match  'The FCC had to censor the network for saying &amp;$#*@!.'
+</code></p>
+
+<h2 id="problem-1-matching-a-decimal-numbers">Problem 1: matching a decimal numbers</h2>
+
+<p><strong>Pattern</strong>: <code>^-?\d+(,\d+)*(\.\d+(e\d+)?)?$</code></p>
+
+<p>Starts with an optional negative sign, one or more digits, optionally followed by a comma and more digits, followed by an optional fractional component which consists of a period, one or more digits, and another optional component, the exponent followed by more digits.</p>
+
+<p><code>ruby
+Task   Text 	 
+match  '3.14529'
+match  '-255.34'
+match  '128'
+match  '1.9e10'
+match  '123,340.00'
+skip   '720p'
+</code></p>
+
+<h2 id="problem-2-matching-phone-numbers">Problem 2: matching phone numbers</h2>
+
+<p><strong>Pattern</strong>: <code>1?[\s-]?\(?(\d{3})\)?[\s-]?\d{3}[\s-]?\d{4}</code></p>
+
+<p>This breaks down into the country code <code>1?</code>, the captured area code <code>\(?(\d{3})\)?</code>, and the rest of the digits <code>\d{3}</code> and <code>\d{4}</code> respectively. We use <code>[\s-]?</code> to catch the space or dashes between each component.</p>
+
+<p><code>ruby
+Task     Text              Capture Groups
+capture  '415-555-1234'    '415'
+capture  '650-555-2345'    '650'
+capture  '(416)555-3456'   '416'
+capture  '202 555 4567'    '202'
+capture  '4035555678'      '403'
+capture  '1 416 555 9292'  '416'
+</code></p>
+
+<h2 id="problem-3-matching-emails">Problem 3: matching emails</h2>
+
+<p><strong>Pattern</strong>: <code>^([\w\.]*)(\+\w*)?@\w+\.?\w+.\w+</code></p>
+
+<p>To extract the beginning of each email, we can use a simple expression <code>^([\w\.]*)</code> which will match emails starting with alphanumeric characters including the period. It will match up to the point in the text where it reaches an <code>@</code> or <code>+</code>.</p>
+
+<p><code>ruby
+Task     Text                                Capture Groups
+capture  'tom@hogwarts.com'                  'tom'
+capture  'tom.riddle@hogwarts.com'           'tom.riddle'
+capture  'tom.riddle+regexone@hogwarts.com'  'tom.riddle'
+capture  'tom@hogwarts.eu.com'               'tom'
+capture  'potter@hogwarts.com'               'potter'
+capture  'harry@hogwarts.com'                'harry'
+capture  'hermione+regexone@hogwarts.com'    'hermione'
+</code></p>
+
+<h2 id="problem-4-matching-html">Problem 4: matching HTML</h2>
+
+<p><strong>Pattern</strong>: <code>&lt;(\w+)</code></p>
+
+<ul>
+  <li>tag name: <code>&lt;(\w+)</code></li>
+  <li>tag content: <code>&gt;([\w\s]*)&lt;</code></li>
+  <li>attribute values: <code>='([\w://.]*)</code></li>
+</ul>
+
+<p><code>ruby
+Task     Text                                      Capture Groups
+capture  "&lt;a&gt;This is a link&lt;/a&gt;"                   "a"
+capture  "&lt;a href='http://regexone.com'&gt;Link&lt;/a&gt;"  "a"
+capture  "&lt;div class='test_style'&gt;Test&lt;/div&gt;"      "div"
+capture  "&lt;div&gt;Hello &lt;span&gt;world&lt;/span&gt;&lt;/div&gt;"     "div"
+</code></p>
+
+<h2 id="problem-5-matching-specific-filenames">Problem 5: matching specific filenames</h2>
+
+<p>Extract the filenames and extension types of <strong>only image files</strong> (not including temporary files for images currently being edited). Image files are defined as <code>.jpg</code>, <code>.png</code>, and <code>.gif</code>.</p>
+
+<p><strong>Pattern</strong>: <code>(\w+)\.(jpg|png|gif)$</code></p>
+
+<p><code>ruby
+Task     Text                   Capture Groups 	 
+skip     '.bash_profile'
+skip     'workspace.doc'
+capture  'img0912.jpg'          'img0912' 'jpg'
+capture  'updated_img0912.png'  'updated_img0912' 'png'
+skip     'documentation.html'
+capture  'favicon.gif'          'favicon' 'gif'
+skip     'img0912.jpg.tmp'
+skip     'access.lock'
+</code></p>
+
+<h2 id="problem-6-trimming-whitespace-from-start-and-end-of-line">Problem 6: Trimming whitespace from start and end of line</h2>
+
+<p>Write a simple regular expression to capture the content of each line, without the extra whitespace.</p>
+
+<p><strong>Pattern</strong>: <code>^\s*(.*)\s*$</code></p>
+
+<p>We can just skip all the starting and ending whitespace by not capturing it in a line.</p>
+
+<p><code>ruby
+Task     Text                            Capture Groups
+capture  '  The quick brown fox... '     'The quick brown fox...'
+capture  ' jumped over the lazy dog.  '  'jumped over the lazy dog.'
+</code></p>
+
+<h2 id="problem-7-extracting-information-from-a-log-file">Problem 7: Extracting information from a log file</h2>
+
+<p>Extract the <strong>filename</strong>, <strong>method name</strong> and <strong>line number</strong> of line of the stack trace.</p>
+
+<p>Pattern: <code>(\w+)\(([\w\.]+):(\d+)\)</code></p>
+
+<p>The first capture group is the method, followed by an escaped parenthesis, followed by the filename, a colon, and finally the line number.</p>
+
+<p><code>ruby
+Task    Text                                                        Capture Groups
+skip    'W/dalvikvm( 1553): threadid=1: uncaught exception'
+skip    'E/( 1553): FATAL EXCEPTION: main'
+skip    'E/( 1553): java.lang.StringIndexOutOfBoundsException'
+capture 'E/( 1553):   at widget.List.makeView(ListView.java:1727)'  'makeView' 'ListView.java' '1727'
+capture 'E/( 1553):   at widget.List.fillDown(ListView.java:652)'   'fillDown' 'ListView.java' '652'
+capture 'E/( 1553):   at widget.List.fillFrom(ListView.java:709)'   'fillFrom' 'ListView.java' '709'
+</code></p>
+
+<h2 id="problem-8-parsing-and-extracting-data-from-a-url">Problem 8: Parsing and extracting data from a URL</h2>
+
+<p><strong>URIs</strong>, or <em>Uniform Resource Identifiers</em>, are a representation of a resource that is generally composed of a <strong>scheme</strong>, <strong>host</strong>, <strong>port</strong> (optional), and <strong>resource path</strong>, respectively highlighted below.</p>
+
+<p><code>http://regexone.com:80/page</code></p>
+
+<p>The scheme describes the protocol to communicate with, the host and port describe the source of the resource, and the full path describes the location at the source for the resource.</p>
+
+<p>In the exercise below, try to extract the <strong>protocol</strong>, <strong>host</strong> and <strong>port</strong> of the all the resources listed.</p>
+
+<p><strong>Pattern</strong>: <code>^(\w+)://([\w\-\.]+):?(\d+)?</code></p>
+
+<ul>
+  <li>protocols: <code>(\w+)://</code></li>
+  <li>hosts: <code>://([\w\-\.]+)</code></li>
+  <li>ports: <code>(:(\d+))</code></li>
+</ul>
+
+<p><code>ruby
+Task    Text                                                          Capture Groups
+capture 'ftp://file_server.com:21/top_secret/life_changing_plans.pdf' 'ftp' 'file_server.com' '21'
+capture 'http://regexone.com/lesson/introduction#section'             'http' 'regexone.com'
+capture 'file://localhost:4040/zip_file'                              'file' 'localhost' '4040'
+capture 'https://s3cur3-server.com:9999/'                             'https' 's3cur3-server.com' '9999'
+capture 'market://search/angry%20birds'                               'market' 'search'
+</code></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Command Line Basics]]></title>
@@ -1739,275 +2218,6 @@ div {
   <li><code>fixed</code> positioning anchors an element to the browser window—you can think of it as gluing the element to the screen. If you scroll up and down, the fixed element stays put even as other elements scroll past.</li>
   <li>You can think of the <code>z-index</code> as a measure of importance: the higher an element’s <code>z-index</code>, the higher it will be “stacked” on the page. Giving your header a <code>z-index</code> of 1 while not giving any of the other elements a <code>z-index</code> ensures that your header will sit “on top of” your other elements and won’t get stuck behind them.</li>
 </ul>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[HTML Basics]]></title>
-    <link href="http://NavySPACE.net/html-basics/"/>
-    <updated>2016-02-02T14:33:00-08:00</updated>
-    <id>http://NavySPACE.net/html-basics</id>
-    <content type="html"><![CDATA[<p>I have got a habit of taking notes while reading technical stuff - books, blogs or even online courses. It really helps me to recall the concepts and points through notes written in <code>Markdown</code>, providing a deeper understanding of the topic.</p>
-
-<p><code>Codecademy</code> uses a step by step learning methodology to help beginners learn web fundamentals through coding practice. Here is the notes of the HTML part of its courses: HTML &amp; CSS, which I’d like to treat it as a cheat sheet and help me recall the basics of HTML within minutes.</p>
-
-<h2 id="concepts">Concepts</h2>
-
-<p>Some concepts and terminologies about HTML.</p>
-
-<ul>
-  <li><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong></li>
-  <li><strong>Hypertext</strong> means “text with links in it.”</li>
-  <li>A <strong>markup language</strong> is a programming language used to make text do more than just sit on a page: it can turn text into images, links, tables, lists, and much more.</li>
-  <li>Things inside <code>&lt;&gt;</code>s are called <strong>Tags</strong>. Tags nearly always come in pairs: an opening tag and a closing tag.</li>
-</ul>
-
-<h2 id="skeleton-of-the-page">Skeleton of the page</h2>
-
-<p>Basic structure(skeleton) of a web page.</p>
-
-<ul>
-  <li>Always put <code>&lt;!DOCTYPE html&gt;</code> on the first line. This tells the browser what language it’s reading (in this case, HTML).</li>
-  <li>Always put <code>&lt;html&gt;</code> on the next line. This starts the HTML document.</li>
-  <li>Always put <code>&lt;/html&gt;</code> on the last line. This ends the HTML document.</li>
-  <li>There are always two parts to an HTML file: the <strong>head</strong> and the <strong>body</strong>.</li>
-  <li>The <strong>head</strong> contains information about your HTML file, like its title. The title is what we see in the browser’s title bar or page tab.</li>
-  <li>The <strong>body</strong> is where you put your content, such as text, images, and links.</li>
-</ul>
-
-<h2 id="heading">Heading</h2>
-
-<p>HTML defines six levels of headings.</p>
-
-<p>``` html</p>
-<h1>The CEO</h1>
-<h2>VP</h2>
-<h3>Director</h3>
-<h4>Middle management</h4>
-<h5>Lowly assistant</h5>
-<h6>Gets coffee for everyone</h6>
-<p>```</p>
-
-<h2 id="image--link">Image &amp; Link</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;a href="http://www.codecademy.com/"&gt;
-  &lt;img src="https://www.google.ca/images/nav_logo242.png"/&gt;
-&lt;/a&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<p><a href="http://www.codecademy.com/">
-  <img src="http://webstir.org/icons/code-cademy-icon.png" />
-</a></p>
-
-<h2 id="ordered-list">Ordered List</h2>
-
-<p><code>HTML</code></p>
-
-<p>``` html</p>
-<ol>
-  <li>Raindrops on roses</li>
-  <li>Whiskers on kittens</li>
-</ol>
-<p>```</p>
-
-<p><code>Result</code></p>
-
-<ol>
-  <li>Raindrops on roses</li>
-  <li>Whiskers on kittens</li>
-</ol>
-
-<h2 id="unordered-list">Unordered List</h2>
-
-<p><code>HTML</code></p>
-
-<p>``` html</p>
-<ul>
-  <li>Cheese</li>
-  <li>Sour Cream</li>
-</ul>
-<p>```</p>
-
-<p><code>Result</code></p>
-
-<ul>
-  <li>Cheese</li>
-  <li>Sour Cream</li>
-</ul>
-
-<h2 id="comments">Comments</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;!-- This is an example of a comment! --&gt;
-</code></p>
-
-<h2 id="font-size">Font Size</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;p style="font-size: 0.5em"&gt;font-size&lt;/p&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<p style="font-size: 0.5em">font-size</p>
-
-<h2 id="font-color">Font Color</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;p style="color: green; font-size: 16px"&gt;Green&lt;/p&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<p style="color: green; font-size: 16px">Green</p>
-
-<h2 id="font-family">Font Family</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;h6 style="font-family: Arial"&gt;Title&lt;/h6&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<h6 style="font-family: Arial">Title</h6>
-
-<h2 id="background-color">Background Color</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;p style="background-color: red"&gt;Hello!&lt;/p&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<p style="background-color: red">Hello!</p>
-
-<h2 id="align">Align</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;h6 style="text-align: center"&gt;Center Heading&lt;/h6&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<h6 style="text-align: center">Center Heading</h6>
-
-<h2 id="strong-word">Strong Word</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;strong&gt;BOLD&lt;/strong&gt;
-</code></p>
-
-<p><code>Results</code></p>
-
-<p><strong>BOLD</strong></p>
-
-<h2 id="emphasize-word">Emphasize Word</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;em&gt;Italicize&lt;/em&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<p><em>Italicize</em></p>
-
-<h2 id="table">Table</h2>
-
-<p><code>HTML</code></p>
-
-<p>``` html</p>
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">Famous Monsters</th>
-    </tr>
-    <tr>
-      <th>Famous Monster</th>
-      <th>Birth Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>King Kong</td>
-      <td>1933</td>     
-    </tr>
-    <tr>
-      <td>Dracula</td>
-      <td>1897</td>     
-    </tr>
-  </tbody>
-</table>
-<p>```</p>
-
-<p><code>Result</code></p>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="2">Famous Monsters</th>
-    </tr>
-    <tr>
-      <th>Famous Monster</th>
-      <th>Birth Year</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>King Kong</td>
-      <td>1933</td>     
-    </tr>
-    <tr>
-      <td>Dracula</td>
-      <td>1897</td>     
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="div">Div</h2>
-
-<p><code>HTML</code></p>
-
-<p><code>html
-&lt;div style="width:50px; height:50px; background-color:red"&gt;&lt;/div&gt;
-</code></p>
-
-<p><code>Result</code></p>
-
-<p />
-<div style="width:50px; height:50px; background-color:red"></div>
-
-<h2 id="span">Span</h2>
-
-<p><code>HTML</code></p>
-
-<p>``` html</p>
-<p>Black, except for the word <span style="color: red">red</span>!</p>
-<p>```</p>
-
-<p><code>Result</code></p>
-
-<p>Black, except for the word <span style="color: red">red</span>!</p>
 ]]></content>
   </entry>
   

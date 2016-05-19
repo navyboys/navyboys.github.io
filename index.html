@@ -9,7 +9,7 @@
 	<meta name="author" content="NavySPACE.net">
 
 	
-	<meta name="description" content="Mar 1st, 2016 codecademy, command, note, system Comments Command Line Basics Here is the notes I’ve taken while reading Codecademy’s course: Learn &hellip;">
+	<meta name="description" content="Mar 10th, 2016 development, note, regex Comments Regex Basics Here is the notes taken for RegexOne’s interactive tutorial which explores the more &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,6 +106,617 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-03-10T15:48:00-08:00" data-updated="true" itemprop="datePublished">Mar 10<span>th</span>, 2016</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/categories/development/'>development</a>, <a class='category' href='/categories/note/'>note</a>, <a class='category' href='/categories/regex/'>regex</a>
+
+
+</div>
+		
+		
+                                    <span class="comments"><a href="/regex-basics+/#comments">Comments</a></span>
+                        
+	</div>
+	<h1 class="title" itemprop="name"><a href="/regex-basics+/" itemprop="url">Regex Basics</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Here is the notes taken for <a href="http://regexone.com/">RegexOne</a>’s interactive tutorial which explores the more practical uses of regular expressions so that we can use them as quickly as possible.</p>
+
+<h2 id="cheat-sheet">Cheat Sheet</h2>
+
+<p>Here is the summary of basic regex usages.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regex</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>abc…</code></td>
+      <td>Letters</td>
+    </tr>
+    <tr>
+      <td><code>123…</code></td>
+      <td>Digits</td>
+    </tr>
+    <tr>
+      <td><code>\d</code></td>
+      <td>Any Digit</td>
+    </tr>
+    <tr>
+      <td><code>\D</code></td>
+      <td>Any Non-digit character</td>
+    </tr>
+    <tr>
+      <td><code>.</code></td>
+      <td>Any Character</td>
+    </tr>
+    <tr>
+      <td><code>\.</code></td>
+      <td>Period</td>
+    </tr>
+    <tr>
+      <td><code>[abc]</code></td>
+      <td>Only a, b, or c</td>
+    </tr>
+    <tr>
+      <td><code>[^abc]</code></td>
+      <td>Not a, b, nor c</td>
+    </tr>
+    <tr>
+      <td><code>[a-z]</code></td>
+      <td>Characters a to z</td>
+    </tr>
+    <tr>
+      <td><code>[0-9]</code></td>
+      <td>Numbers 0 to 9</td>
+    </tr>
+    <tr>
+      <td><code>\w</code></td>
+      <td>Any Alphanumeric character</td>
+    </tr>
+    <tr>
+      <td><code>\W</code></td>
+      <td>Any Non-alphanumeric character</td>
+    </tr>
+    <tr>
+      <td><code>{m}</code></td>
+      <td>m Repetitions</td>
+    </tr>
+    <tr>
+      <td><code>{m,n}</code></td>
+      <td>m to n Repetitions</td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>Zero or more repetitions</td>
+    </tr>
+    <tr>
+      <td><code>+</code></td>
+      <td>One or more repetitions</td>
+    </tr>
+    <tr>
+      <td><code>?</code></td>
+      <td>Optional character</td>
+    </tr>
+    <tr>
+      <td><code>\s</code></td>
+      <td>Any Whitespace</td>
+    </tr>
+    <tr>
+      <td><code>\S</code></td>
+      <td>Any Non-whitespace character</td>
+    </tr>
+    <tr>
+      <td><code>^…$</code></td>
+      <td>Starts and ends</td>
+    </tr>
+    <tr>
+      <td><code>(…)</code></td>
+      <td>Capture Group</td>
+    </tr>
+    <tr>
+      <td><code>(a(bc))</code></td>
+      <td>Capture Sub-group</td>
+    </tr>
+    <tr>
+      <td><code>(.*)</code></td>
+      <td>Capture all</td>
+    </tr>
+    <tr>
+      <td><code>(abc|def)</code></td>
+      <td>Matches abc or def</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="lesson-1-an-introduction-and-the-abcs">Lesson 1: An Introduction, and the ABCs</h2>
+
+<p><strong>Everything is essentially a character</strong>. We are writing patterns to match a specific sequence of characters (also known as a string).</p>
+
+<p><strong>Pattern</strong>: <code>abc</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span> 	<span class="no">Text</span> 	
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;abcdefg&#39;</span>
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;abcde&#39;</span>
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;abc&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-1-the-123s">Lesson 1½: The 123s</h2>
+
+<p><strong>Pattern</strong>: <code>123</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span> 	<span class="no">Text</span> 	
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;abc123xyz&#39;</span>
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;define &quot;123&quot;&#39;</span>
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;var g = 123;&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-2-the-dot">Lesson 2: The Dot</h2>
+
+<p><strong>Pattern</strong>: <code>...\.</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span> 	<span class="no">Text</span> 	
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;cat.&#39;</span>
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;896.&#39;</span>
+</span><span class="line"><span class="n">match</span> 	<span class="s1">&#39;?=+.&#39;</span>
+</span><span class="line"><span class="n">skip</span> 	<span class="s1">&#39;abc1&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-3-matching-specific-characters">Lesson 3: Matching specific characters</h2>
+
+<p><strong>Pattern</strong>: <code>[cmf]an</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;can&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;man&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;fan&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;dan&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;ran&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;pan&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-4-excluding-specific-characters">Lesson 4: Excluding specific characters</h2>
+
+<p><strong>Pattern</strong>: <code>[^b]og</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;hog&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;dog&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;bog&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-5-character-ranges">Lesson 5: Character ranges</h2>
+
+<p><strong>Pattern</strong>: <code>[A-C][n-p][a-c]</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;Ana&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;Bob&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;Cpc&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;aax&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;bby&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;ccz&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-6-catching-some-zzzs">Lesson 6: Catching some zzz’s</h2>
+
+<p><strong>Pattern</strong>: <code>waz{2,4}up</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;wazzzzup&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;wazzzup&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;wazup&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-7-mr-kleene-mr-kleene">Lesson 7: Mr. Kleene, Mr. Kleene</h2>
+
+<p><strong>Pattern</strong>: <code>aa+b*c+</code> or <code>a{2,4}b{0,4}c{1,2}</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;aaaabcc&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;aabbbbc&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;aacc&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;a&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-8-characters-optional">Lesson 8: Characters optional</h2>
+
+<p>Pattern: <code>\d+ files? found\?</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;1 file found?&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;2 files found?&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;24 files found?&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;No files found.&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-9-all-this-whitespace">Lesson 9: All this whitespace</h2>
+
+<p><strong>Pattern</strong>: <code>\d\.\s+abc</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;1.  abc&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;2.	  abc&#39;</span>
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;3.      abc&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;4.abc&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-10-starting-and-ending">Lesson 10: Starting and ending</h2>
+
+<p><strong>Pattern</strong>: <code>^Mission: successful$</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>	<span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	<span class="s1">&#39;Mission: successful&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;Last Mission: unsuccessful&#39;</span>
+</span><span class="line"><span class="n">skip</span>	<span class="s1">&#39;Next Mission: successful upon capture of target&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-11-capturing-groups">Lesson 11: Capturing groups</h2>
+
+<p>Regular expressions allow us to not just <strong>match text</strong> but also to <strong>extract information</strong> for further processing. This is done by defining <strong>groups of characters</strong> and capturing them using the special parentheses <code>(</code> and <code>)</code> metacharacters.</p>
+
+<ul>
+  <li><code>^(IMG\d+\.png)$</code>: capture and extract the full filename</li>
+  <li><code>^(IMG\d+)\.png$</code>: capture the part before the period</li>
+</ul>
+
+<p><strong>Pattern</strong>: <code>^(file.+)\.pdf$</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>                          <span class="no">Capture</span> <span class="no">Groups</span>	
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;file_record_transcript.pdf&#39;</span>  <span class="s1">&#39;file_record_transcript&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;file_07241999.pdf&#39;</span>           <span class="s1">&#39;file_07241999&#39;</span>
+</span><span class="line"><span class="n">skip</span>     <span class="s1">&#39;testfile_fake.pdf.tmp&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-12-nested-groups">Lesson 12: Nested groups</h2>
+
+<p><strong>Pattern</strong>: <code>(\w+ (\d+))</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>        <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;Jan 1987&#39;</span>  <span class="s1">&#39;Jan 1987&#39;</span> <span class="s1">&#39;1987&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;May 1969&#39;</span>  <span class="s1">&#39;May 1969&#39;</span> <span class="s1">&#39;1969&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;Aug 2011&#39;</span>  <span class="s1">&#39;Aug 2011&#39;</span> <span class="s1">&#39;2011&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-13-more-group-work">Lesson 13: More group work</h2>
+
+<p><strong>Pattern</strong>: <code>((\d+)x(\d+))</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>         <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="no">Capture</span>  <span class="s1">&#39;1280x720&#39;</span>   <span class="s1">&#39;1280&#39;</span> <span class="s1">&#39;720&#39;</span>
+</span><span class="line"><span class="no">Capture</span>  <span class="s1">&#39;1920x1600&#39;</span>  <span class="s1">&#39;1920&#39;</span> <span class="s1">&#39;1600&#39;</span>
+</span><span class="line"><span class="no">Capture</span>  <span class="s1">&#39;1024x768&#39;</span>   <span class="s1">&#39;1024&#39;</span> <span class="s1">&#39;768&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-14-its-all-conditional">Lesson 14: It’s all conditional</h2>
+
+<p>Writing patterns with many conditions can be hard to read, so you should consider making them separate patterns if they get too complex.</p>
+
+<p><strong>Pattern</strong>: <code>I love (cats|dogs)</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>   <span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>	 <span class="s1">&#39;I love cats&#39;</span>
+</span><span class="line"><span class="n">match</span>	 <span class="s1">&#39;I love dogs&#39;</span>
+</span><span class="line"><span class="n">skip</span>	 <span class="s1">&#39;I love logs&#39;</span>
+</span><span class="line"><span class="n">skip</span>	 <span class="s1">&#39;I love cogs&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="lesson-15-other-special-characterss">Lesson 15: Other special characterss</h2>
+
+<p><strong>Boundary</strong></p>
+
+<ul>
+  <li><code>\b</code>: boundary between a word and a non-word character</li>
+  <li><code>\w+\b</code>: capturing entire words</li>
+</ul>
+
+<p><strong>Back Referencing</strong></p>
+
+<ul>
+  <li><code>\0</code>: the full matched text</li>
+  <li><code>\1</code>: group 1</li>
+  <li><code>\2</code>: group 2</li>
+</ul>
+
+<p>This is useful for example when you are in a text editor and doing a search and replace using regular expressions to swap two numbers, you can search for <code>(\d+)-(\d+)</code> and replace it with <code>\2-\1</code> to put the second captured number first, and the first captured number second for example.</p>
+
+<p>Pattern: <code>.*</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>   <span class="no">Text</span>	
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;The quick brown fox jumped over the lazy dog.&#39;</span>
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;There were 614 instances of students getting 90.0% or above.&#39;</span>
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;The FCC had to censor the network for saying &amp;$#*@!.&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-1-matching-a-decimal-numbers">Problem 1: matching a decimal numbers</h2>
+
+<p><strong>Pattern</strong>: <code>^-?\d+(,\d+)*(\.\d+(e\d+)?)?$</code></p>
+
+<p>Starts with an optional negative sign, one or more digits, optionally followed by a comma and more digits, followed by an optional fractional component which consists of a period, one or more digits, and another optional component, the exponent followed by more digits.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>   <span class="no">Text</span> 	
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;3.14529&#39;</span>
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;-255.34&#39;</span>
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;128&#39;</span>
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;1.9e10&#39;</span>
+</span><span class="line"><span class="n">match</span>  <span class="s1">&#39;123,340.00&#39;</span>
+</span><span class="line"><span class="n">skip</span>   <span class="s1">&#39;720p&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-2-matching-phone-numbers">Problem 2: matching phone numbers</h2>
+
+<p><strong>Pattern</strong>: <code>1?[\s-]?\(?(\d{3})\)?[\s-]?\d{3}[\s-]?\d{4}</code></p>
+
+<p>This breaks down into the country code <code>1?</code>, the captured area code <code>\(?(\d{3})\)?</code>, and the rest of the digits <code>\d{3}</code> and <code>\d{4}</code> respectively. We use <code>[\s-]?</code> to catch the space or dashes between each component.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>              <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;415-555-1234&#39;</span>    <span class="s1">&#39;415&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;650-555-2345&#39;</span>    <span class="s1">&#39;650&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;(416)555-3456&#39;</span>   <span class="s1">&#39;416&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;202 555 4567&#39;</span>    <span class="s1">&#39;202&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;4035555678&#39;</span>      <span class="s1">&#39;403&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;1 416 555 9292&#39;</span>  <span class="s1">&#39;416&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-3-matching-emails">Problem 3: matching emails</h2>
+
+<p><strong>Pattern</strong>: <code>^([\w\.]*)(\+\w*)?@\w+\.?\w+.\w+</code></p>
+
+<p>To extract the beginning of each email, we can use a simple expression <code>^([\w\.]*)</code> which will match emails starting with alphanumeric characters including the period. It will match up to the point in the text where it reaches an <code>@</code> or <code>+</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>                                <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;tom@hogwarts.com&#39;</span>                  <span class="s1">&#39;tom&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;tom.riddle@hogwarts.com&#39;</span>           <span class="s1">&#39;tom.riddle&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;tom.riddle+regexone@hogwarts.com&#39;</span>  <span class="s1">&#39;tom.riddle&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;tom@hogwarts.eu.com&#39;</span>               <span class="s1">&#39;tom&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;potter@hogwarts.com&#39;</span>               <span class="s1">&#39;potter&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;harry@hogwarts.com&#39;</span>                <span class="s1">&#39;harry&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;hermione+regexone@hogwarts.com&#39;</span>    <span class="s1">&#39;hermione&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-4-matching-html">Problem 4: matching HTML</h2>
+
+<p><strong>Pattern</strong>: <code>&lt;(\w+)</code></p>
+
+<ul>
+  <li>tag name: <code>&lt;(\w+)</code></li>
+  <li>tag content: <code>&gt;([\w\s]*)&lt;</code></li>
+  <li>attribute values: <code>='([\w://.]*)</code></li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>                                      <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s2">&quot;&lt;a&gt;This is a link&lt;/a&gt;&quot;</span>                   <span class="s2">&quot;a&quot;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s2">&quot;&lt;a href=&#39;http://regexone.com&#39;&gt;Link&lt;/a&gt;&quot;</span>  <span class="s2">&quot;a&quot;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s2">&quot;&lt;div class=&#39;test_style&#39;&gt;Test&lt;/div&gt;&quot;</span>      <span class="s2">&quot;div&quot;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s2">&quot;&lt;div&gt;Hello &lt;span&gt;world&lt;/span&gt;&lt;/div&gt;&quot;</span>     <span class="s2">&quot;div&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-5-matching-specific-filenames">Problem 5: matching specific filenames</h2>
+
+<p>Extract the filenames and extension types of <strong>only image files</strong> (not including temporary files for images currently being edited). Image files are defined as <code>.jpg</code>, <code>.png</code>, and <code>.gif</code>.</p>
+
+<p><strong>Pattern</strong>: <code>(\w+)\.(jpg|png|gif)$</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>                   <span class="no">Capture</span> <span class="no">Groups</span> 	
+</span><span class="line"><span class="n">skip</span>     <span class="s1">&#39;.bash_profile&#39;</span>
+</span><span class="line"><span class="n">skip</span>     <span class="s1">&#39;workspace.doc&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;img0912.jpg&#39;</span>          <span class="s1">&#39;img0912&#39;</span> <span class="s1">&#39;jpg&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;updated_img0912.png&#39;</span>  <span class="s1">&#39;updated_img0912&#39;</span> <span class="s1">&#39;png&#39;</span>
+</span><span class="line"><span class="n">skip</span>     <span class="s1">&#39;documentation.html&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;favicon.gif&#39;</span>          <span class="s1">&#39;favicon&#39;</span> <span class="s1">&#39;gif&#39;</span>
+</span><span class="line"><span class="n">skip</span>     <span class="s1">&#39;img0912.jpg.tmp&#39;</span>
+</span><span class="line"><span class="n">skip</span>     <span class="s1">&#39;access.lock&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-6-trimming-whitespace-from-start-and-end-of-line">Problem 6: Trimming whitespace from start and end of line</h2>
+
+<p>Write a simple regular expression to capture the content of each line, without the extra whitespace.</p>
+
+<p><strong>Pattern</strong>: <code>^\s*(.*)\s*$</code></p>
+
+<p>We can just skip all the starting and ending whitespace by not capturing it in a line.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>     <span class="no">Text</span>                            <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39;  The quick brown fox... &#39;</span>     <span class="s1">&#39;The quick brown fox...&#39;</span>
+</span><span class="line"><span class="n">capture</span>  <span class="s1">&#39; jumped over the lazy dog.  &#39;</span>  <span class="s1">&#39;jumped over the lazy dog.&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-7-extracting-information-from-a-log-file">Problem 7: Extracting information from a log file</h2>
+
+<p>Extract the <strong>filename</strong>, <strong>method name</strong> and <strong>line number</strong> of line of the stack trace.</p>
+
+<p>Pattern: <code>(\w+)\(([\w\.]+):(\d+)\)</code></p>
+
+<p>The first capture group is the method, followed by an escaped parenthesis, followed by the filename, a colon, and finally the line number.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>    <span class="no">Text</span>                                                        <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="n">skip</span>    <span class="s1">&#39;W/dalvikvm( 1553): threadid=1: uncaught exception&#39;</span>
+</span><span class="line"><span class="n">skip</span>    <span class="s1">&#39;E/( 1553): FATAL EXCEPTION: main&#39;</span>
+</span><span class="line"><span class="n">skip</span>    <span class="s1">&#39;E/( 1553): java.lang.StringIndexOutOfBoundsException&#39;</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;E/( 1553):   at widget.List.makeView(ListView.java:1727)&#39;</span>  <span class="s1">&#39;makeView&#39;</span> <span class="s1">&#39;ListView.java&#39;</span> <span class="s1">&#39;1727&#39;</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;E/( 1553):   at widget.List.fillDown(ListView.java:652)&#39;</span>   <span class="s1">&#39;fillDown&#39;</span> <span class="s1">&#39;ListView.java&#39;</span> <span class="s1">&#39;652&#39;</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;E/( 1553):   at widget.List.fillFrom(ListView.java:709)&#39;</span>   <span class="s1">&#39;fillFrom&#39;</span> <span class="s1">&#39;ListView.java&#39;</span> <span class="s1">&#39;709&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="problem-8-parsing-and-extracting-data-from-a-url">Problem 8: Parsing and extracting data from a URL</h2>
+
+<p><strong>URIs</strong>, or <em>Uniform Resource Identifiers</em>, are a representation of a resource that is generally composed of a <strong>scheme</strong>, <strong>host</strong>, <strong>port</strong> (optional), and <strong>resource path</strong>, respectively highlighted below.</p>
+
+<p><code>http://regexone.com:80/page</code></p>
+
+<p>The scheme describes the protocol to communicate with, the host and port describe the source of the resource, and the full path describes the location at the source for the resource.</p>
+
+<p>In the exercise below, try to extract the <strong>protocol</strong>, <strong>host</strong> and <strong>port</strong> of the all the resources listed.</p>
+
+<p><strong>Pattern</strong>: <code>^(\w+)://([\w\-\.]+):?(\d+)?</code></p>
+
+<ul>
+  <li>protocols: <code>(\w+)://</code></li>
+  <li>hosts: <code>://([\w\-\.]+)</code></li>
+  <li>ports: <code>(:(\d+))</code></li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="ruby"><span class="line"><span class="no">Task</span>    <span class="no">Text</span>                                                          <span class="no">Capture</span> <span class="no">Groups</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;ftp://file_server.com:21/top_secret/life_changing_plans.pdf&#39;</span> <span class="s1">&#39;ftp&#39;</span> <span class="s1">&#39;file_server.com&#39;</span> <span class="s1">&#39;21&#39;</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;http://regexone.com/lesson/introduction#section&#39;</span>             <span class="s1">&#39;http&#39;</span> <span class="s1">&#39;regexone.com&#39;</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;file://localhost:4040/zip_file&#39;</span>                              <span class="s1">&#39;file&#39;</span> <span class="s1">&#39;localhost&#39;</span> <span class="s1">&#39;4040&#39;</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;https://s3cur3-server.com:9999/&#39;</span>                             <span class="s1">&#39;https&#39;</span> <span class="s1">&#39;s3cur3-server.com&#39;</span> <span class="s1">&#39;9999&#39;</span>
+</span><span class="line"><span class="n">capture</span> <span class="s1">&#39;market://search/angry%20birds&#39;</span>                               <span class="s1">&#39;market&#39;</span> <span class="s1">&#39;search&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -4045,63 +4656,11 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 
 </article>
 
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-05-13T19:12:00-07:00" data-updated="true" itemprop="datePublished">May 13<span>th</span>, 2015</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/categories/insight/'>insight</a>
-
-
-</div>
-		
-		
-                                    <span class="comments"><a href="/program-or-be-programmed/#comments">Comments</a></span>
-                        
-	</div>
-	<h1 class="title" itemprop="name"><a href="/program-or-be-programmed/" itemprop="url">Program or Be Programmed</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><br /></p>
-
-<blockquote>
-  <p>Do we direct technology, or do we let ourselves be directed by it and those who have mastered it? Choose the former, you gain access to the control panel of civilization. Choose the latter, it could be the last real choice you get to make.</p>
-</blockquote>
-
-<div style="text-align: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/imV3pPIUy1k" frameborder="0" allowfullscreen=""></iframe></div>
-
-<p>Douglas Rushkoff, an world-renowned media theorist and counterculture figure, pointed out that <strong>programming is the new literacy of the digital age</strong> in his controversial speech <a href="https://www.youtube.com/watch?v=imV3pPIUy1k">Program or be Programmed: Ten Commands for a Digital Age</a>. Although I am not sure that programming is just a craft like woodworking or architecture or it will change the whole thinking of the world, my carrer is completely changed by thinking of relationship of human and technology.</p>
-
-<p>I have worked for two major Japan-based IT solution providers for over ten years, coding with languages such as <code>Oracle PL/SQL</code>, <code>Visual Basic</code>, <code>C++</code>, <code>Java</code> as a developer in previous several years, and then transferred to managerial positions as project manager and director of business divisions. But I really didn’t want to leave technology behind because I do believe that information technology will change the world dramatically than ever before, so I began to take a PhD program researching on data mining algorithms and its application, and fortunately got the degree after several year’s efforts.</p>
-
-<p>In the world we called enterprise computing, our job is to work with dozens of (sometimes hundreds of) outsourced developers/designers/testers to build up systems like ERP/MES/CRM for big firms, and the project will spend a long period, months to years. So, in 2006, when I heard Google acquired YouTube.com at a $1.65 billion which was founded by only two developers, I was completely shocked. I realized that the way we used to build up systems must different thoroughly, not only the developing languages, but also the way we think and take, something like <code>TDD/BDD</code>, <code>CI</code>, <code>Agile(Scrum/XP)</code>, <code>Lean Startup</code>, etc., which I known afterward.</p>
-
-<p>Then I began to run a consulting firm in Shanghai with several developers, serving small business firms in a non-traditional way, and developing our own products at the same time. As the founder of a startup, I realized that having the ability to rapidly prototype ideas and iterate rapidly is essential for the process changing ideas to real applications and putting the control to your own hands. So, after several years, I paid thounds of dollars to join an online Ruby on Rails bootcamp named <a href="www.gotealeaf.com">TeaLeaf Academy</a> and restarted programming again.</p>
-
-<p>Back to the arguing about “Program or Programmed”, I really have no idea if everyone in the future should learn programming to avoid “being programmed”, but I choose to be the one “gain access to the control panel of civilization”. And I do believe guys in enterprise computing field should open eyes to find out what’s happening in another world, both technology and way of thinking &amp; working. </p>
-
-		
-		
-	</div>
-
-</article>
-
 </div>
 <nav id="pagenavi">
     
+    
+        <a href="/blog/page/2/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav></div>
