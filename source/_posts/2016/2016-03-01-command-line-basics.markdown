@@ -8,11 +8,72 @@ keywords: command system codecademy
 description: Notes for Codecademy's Command Line course
 ---
 
-Here is the notes I've taken while reading Codecademy's course: _Learn the Command Line_. This is the mixed version of both course note and _Glossary of commonly used command_ summarized by Codecademy itself.
+Here is the notes I've taken while reading Codecademy's course: [Learn the Command Line](https://codecademy.com/learn/learn-the-command-line) and Launch School's open book: [Introduction to the Command Line](https://launchschool.com/books/command_line).
 
 The command line is a text interface for your computer. It's a program that takes in commands, which it passes on to the computer's operating system to run.
 
 From the command line, you can navigate through files and folders on your computer, just as you would with Windows Explorer on Windows or Finder on Mac OS. The difference is that the command line is fully text-based.
+
+<br>
+
+# Lists
+
+## Common Commands
+
+The following is a list of some of the most common commands used on the command line.
+
+Command	| Description
+- | -
+`cd` | Change directory.
+`ls` | List files and directories in current directory.
+`pwd` | Display the path of the current directory.
+`touch` | Create a file.
+`mkdir` | Create a directory.
+`rm` | Remove a file or directory. Warning: deleting a file or directory with this command is permanent!
+`cp` | Copy a file or directory.
+`mv` | Move or rename a file or directory.
+`echo` | Print text to STDOUT.
+`cat` | Display contents of a file.
+`more` | Display contents of a file, starting at the top and letting the user scroll down.
+`less` | Display contents of a file in an even more interactive way.
+`head` | Display the first part of a file.
+`tail` | Display the last part of a file.
+`man` | Display documentation about a command.
+
+## Symbols
+
+Some of the symbols that will help us navigate the command line:
+
+Symbol | Meaning
+- | -
+`/` | The root directory or a separator when listing directories
+`.` | The current directory (also `./`) or the same level
+`..` | The directory one level up (also `../`)
+`../..` | Two levels up
+`~` | Your home directory, or the directory you are placed in when you log in.
+`*` | The splat or glob operator. This is the wildcard of the command line and represents "any characters."
+
+<br>
+
+# Concepts
+
+**Executables**
+
+- A command is just a file. `ls`, `mkdir`, and `cd` are all files.
+- Files that can be used as commands are called **executables**.
+
+**What makes an executable different from other files?**
+
+- They have **special characters** at the **beginning** to tell the computer how to execute them.
+- They have **scripts** or **machine language** as their content.
+- They have the executable **permission**.
+
+  To run an executable, you just type its path as the first part of your input, then type in your arguments, and hit enter, like this:
+
+  ``` bash
+  $ /bin/echo "Hello World"
+  Hello World
+  ```
 
 <br>
 
@@ -371,7 +432,7 @@ $ nano hello.txt
 
 ## `~/.bash_profile`
 
-`~/.bash_profile` is the name of file used to **store environment settings**. It is commonly called the _bash profile_. When a session starts, it will load the contents of the bash profile before executing commands.
+`~/.bash_profile` or `.bashrc` is the name of file used to **store environment settings**. It is commonly called the _bash profile_. When a session starts, it will load the contents of the bash profile before executing commands.
 
 - The `~` represents the user's **home directory**.
 - The `.` indicates a **hidden** file.
@@ -473,3 +534,100 @@ $ env
 ``` bash
 $ env | grep PATH
 ```
+
+<br>
+
+# Permissions
+
+**Overview**
+
+- 3 levels of _ownership_: **user**, **group**, and **other**
+- 3 _access types_: **r**ead, **w**rite, and e**x**ecute.
+
+```
+# +-------- Directory or not
+# |  +------- User Read, Write, Execute
+# |  |   +------- Group Read, Execute
+# |  |   |   +----- Other Read, Execute
+# |  |   |   |   +--- The name of the user
+# |  |   |   |   |     +--- The name of the group
+# |  |   |   |   |     |
+# d|rwx|r-x|r-x user group
+```
+
+**Setting Permissions**
+
+``` bash
+$ ls -lah test.txt
+-rwxr--r--  1 bob  staff  1GB Jul 14 15:24 test.txt
+
+$ # Remove write access for user
+$ chmod u-w test.txt
+$ ls -lah test.txt
+-r-xr--r--  1 bob  staff  1GB Jul 14 15:24 test.txt
+
+$ # Add execute access for group
+$ chmod g+x test.txt
+$ ls -lah test.txt
+-r-xr-xr--  1 bob  staff  1GB Jul 14 15:24 test.txt
+```
+
+**Number & Access level**
+
+Number | Permission
+- | -
+0 | No permission granted.
+1 | Can execute.
+2 | Can write.
+3 | Can write and execute (2 + 1 = 3).
+4 | Can read.
+5 | Can read and execute (4 +1 = 5).
+6 | Can read and write (4 + 2 = 6).
+7 | Can read and write and execute (4 + 2 + 1 = 7).
+
+``` bash
+$ chmod 777 test.sh
+$ ls -l test.sh
+-rwxrwxrwx  1 bob admin 0B Jul 15 15:24 test.sh
+
+$ chmod 000 test.sh
+$ ls -l test.sh
+----------  1 bob admin 0B Jul 15 15:24 test.sh
+
+$ chmod 754 test.sh
+$ ls -l test.sh
+-rwxr-xr--  1 bob admin 0B Jul 15 15:24 test.sh
+```
+
+**Users and Groups**
+
+Users can belong to multiple groups, and groups can have multiple users. If a user belongs to a group, it will have the access types granted to the assigned group of any file or directory.
+
+To determine if your user is part of a certain group, use the `groups` command:
+
+``` bash
+$ groups
+ubuntu adm dialout cdrom floppy sudo audio dip video plugdev
+```
+
+**Root user**
+
+The root user is the super user—it can read, write, and delete any file, but cannot execute just any file.
+
+If you are logged in as a non-root user and know the root user's password, you can switch to the root user account at any time with the following command:
+
+``` bash
+$ su -
+Password:
+```
+
+**`sudo`**
+
+The `sudo` command allows you to "do" something as a "super user." When you use this command, you will usually be required to input a password; but instead of the root user's password, you'll be putting in **your own password**.
+
+Why `sudo`
+
+- The server administrator wants you to have root access for some commands and/or directories, but not for everything. In this case the administrator will set up sudo to have restrictions or whitelisted commands.
+- Running commands while logged in as root can be dangerous. Using a non-root user makes it obvious when you are running a command that requires root privileges because you have to prefix your command with sudo.
+- The sudo command provides a detailed audit trail so that system administrators can track what commands individuals used on system files.
+- Sudo uses a ticketing system where you put in your password once, then you don't have to until you haven't run any sudo commands for five minutes or longer. This adds security to your command line session, preventing others from gaining root access if you leave your Terminal open on accident.
