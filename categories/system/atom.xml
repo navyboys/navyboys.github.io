@@ -4,7 +4,7 @@
   <title><![CDATA[Category: system | @navyboys]]></title>
   <link href="http://NavySPACE.net/categories/system/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-05-18T19:08:55-07:00</updated>
+  <updated>2016-10-03T11:56:40-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -18,11 +18,157 @@
     <link href="http://NavySPACE.net/command-line-basics/"/>
     <updated>2016-03-01T06:15:00-08:00</updated>
     <id>http://NavySPACE.net/command-line-basics</id>
-    <content type="html"><![CDATA[<p>Here is the notes I’ve taken while reading Codecademy’s course: <em>Learn the Command Line</em>. This is the mixed version of both course note and <em>Glossary of commonly used command</em> summarized by Codecademy itself.</p>
+    <content type="html"><![CDATA[<p>Here is the notes I’ve taken while reading Codecademy’s course: <a href="https://codecademy.com/learn/learn-the-command-line">Learn the Command Line</a> and Launch School’s open book: <a href="https://launchschool.com/books/command_line">Introduction to the Command Line</a>.</p>
 
 <p>The command line is a text interface for your computer. It’s a program that takes in commands, which it passes on to the computer’s operating system to run.</p>
 
 <p>From the command line, you can navigate through files and folders on your computer, just as you would with Windows Explorer on Windows or Finder on Mac OS. The difference is that the command line is fully text-based.</p>
+
+<p><br /></p>
+
+<h1 id="lists">Lists</h1>
+
+<h2 id="common-commands">Common Commands</h2>
+
+<p>The following is a list of some of the most common commands used on the command line.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Command</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cd</code></td>
+      <td>Change directory.</td>
+    </tr>
+    <tr>
+      <td><code>ls</code></td>
+      <td>List files and directories in current directory.</td>
+    </tr>
+    <tr>
+      <td><code>pwd</code></td>
+      <td>Display the path of the current directory.</td>
+    </tr>
+    <tr>
+      <td><code>touch</code></td>
+      <td>Create a file.</td>
+    </tr>
+    <tr>
+      <td><code>mkdir</code></td>
+      <td>Create a directory.</td>
+    </tr>
+    <tr>
+      <td><code>rm</code></td>
+      <td>Remove a file or directory. Warning: deleting a file or directory with this command is permanent!</td>
+    </tr>
+    <tr>
+      <td><code>cp</code></td>
+      <td>Copy a file or directory.</td>
+    </tr>
+    <tr>
+      <td><code>mv</code></td>
+      <td>Move or rename a file or directory.</td>
+    </tr>
+    <tr>
+      <td><code>echo</code></td>
+      <td>Print text to STDOUT.</td>
+    </tr>
+    <tr>
+      <td><code>cat</code></td>
+      <td>Display contents of a file.</td>
+    </tr>
+    <tr>
+      <td><code>more</code></td>
+      <td>Display contents of a file, starting at the top and letting the user scroll down.</td>
+    </tr>
+    <tr>
+      <td><code>less</code></td>
+      <td>Display contents of a file in an even more interactive way.</td>
+    </tr>
+    <tr>
+      <td><code>head</code></td>
+      <td>Display the first part of a file.</td>
+    </tr>
+    <tr>
+      <td><code>tail</code></td>
+      <td>Display the last part of a file.</td>
+    </tr>
+    <tr>
+      <td><code>man</code></td>
+      <td>Display documentation about a command.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="symbols">Symbols</h2>
+
+<p>Some of the symbols that will help us navigate the command line:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/</code></td>
+      <td>The root directory or a separator when listing directories</td>
+    </tr>
+    <tr>
+      <td><code>.</code></td>
+      <td>The current directory (also <code>./</code>) or the same level</td>
+    </tr>
+    <tr>
+      <td><code>..</code></td>
+      <td>The directory one level up (also <code>../</code>)</td>
+    </tr>
+    <tr>
+      <td><code>../..</code></td>
+      <td>Two levels up</td>
+    </tr>
+    <tr>
+      <td><code>~</code></td>
+      <td>Your home directory, or the directory you are placed in when you log in.</td>
+    </tr>
+    <tr>
+      <td><code>*</code></td>
+      <td>The splat or glob operator. This is the wildcard of the command line and represents “any characters.”</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+
+<h1 id="concepts">Concepts</h1>
+
+<p><strong>Executables</strong></p>
+
+<ul>
+  <li>A command is just a file. <code>ls</code>, <code>mkdir</code>, and <code>cd</code> are all files.</li>
+  <li>Files that can be used as commands are called <strong>executables</strong>.</li>
+</ul>
+
+<p><strong>What makes an executable different from other files?</strong></p>
+
+<ul>
+  <li>They have <strong>special characters</strong> at the <strong>beginning</strong> to tell the computer how to execute them.</li>
+  <li>They have <strong>scripts</strong> or <strong>machine language</strong> as their content.</li>
+  <li>
+    <p>They have the executable <strong>permission</strong>.</p>
+
+    <p>To run an executable, you just type its path as the first part of your input, then type in your arguments, and hit enter, like this:</p>
+
+    <p><code>bash
+$ /bin/echo "Hello World"
+Hello World
+</code></p>
+  </li>
+</ul>
 
 <p><br /></p>
 
@@ -388,7 +534,7 @@ $ nano hello.txt
 
 <h2 id="bashprofile"><code>~/.bash_profile</code></h2>
 
-<p><code>~/.bash_profile</code> is the name of file used to <strong>store environment settings</strong>. It is commonly called the <em>bash profile</em>. When a session starts, it will load the contents of the bash profile before executing commands.</p>
+<p><code>~/.bash_profile</code> or <code>.bashrc</code> is the name of file used to <strong>store environment settings</strong>. It is commonly called the <em>bash profile</em>. When a session starts, it will load the contents of the bash profile before executing commands.</p>
 
 <ul>
   <li>The <code>~</code> represents the user’s <strong>home directory</strong>.</li>
@@ -492,6 +638,139 @@ $ env
 <p><code>bash
 $ env | grep PATH
 </code></p>
+
+<p><br /></p>
+
+<h1 id="permissions">Permissions</h1>
+
+<p><strong>Overview</strong></p>
+
+<ul>
+  <li>3 levels of <em>ownership</em>: <strong>user</strong>, <strong>group</strong>, and <strong>other</strong></li>
+  <li>3 <em>access types</em>: <strong>r</strong>ead, <strong>w</strong>rite, and e<strong>x</strong>ecute.</li>
+</ul>
+
+<p><code>
+# +-------- Directory or not
+# |  +------- User Read, Write, Execute
+# |  |   +------- Group Read, Execute
+# |  |   |   +----- Other Read, Execute
+# |  |   |   |   +--- The name of the user
+# |  |   |   |   |     +--- The name of the group
+# |  |   |   |   |     |
+# d|rwx|r-x|r-x user group
+</code></p>
+
+<p><strong>Setting Permissions</strong></p>
+
+<p>``` bash
+$ ls -lah test.txt
+-rwxr–r–  1 bob  staff  1GB Jul 14 15:24 test.txt</p>
+
+<p>$ # Remove write access for user
+$ chmod u-w test.txt
+$ ls -lah test.txt
+-r-xr–r–  1 bob  staff  1GB Jul 14 15:24 test.txt</p>
+
+<p>$ # Add execute access for group
+$ chmod g+x test.txt
+$ ls -lah test.txt
+-r-xr-xr–  1 bob  staff  1GB Jul 14 15:24 test.txt
+```</p>
+
+<p><strong>Number &amp; Access level</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Permission</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>No permission granted.</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Can execute.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Can write.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Can write and execute (2 + 1 = 3).</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Can read.</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Can read and execute (4 +1 = 5).</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Can read and write (4 + 2 = 6).</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Can read and write and execute (4 + 2 + 1 = 7).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>``` bash
+$ chmod 777 test.sh
+$ ls -l test.sh
+-rwxrwxrwx  1 bob admin 0B Jul 15 15:24 test.sh</p>
+
+<p>$ chmod 000 test.sh
+$ ls -l test.sh
+———-  1 bob admin 0B Jul 15 15:24 test.sh</p>
+
+<p>$ chmod 754 test.sh
+$ ls -l test.sh
+-rwxr-xr–  1 bob admin 0B Jul 15 15:24 test.sh
+```</p>
+
+<p><strong>Users and Groups</strong></p>
+
+<p>Users can belong to multiple groups, and groups can have multiple users. If a user belongs to a group, it will have the access types granted to the assigned group of any file or directory.</p>
+
+<p>To determine if your user is part of a certain group, use the <code>groups</code> command:</p>
+
+<p><code>bash
+$ groups
+ubuntu adm dialout cdrom floppy sudo audio dip video plugdev
+</code></p>
+
+<p><strong>Root user</strong></p>
+
+<p>The root user is the super user—it can read, write, and delete any file, but cannot execute just any file.</p>
+
+<p>If you are logged in as a non-root user and know the root user’s password, you can switch to the root user account at any time with the following command:</p>
+
+<p><code>bash
+$ su -
+Password:
+</code></p>
+
+<p><strong><code>sudo</code></strong></p>
+
+<p>The <code>sudo</code> command allows you to “do” something as a “super user.” When you use this command, you will usually be required to input a password; but instead of the root user’s password, you’ll be putting in <strong>your own password</strong>.</p>
+
+<p>Why <code>sudo</code></p>
+
+<ul>
+  <li>The server administrator wants you to have root access for some commands and/or directories, but not for everything. In this case the administrator will set up sudo to have restrictions or whitelisted commands.</li>
+  <li>Running commands while logged in as root can be dangerous. Using a non-root user makes it obvious when you are running a command that requires root privileges because you have to prefix your command with sudo.</li>
+  <li>The sudo command provides a detailed audit trail so that system administrators can track what commands individuals used on system files.</li>
+  <li>Sudo uses a ticketing system where you put in your password once, then you don’t have to until you haven’t run any sudo commands for five minutes or longer. This adds security to your command line session, preventing others from gaining root access if you leave your Terminal open on accident.</li>
+</ul>
 ]]></content>
   </entry>
   
