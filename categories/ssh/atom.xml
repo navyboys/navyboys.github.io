@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: ssh | @navyboys]]></title>
+  <link href="http://NavySPACE.net/categories/ssh/atom.xml" rel="self"/>
+  <link href="http://NavySPACE.net/"/>
+  <updated>2016-10-05T21:18:20-07:00</updated>
+  <id>http://NavySPACE.net/</id>
+  <author>
+    <name><![CDATA[NavySPACE.net]]></name>
+    <email><![CDATA[navyboys@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Github Account Setup]]></title>
+    <link href="http://NavySPACE.net/github-setup/"/>
+    <updated>2016-10-05T21:02:00-07:00</updated>
+    <id>http://NavySPACE.net/github-setup</id>
+    <content type="html"><![CDATA[<p>Account needs to be set up with GitHub credentials so that you can push to your repositories on GitHub. Follow the steps below.</p>
+
+<h2 id="configure-github-email">Configure GitHub email</h2>
+
+<p>Make sure that you are using the e-mail address which you used when setting up your Git account.</p>
+
+<p><code>bash
+git config --global user.email 'your@email.com'
+</code></p>
+
+<h2 id="configure-full-name">Configure full name</h2>
+
+<p>Again, make sure that this is the full name which you originally used to set up your Git account.</p>
+
+<p><code>bash
+git config --global user.name 'Your Name'
+</code></p>
+
+<h2 id="generate-keys">Generate Keys</h2>
+
+<p>SSH keys are a way to identify trusted computers, without involving passwords. The steps below will walk you through generating an SSH key and then adding the public key to your GitHub account.</p>
+
+<p>Check the directory listing to see if you have files named either <code>id_rsa.pub</code> or <code>id_dsa.pub</code>. If you don’t have either of those files go to <strong>Configuring a New Key</strong>. Otherwise, you can skip to <strong>Add Your Public Key to GitHub</strong> below.</p>
+
+<p><code>bash
+cd ~/.ssh
+ls -al
+</code></p>
+
+<h2 id="configuring-a-new-key">Configuring a New Key</h2>
+
+<p>To generate a new SSH key, copy and paste the text below, making sure to substitute in your email. The default settings are preferred, so when you’re asked to “enter a file in which to save the key” just press enter to continue.</p>
+
+<p><strong>Gotcha</strong>: The first command (that starts with <code>eval</code>) uses <strong>backticks</strong> to quote the text that follows, not single quotes.</p>
+
+<p><code>bash
+eval `ssh-agent -s`
+ssh-keygen -t rsa -C "your_email@example.com"
+</code>
+You should see something like the following:</p>
+
+<p><code>bash
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/vagrant/.ssh/id_rsa): [Press enter]
+</code></p>
+
+<p>Next, you’ll be asked to enter a passphrase. Leave it blank (just hit enter without typing any other characters), as demonstrated below.</p>
+
+<p><code>bash
+Enter passphrase (empty for no passphrase): [Press enter]
+Enter same passphrase again: [Press enter]
+</code></p>
+
+<p>Which should give you something like this:</p>
+
+<p><code>bash
+Your identification has been saved in /Users/you/.ssh/id_rsa.
+Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
+The key fingerprint is:
+01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
+</code></p>
+
+<p>Then add your new key to the ssh-agent:</p>
+
+<p><code>bash
+ssh-add ~/.ssh/id_rsa
+</code></p>
+
+<h2 id="add-your-public-key-to-github">Add Your Public Key to GitHub</h2>
+
+<p>From the terminal, type the following:</p>
+
+<p><code>bash
+cat ~/.ssh/id_rsa.pub
+</code></p>
+
+<p>This will give you a big block of characters which you should highlight and copy from your Terminal/PuTTy window.</p>
+
+<ol>
+  <li>In your browser, visit the <a href="https://github.com/settings/admin">Account Settings</a> screen on GitHub.</li>
+  <li>Click on <strong>SSH and GPG Keys</strong> on the left sidebar.</li>
+  <li>Click <strong>Add SSH Key</strong></li>
+  <li>In the Title field, add a descriptive label for the new key.</li>
+  <li>Paste your key into the “Key” field.</li>
+  <li>Click <strong>Add key</strong>.</li>
+  <li>Confirm the action by entering your GitHub password.</li>
+</ol>
+]]></content>
+  </entry>
+  
+</feed>

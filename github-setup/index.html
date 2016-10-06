@@ -1,0 +1,260 @@
+
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Github Account Setup - @navyboys</title>
+	<meta name="author" content="NavySPACE.net">
+
+	
+	<meta name="description" content="Notes for Setting up Github Account">
+	<meta name="keywords" content="github development ssh">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="@navyboys" type="application/atom+xml">
+	
+	<link rel="canonical" href="http://NavySPACE.net/github-setup/">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<!--link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css"-->
+
+  
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-462947-2']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+</head>
+
+
+<body>
+	<div class="container">
+		<div class="left-col">
+			<div class="intrude-less">
+			<header id="header" class="inner"><div class="profilepic">
+	
+	<script src="/javascripts/md5.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5("navyboys@gmail.com") + "?s=160' alt='Profile Picture' style='width: 160px;' />");
+		});
+	</script>
+	
+</div>
+<hgroup>
+  <h1><a href="/">@navyboys</a></h1>
+  
+</hgroup>
+
+<nav id="main-nav"><ul class="main-navigation">
+  <li><a href="/">Posts</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://Past.NavySPACE.net"  target="_blank">Past</a></li>
+</ul>
+
+</nav>
+<nav id="sub-nav">
+	<div class="social">
+		
+			<a class="email" href="mailto:navyboys@gmail.com" title="Email">Email</a>
+		
+		
+		
+		
+		
+			<a class="github" href="https://github.com/navyboys" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+</nav>
+</header>				
+			</div>
+		</div>	
+		<div class="mid-col">
+			
+				
+			
+			<div class="mid-col-container">
+				<div id="content" class="inner"><article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	<h1 class="title" itemprop="name">Github Account Setup</h1>
+	<div class="entry-content" itemprop="articleBody"><p>Account needs to be set up with GitHub credentials so that you can push to your repositories on GitHub. Follow the steps below.</p>
+
+<h2 id="configure-github-email">Configure GitHub email</h2>
+
+<p>Make sure that you are using the e-mail address which you used when setting up your Git account.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">git config --global user.email <span class="s1">&#39;your@email.com&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="configure-full-name">Configure full name</h2>
+
+<p>Again, make sure that this is the full name which you originally used to set up your Git account.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">git config --global user.name <span class="s1">&#39;Your Name&#39;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="generate-keys">Generate Keys</h2>
+
+<p>SSH keys are a way to identify trusted computers, without involving passwords. The steps below will walk you through generating an SSH key and then adding the public key to your GitHub account.</p>
+
+<p>Check the directory listing to see if you have files named either <code>id_rsa.pub</code> or <code>id_dsa.pub</code>. If you don’t have either of those files go to <strong>Configuring a New Key</strong>. Otherwise, you can skip to <strong>Add Your Public Key to GitHub</strong> below.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nb">cd</span> ~/.ssh
+</span><span class="line">ls -al
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="configuring-a-new-key">Configuring a New Key</h2>
+
+<p>To generate a new SSH key, copy and paste the text below, making sure to substitute in your email. The default settings are preferred, so when you’re asked to “enter a file in which to save the key” just press enter to continue.</p>
+
+<p><strong>Gotcha</strong>: The first command (that starts with <code>eval</code>) uses <strong>backticks</strong> to quote the text that follows, not single quotes.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line"><span class="nb">eval</span> <span class="sb">`</span>ssh-agent -s<span class="sb">`</span>
+</span><span class="line">ssh-keygen -t rsa -C <span class="s2">&quot;your_email@example.com&quot;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+<p>You should see something like the following:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Generating public/private rsa key pair.
+</span><span class="line">Enter file in which to save the key <span class="o">(</span>/home/vagrant/.ssh/id_rsa<span class="o">)</span>: <span class="o">[</span>Press enter<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Next, you’ll be asked to enter a passphrase. Leave it blank (just hit enter without typing any other characters), as demonstrated below.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Enter passphrase <span class="o">(</span>empty <span class="k">for </span>no passphrase<span class="o">)</span>: <span class="o">[</span>Press enter<span class="o">]</span>
+</span><span class="line">Enter same passphrase again: <span class="o">[</span>Press enter<span class="o">]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Which should give you something like this:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">Your identification has been saved in /Users/you/.ssh/id_rsa.
+</span><span class="line">Your public key has been saved in /Users/you/.ssh/id_rsa.pub.
+</span><span class="line">The key fingerprint is:
+</span><span class="line">01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Then add your new key to the ssh-agent:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">ssh-add ~/.ssh/id_rsa
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="add-your-public-key-to-github">Add Your Public Key to GitHub</h2>
+
+<p>From the terminal, type the following:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="bash"><span class="line">cat ~/.ssh/id_rsa.pub
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>This will give you a big block of characters which you should highlight and copy from your Terminal/PuTTy window.</p>
+
+<ol>
+  <li>In your browser, visit the <a href="https://github.com/settings/admin">Account Settings</a> screen on GitHub.</li>
+  <li>Click on <strong>SSH and GPG Keys</strong> on the left sidebar.</li>
+  <li>Click <strong>Add SSH Key</strong></li>
+  <li>In the Title field, add a descriptive label for the new key.</li>
+  <li>Paste your key into the “Key” field.</li>
+  <li>Click <strong>Add key</strong>.</li>
+  <li>Confirm the action by entering your GitHub password.</li>
+</ol>
+</div>
+
+</article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="navy's blog"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"navyboys"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+</div>
+			</div>
+			<footer id="footer" class="inner"><p>
+  Copyright &copy; 2016 - NavySPACE.net -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a></footer>
+			
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</body>
+</html>
