@@ -4,7 +4,7 @@
   <title><![CDATA[Category: note | @navyboys]]></title>
   <link href="http://NavySPACE.net/categories/note/atom.xml" rel="self"/>
   <link href="http://NavySPACE.net/"/>
-  <updated>2016-10-05T21:18:20-07:00</updated>
+  <updated>2016-10-10T12:33:42-07:00</updated>
   <id>http://NavySPACE.net/</id>
   <author>
     <name><![CDATA[NavySPACE.net]]></name>
@@ -110,9 +110,9 @@ cat ~/.ssh/id_rsa.pub
   
   <entry>
     <title type="html"><![CDATA[Regex Basics]]></title>
-    <link href="http://NavySPACE.net/regex-basics+/"/>
+    <link href="http://NavySPACE.net/regex-basics/"/>
     <updated>2016-03-10T15:48:00-08:00</updated>
-    <id>http://NavySPACE.net/regex-basics </id>
+    <id>http://NavySPACE.net/regex-basics</id>
     <content type="html"><![CDATA[<p>Here is the notes taken for <a href="http://regexone.com/">RegexOne</a>’s interactive tutorial which explores the more practical uses of regular expressions so that we can use them as quickly as possible.</p>
 
 <h2 id="cheat-sheet">Cheat Sheet</h2>
