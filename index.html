@@ -9,7 +9,7 @@
 	<meta name="author" content="NavySPACE.net">
 
 	
-	<meta name="description" content="Oct 5th, 2016 github, note, ssh Comments Github Account Setup Account needs to be set up with GitHub credentials so that you can push to your &hellip;">
+	<meta name="description" content="Oct 10th, 2016 javascript, note, regex Comments Regex With Javascript Regular expressions are a sharp tool with an awkward handle. They simplify &hellip;">
 	
 
   <!-- http://t.co/dKP3o1e -->
@@ -106,6 +106,340 @@
 			<div class="mid-col-container">
 				<div id="content" class="inner">
 <div itemscope itemtype="http://schema.org/Blog">
+
+
+    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="meta">
+		<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2016-10-10T20:59:00-07:00" data-updated="true" itemprop="datePublished">Oct 10<span>th</span>, 2016</time></div>
+		<div class="tags">
+
+
+	<a class='category' href='/categories/javascript/'>javascript</a>, <a class='category' href='/categories/note/'>note</a>, <a class='category' href='/categories/regex/'>regex</a>
+
+
+</div>
+		
+		
+                                    <span class="comments"><a href="/regex-js/#comments">Comments</a></span>
+                        
+	</div>
+	<h1 class="title" itemprop="name"><a href="/regex-js/" itemprop="url">Regex With Javascript</a></h1>
+	<div class="entry-content" itemprop="articleBody">
+		<p>Regular expressions are a sharp tool with an awkward handle. They simplify some tasks tremendously but can quickly become unmanageable when applied to complex problems. Part of knowing how to use them is resisting the urge to try to shoehorn things that they cannot sanely express into them.</p>
+
+<p>This is the notes taken for <a href="http://eloquentjavascript.net/">Eloquent Javascript</a>’s <a href="http://eloquentjavascript.net/09_regexp.html">Regular Expressions</a> chapter, concentrated on the programming interface JavaScript provides for Regex.</p>
+
+<h2 id="creating-a-regular-expression">Creating a regular expression</h2>
+
+<p>In JavaScript, a regular expression is a type of object. It can either be constructed with the <code>RegExp</code> constructor or written as a literal value by enclosing the pattern in forward slash (<code>/</code>) characters.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">re1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">re2</span> <span class="o">=</span> <span class="sr">/abc/</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="methods-for-regular-expression-object">Methods for Regular Expression Object</h2>
+
+<p>A regular expression has a method <code>test</code> to test whether a given string matches it. It also has an <code>exec</code> method that, when a match is found, returns an array containing all matched groups. Such an array has an <code>index</code> property that indicates where the match started.</p>
+
+<h4 id="test"><code>test</code></h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sr">/abc/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;abcde&quot;</span><span class="p">));</span> <span class="c1">// → true</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sr">/abc/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="s2">&quot;abxde&quot;</span><span class="p">));</span> <span class="c1">// → false</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="exec"><code>exec</code></h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="sr">/\d+/</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;one two 100&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">match</span><span class="p">);</span>        <span class="c1">// → [&quot;100&quot;]</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">match</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>  <span class="c1">// → 8</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>When the regular expression contains subexpressions grouped with parentheses, the text that matched those groups will also show up in the array. The whole match is always the first element. The next element is the part matched by the first group (the one whose opening parenthesis comes first in the expression), then the second group, and so on.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sr">/bad(ly)?/</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;bad&quot;</span><span class="p">));</span> <span class="c1">// → [&quot;bad&quot;, undefined]</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sr">/(\d)+/</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="p">));</span>    <span class="c1">// → [&quot;123&quot;, &quot;3&quot;]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="methods-for-string">Methods for String</h2>
+
+<p>Strings have a <code>match</code> method to match them against a regular expression and a <code>search</code> method to search for one, returning only the starting position of the match. Their <code>replace</code> method can replace matches of a pattern with a replacement string. Alternatively, you can pass a function to replace, which will be used to build up a replacement string based on the match text and matched groups.</p>
+
+<p>Regular expressions can have <strong>options</strong>, which are written after the closing slash. The <code>i</code> option makes the match <em>case insensitive</em>, while the <code>g</code> option makes the expression <em>global</em>, which, among other things, causes the replace method to replace all instances instead of just the first.</p>
+
+<h4 id="match"><code>match</code></h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;one two 100&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/\d+/</span><span class="p">));</span> <span class="c1">// → [&quot;100&quot;]</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;bad&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/bad(ly)?/</span><span class="p">));</span>    <span class="c1">// → [&quot;bad&quot;, undefined]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="search"><code>search</code></h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;  word&quot;</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/\S/</span><span class="p">));</span> <span class="c1">// → 2</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;      &quot;</span><span class="p">.</span><span class="nx">search</span><span class="p">(</span><span class="sr">/\S/</span><span class="p">));</span> <span class="c1">// → -1</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h4 id="replace"><code>replace</code></h4>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Borobudur&quot;</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[ou]/</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">));</span>  <span class="c1">// → Barobudur</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Borobudur&quot;</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[ou]/g</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">));</span> <span class="c1">// → Barabadar</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>The real power of using regular expressions with replace comes from the fact that we can <strong>refer back to matched groups</strong> in the replacement string.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span>
+</span><span class="line">  <span class="s2">&quot;Hopper, Grace\nMcCarthy, John\nRitchie, Dennis&quot;</span>
+</span><span class="line">    <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/([\w ]+), ([\w ]+)/g</span><span class="p">,</span> <span class="s2">&quot;$2 $1&quot;</span><span class="p">));</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// → Grace Hopper</span>
+</span><span class="line"><span class="c1">//   John McCarthy</span>
+</span><span class="line"><span class="c1">//   Dennis Ritchie</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p><code>$1</code> is replaced by the text that matched against the first group, <code>$2</code> by the second, and so on, up to <code>$9</code>. The whole match can be referred to with <code>$&amp;</code>.</p>
+
+<p>It is also possible to <strong>pass a function</strong>, rather than a string, as the second argument to replace.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">s</span> <span class="o">=</span> <span class="s2">&quot;the cia and fbi&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\b(fbi|cia)\b/g</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="k">return</span> <span class="nx">str</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">();</span>
+</span><span class="line"><span class="p">}));</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// → the CIA and FBI</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="dynamically-creating-regexp-objects">Dynamically creating RegExp objects</h2>
+
+<p>You can use the <code>RegExp</code> constructor to create regular expression dynamically.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;harry&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;Harry is a suspicious character.&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;\\b(&quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;)\\b&quot;</span><span class="p">,</span> <span class="s2">&quot;gi&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regexp</span><span class="p">,</span> <span class="s2">&quot;_$1_&quot;</span><span class="p">));</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// → _harry_ is a suspicious character.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>We can add backslashes before any character that we don’t trust. Adding backslashes before alphabetic characters is a bad idea because things like <code>\b</code> and <code>\n</code> have a special meaning. But escaping everything that’s not alphanumeric or whitespace is safe.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;dea+hl[]rd&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="s2">&quot;This dea+hl[]rd guy is super annoying.&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">escaped</span> <span class="o">=</span> <span class="nx">name</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/[^\w\s]/g</span><span class="p">,</span> <span class="s2">&quot;\\$&amp;&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">regexp</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;\\b(&quot;</span> <span class="o">+</span> <span class="nx">escaped</span> <span class="o">+</span> <span class="s2">&quot;)\\b&quot;</span><span class="p">,</span> <span class="s2">&quot;gi&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regexp</span><span class="p">,</span> <span class="s2">&quot;_$1_&quot;</span><span class="p">));</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// → This _dea+hl[]rd_ guy is super annoying.</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="the-lastindex-property">The lastIndex property</h2>
+
+<p>The <code>exec</code> method similarly does not provide a convenient way to start searching from a given position in the string. But it does provide an inconvenient way.</p>
+
+<p>Regular expression objects have properties. One such property is <code>source</code>, which contains the string that expression was created from. Another property is <code>lastIndex</code>, which controls, in some limited circumstances, where the next match will start.</p>
+
+<p>Those circumstances are that the regular expression must have the <strong>global</strong> (g) option enabled, and the match must happen through the <strong>exec</strong> method.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">pattern</span> <span class="o">=</span> <span class="sr">/y/g</span><span class="p">;</span>
+</span><span class="line"><span class="nx">pattern</span><span class="p">.</span><span class="nx">lastIndex</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">match</span> <span class="o">=</span> <span class="nx">pattern</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;xyzzy&quot;</span><span class="p">);</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">match</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>        <span class="c1">// → 4</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">pattern</span><span class="p">.</span><span class="nx">lastIndex</span><span class="p">);</span>  <span class="c1">// → 5</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>If the match was successful, the call to exec automatically updates the lastIndex property to point after the match. If no match was found, lastIndex is set back to zero, which is also the value it has in a newly constructed regular expression object.</p>
+
+<p>When using a global regular expression value for multiple exec calls, these automatic updates to the lastIndex property can cause problems. Your regular expression might be accidentally starting at an index that was left over from a previous call.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">digit</span> <span class="o">=</span> <span class="sr">/\d/g</span><span class="p">;</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">digit</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;here it is: 1&quot;</span><span class="p">));</span> <span class="c1">// → [&quot;1&quot;]</span>
+</span><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">digit</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="s2">&quot;and now: 1&quot;</span><span class="p">));</span>    <span class="c1">// → null</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>Another interesting effect of the <strong>global</strong> option is that it changes the way the <code>match</code> method on strings works. When called with a <strong>global</strong> expression, instead of returning an array similar to that returned by <code>exec</code>, <code>match</code> will find all matches of the pattern in the string and return an array containing the matched strings.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Banana&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/an/g</span><span class="p">));</span> <span class="c1">// → [&quot;an&quot;, &quot;an&quot;]</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<p>So be cautious with global regular expressions. The cases where they are necessary—calls to <strong>replace</strong> and places where you want to explicitly use <strong>lastIndex</strong>—are typically the only places where you want to use them.</p>
+
+<h2 id="looping-over-matches">Looping over matches</h2>
+
+<p>A common pattern is to scan through all occurrences of a pattern in a string, in a way that gives us access to the match object in the loop body, by using <code>lastIndex</code> and <code>exec</code>.</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="s2">&quot;A string with 3 numbers in it... 42 and 88.&quot;</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">number</span> <span class="o">=</span> <span class="sr">/\b(\d+)\b/g</span><span class="p">;</span>
+</span><span class="line"><span class="kd">var</span> <span class="nx">match</span><span class="p">;</span>
+</span><span class="line"><span class="k">while</span> <span class="p">(</span><span class="nx">match</span> <span class="o">=</span> <span class="nx">number</span><span class="p">.</span><span class="nx">exec</span><span class="p">(</span><span class="nx">input</span><span class="p">))</span>
+</span><span class="line">  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Found&quot;</span><span class="p">,</span> <span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="nx">match</span><span class="p">.</span><span class="nx">index</span><span class="p">);</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">// → Found 3 at 14</span>
+</span><span class="line"><span class="c1">//   Found 42 at 33</span>
+</span><span class="line"><span class="c1">//   Found 88 at 40</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<h2 id="parsing-an-ini-file">Parsing an INI file</h2>
+
+<p>Imagine we are writing a program to automatically harvest information about our enemies from the Internet.</p>
+
+<ul>
+  <li>INI file</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="nx">searchengine</span><span class="o">=</span><span class="nx">http</span><span class="o">:</span><span class="c1">//www.google.com/search?q=$1</span>
+</span><span class="line"><span class="nx">spitefulness</span><span class="o">=</span><span class="mf">9.7</span>
+</span><span class="line">
+</span><span class="line"><span class="p">;</span> <span class="nx">comments</span> <span class="nx">are</span> <span class="nx">preceded</span> <span class="nx">by</span> <span class="nx">a</span> <span class="nx">semicolon</span><span class="p">...</span>
+</span><span class="line"><span class="p">;</span> <span class="nx">each</span> <span class="nx">section</span> <span class="nx">concerns</span> <span class="nx">an</span> <span class="nx">individual</span> <span class="nx">enemy</span>
+</span><span class="line"><span class="p">[</span><span class="nx">larry</span><span class="p">]</span>
+</span><span class="line"><span class="nx">fullname</span><span class="o">=</span><span class="nx">Larry</span> <span class="nx">Doe</span>
+</span><span class="line"><span class="nx">type</span><span class="o">=</span><span class="nx">kindergarten</span> <span class="nx">bully</span>
+</span><span class="line"><span class="nx">website</span><span class="o">=</span><span class="nx">http</span><span class="o">:</span><span class="c1">//www.geocities.com/CapeCanaveral/11451</span>
+</span><span class="line">
+</span><span class="line"><span class="p">[</span><span class="nx">gargamel</span><span class="p">]</span>
+</span><span class="line"><span class="nx">fullname</span><span class="o">=</span><span class="nx">Gargamel</span>
+</span><span class="line"><span class="nx">type</span><span class="o">=</span><span class="nx">evil</span> <span class="nx">sorcerer</span>
+</span><span class="line"><span class="nx">outputdir</span><span class="o">=</span><span class="err">/home/marijn/enemies/gargamel</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+<ul>
+  <li>Parsing program in Javascript</li>
+</ul>
+
+<div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+</pre></td><td class="code"><pre><code class="javascript"><span class="line"><span class="kd">function</span> <span class="nx">parseINI</span><span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">  <span class="c1">// Start with an object to hold the top-level fields</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">currentSection</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> <span class="nx">fields</span><span class="o">:</span> <span class="p">[]};</span>
+</span><span class="line">  <span class="kd">var</span> <span class="nx">categories</span> <span class="o">=</span> <span class="p">[</span><span class="nx">currentSection</span><span class="p">];</span>
+</span><span class="line">
+</span><span class="line">  <span class="nx">string</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="sr">/\r?\n/</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="line">    <span class="kd">var</span> <span class="nx">match</span><span class="p">;</span>
+</span><span class="line">    <span class="k">if</span> <span class="p">(</span><span class="sr">/^\s*(;.*)?$/</span><span class="p">.</span><span class="nx">test</span><span class="p">(</span><span class="nx">line</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">return</span><span class="p">;</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">match</span> <span class="o">=</span> <span class="nx">line</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^\[(.*)\]$/</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">currentSection</span> <span class="o">=</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nx">fields</span><span class="o">:</span> <span class="p">[]};</span>
+</span><span class="line">      <span class="nx">categories</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">currentSection</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">match</span> <span class="o">=</span> <span class="nx">line</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="sr">/^(\w+)=(.*)$/</span><span class="p">))</span> <span class="p">{</span>
+</span><span class="line">      <span class="nx">currentSection</span><span class="p">.</span><span class="nx">fields</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="nx">name</span><span class="o">:</span> <span class="nx">match</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span class="line">                                  <span class="nx">value</span><span class="o">:</span> <span class="nx">match</span><span class="p">[</span><span class="mi">2</span><span class="p">]});</span>
+</span><span class="line">    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class="line">      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&quot;Line &#39;&quot;</span> <span class="o">+</span> <span class="nx">line</span> <span class="o">+</span> <span class="s2">&quot;&#39; is invalid.&quot;</span><span class="p">);</span>
+</span><span class="line">    <span class="p">}</span>
+</span><span class="line">  <span class="p">});</span>
+</span><span class="line">
+</span><span class="line">  <span class="k">return</span> <span class="nx">categories</span><span class="p">;</span>
+</span><span class="line"><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
+
+		
+		
+	</div>
+
+</article>
 
 
     <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
@@ -4601,149 +4935,6 @@ The font-size unit <strong>em</strong> is a relative measure: one <code>em</code
 <div class="bogus-wrapper"><notextile><figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class="html"><span class="line"><span class="nt">&lt;title&gt;</span> HTML Glossary <span class="nt">&lt;/title&gt;</span>
 </span></code></pre></td></tr></table></div></figure></notextile></div>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post" itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2016-01-20T12:34:00-08:00" data-updated="true" itemprop="datePublished">Jan 20<span>th</span>, 2016</time></div>
-		<div class="tags">
-
-
-	<a class='category' href='/categories/tool/'>tool</a>, <a class='category' href='/categories/writing/'>writing</a>
-
-
-</div>
-		
-		
-                                    <span class="comments"><a href="/atom-as-markdown-editor/#comments">Comments</a></span>
-                        
-	</div>
-	<h1 class="title" itemprop="name"><a href="/atom-as-markdown-editor/" itemprop="url">Atom as Markdown Editor</a></h1>
-	<div class="entry-content" itemprop="articleBody">
-		<p><strong>Markdown</strong> is an easy-to-use markup language in a plain text format and it became my favorite writing format several years ago because it makes me stay focused on recording thoughts and ideas efficiently.</p>
-
-<p>Up to now I’ve used dedicated Markdown editors like <strong>MOU</strong> and <strong>Haroopad</strong> as a tool of writing while they all have pros and cons individually. When Atom replaced Sublime Text as my code editor for web development, I tried to use it as a Markdown editor either and the result is amazing. Atom proves itself as a fantastic solution for writing in markdown and it can be customized to whatever you want to match your writing style.</p>
-
-<p>Atom comes with full Markdown support including a robust previewer. It supports GitHub flavored Markdown and includes spell check along with predefined Markdown snippets.</p>
-
-<p>Further more, we can easily extend Atom using the built-in package manager. Atom has a bunch of packages that can be installed to provide additional productivity. Here are some ones I am using:</p>
-
-<h3 id="language-gfm">language-gfm</h3>
-
-<p><strong>language-gfm</strong> is an Atom built-in package which adds syntax highlighting and snippets to GitHub flavored Markdown files in Atom. I use it instead of <strong>language-markdown</strong> because the latter seems not working well with <strong>markdown-preview-plus</strong>.</p>
-
-<h3 id="markdown-preview-plus">Markdown Preview Plus</h3>
-
-<p><strong>Markdown Preview Plus</strong> is a package that provides a real-time preview of markdown documents with <code>ctrl-shift-m</code>. I choose this instead of Atom built-in <strong>Markdown Preview</strong> because it also provide Math (LaTeX) support to the markdown preview with <code>ctrl-shift-x</code>.</p>
-
-<p><img src="https://i.github-camo.com/11195c1f0294de243f68409abd79a91452323cb6/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f47616c616469726974682f6d61726b646f776e2d707265766965772d706c75732f6d61737465722f696d67732f6d70702d66756c6c2d7265732d696e766572742e706e67" alt="markdown-preview-plus" /></p>
-
-<h3 id="markdown-scroll-sync">markdown-scroll-sync</h3>
-
-<p>This package is used to synchronize scrolling between markdown file and its preview.</p>
-
-<p><img src="https://i.github-camo.com/a0f171c5c0f3ca4403ae288ca45ee2035906c184/68747470733a2f2f636c6f75642e67697468756275736572636f6e74656e742e636f6d2f6173736574732f3831313435352f31313331373235392f63356239623063322d386664632d313165352d386638352d6237646565666235323563352e676966" alt="markdown-scroll-sync" /></p>
-
-<h3 id="markdown-writer">Markdown-Writer</h3>
-
-<p><strong>Markdown Writer</strong> adds tons of features to make Atom an even better Markdown editor and works great with static blogging engines such as Octopress as well.</p>
-
-<p><img src="https://i.github-camo.com/216ebba971ab38d17d6eabdaf236d042a55b35b8/687474703a2f2f692e696d6775722e636f6d2f7339656b4d6e732e676966" alt="Markdown-Writer" /></p>
-
-<p>Here are some shortcuts I use often during writing with Markdown-Writer in Atom.</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Task</th>
-      <th>Keystrokes</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>code</code></td>
-      <td><code>cmd-'</code></td>
-    </tr>
-    <tr>
-      <td><strong>bold</strong></td>
-      <td><code>cmd-b</code></td>
-    </tr>
-    <tr>
-      <td><em>italic</em></td>
-      <td><code>cmd-i</code></td>
-    </tr>
-    <tr>
-      <td>~~strike through~~</td>
-      <td><code>cmd-h</code></td>
-    </tr>
-    <tr>
-      <td><code>'''code block'''</code></td>
-      <td><code>shift-cmd-"</code></td>
-    </tr>
-    <tr>
-      <td><code>&lt;kbd&gt;key&lt;/kbd&gt;</code></td>
-      <td><code>cmd-k</code></td>
-    </tr>
-    <tr>
-      <td>Unordered List</td>
-      <td><code>shift-cmd-u</code></td>
-    </tr>
-    <tr>
-      <td>Ordered List</td>
-      <td><code>shift-cmd-O</code></td>
-    </tr>
-    <tr>
-      <td>Task List</td>
-      <td><code>markdown-writer:toggle-task</code></td>
-    </tr>
-    <tr>
-      <td>Blockquote</td>
-      <td><code>shift-cmd-&gt;</code></td>
-    </tr>
-    <tr>
-      <td>Insert link</td>
-      <td><code>shift-cmd-k</code></td>
-    </tr>
-    <tr>
-      <td>Insert image</td>
-      <td><code>shift-cmd-i</code></td>
-    </tr>
-    <tr>
-      <td>Insert table</td>
-      <td><code>markdown-writer:insert-table</code></td>
-    </tr>
-    <tr>
-      <td>Toggle headings</td>
-      <td><code>ctrl-alt-1</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="references">References</h3>
-
-<ul>
-  <li><a href="https://www.raywenderlich.com/119949/top-five-markdown-editors">Best Markdown Editors for OS X</a></li>
-  <li><a href="http://tedcurran.net/2015/05/12/make-your-perfect-markdown-editor-with-atom-editor-plugins/">Make Your Perfect Markdown Editor with Atom Editor Plugins</a></li>
-  <li><a href="https://blogs.msdn.microsoft.com/silverlining/2015/05/18/atom-io-for-markdown-editing/">Atom.io for Markdown editing</a></li>
-</ul>
 
 		
 		
